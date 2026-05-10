@@ -45,12 +45,12 @@ class TrackingHeader extends StatelessWidget {
                     color: AppColors.cardDark,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: .05),
+                      color: AppColors.border,
                     ),
                   ),
                   child: const Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     size: 18,
                   ),
                 ),
@@ -73,7 +73,7 @@ class TrackingHeader extends StatelessWidget {
                     Text(
                       'Commande #$orderId',
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: .6),
+                        color: AppColors.textSecondary,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
@@ -90,12 +90,12 @@ class TrackingHeader extends StatelessWidget {
                   color: AppColors.cardDark,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: .05),
+                    color: AppColors.border,
                   ),
                 ),
                 child: const Icon(
                   Icons.more_horiz_rounded,
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   size: 20,
                 ),
               ),

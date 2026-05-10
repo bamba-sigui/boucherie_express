@@ -47,7 +47,7 @@ class OrdersScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       state.message,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: AppColors.textPrimary),
                     ),
                     const SizedBox(height: 16),
                     ElevatedButton(
@@ -122,7 +122,7 @@ class _OrderCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.cardDark,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.white12),
+          border: Border.all(color: AppColors.border),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +133,7 @@ class _OrderCard extends StatelessWidget {
                 Text(
                   'Commande #${order.id.substring(0, 8).toUpperCase()}',
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -148,13 +148,13 @@ class _OrderCard extends StatelessWidget {
               ).format(order.orderedAt),
               style: const TextStyle(color: AppColors.textGrey, fontSize: 13),
             ),
-            const Divider(height: 24, color: Colors.white10),
+            const Divider(height: 24, color: AppColors.border),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   '${order.items.length} article(s)',
-                  style: const TextStyle(color: Colors.white70),
+                  style: const TextStyle(color: AppColors.textSecondary),
                 ),
                 Text(
                   FormatUtils.formatPrice(order.totalAmount),

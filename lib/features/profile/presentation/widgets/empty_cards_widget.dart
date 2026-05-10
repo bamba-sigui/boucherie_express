@@ -23,7 +23,7 @@ class EmptyCardsWidget extends StatelessWidget {
               child: Text(
                 'CARTES BANCAIRES',
                 style: TextStyle(
-                  color: Colors.white.withValues(alpha: .3),
+                  color: AppColors.textSecondary,
                   fontSize: 11,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.5,
@@ -71,21 +71,21 @@ class EmptyCardsWidget extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: Colors.white.withValues(alpha: .1),
+              color: AppColors.border,
             ),
           ),
           child: Column(
             children: [
               Icon(
                 Icons.credit_card_rounded,
-                color: Colors.white.withValues(alpha: .3),
+                color: AppColors.textSecondary,
                 size: 40,
               ),
               const SizedBox(height: 12),
               Text(
                 'Aucune carte enregistrée',
                 style: TextStyle(
-                  color: Colors.white.withValues(alpha: .4),
+                  color: AppColors.textSecondary,
                   fontSize: 14,
                 ),
               ),

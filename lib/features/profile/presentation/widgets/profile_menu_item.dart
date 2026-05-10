@@ -29,13 +29,13 @@ class ProfileMenuItem extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
-        splashColor: Colors.white.withValues(alpha: .05),
-        highlightColor: Colors.white.withValues(alpha: .03),
+        splashColor: AppColors.border.withValues(alpha: .3),
+        highlightColor: AppColors.border.withValues(alpha: .2),
         child: Ink(
           decoration: BoxDecoration(
             color: AppColors.cardDark,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.white.withValues(alpha: .05)),
+            border: Border.all(color: AppColors.border),
           ),
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -45,12 +45,12 @@ class ProfileMenuItem extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: .05),
+                  color: AppColors.surface,
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   icon,
-                  color: Colors.white.withValues(alpha: .7),
+                  color: AppColors.textSecondary,
                   size: 20,
                 ),
               ),
@@ -60,8 +60,8 @@ class ProfileMenuItem extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: .85),
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
@@ -71,7 +71,7 @@ class ProfileMenuItem extends StatelessWidget {
               // Chevron
               Icon(
                 Icons.chevron_right_rounded,
-                color: Colors.white.withValues(alpha: .3),
+                color: AppColors.textSecondary,
                 size: 24,
               ),
             ],

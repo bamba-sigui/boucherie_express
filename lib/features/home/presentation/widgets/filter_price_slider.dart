@@ -54,7 +54,7 @@ class _FilterPriceSliderState extends State<FilterPriceSlider> {
           const Text(
             'Prix (FCFA)',
             style: TextStyle(
-              color: Colors.white,
+              color: AppColors.textPrimary,
               fontSize: 16,
               fontWeight: FontWeight.w600,
             ),
@@ -120,7 +120,7 @@ class _FilterPriceSliderState extends State<FilterPriceSlider> {
       child: Text(
         text,
         style: const TextStyle(
-          color: Colors.white,
+          color: AppColors.textPrimary,
           fontSize: 12,
           fontWeight: FontWeight.w600,
         ),

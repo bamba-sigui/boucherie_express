@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             'Boucherie Express',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.textPrimary,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             IconButton(
                               icon: const Icon(Icons.shopping_cart_outlined),
-                              color: Colors.white,
+                              color: AppColors.textPrimary,
                               onPressed: () => context.push('/cart'),
                             ),
                             if (itemCount > 0)
@@ -245,7 +245,7 @@ class _CategoryChip extends StatelessWidget {
               Text(
                 label,
                 style: TextStyle(
-                  color: isSelected ? AppColors.backgroundDark : Colors.white,
+                  color: isSelected ? AppColors.backgroundDark : AppColors.textPrimary,
                   fontWeight: FontWeight.w600,
                 ),
               ),

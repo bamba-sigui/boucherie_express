@@ -34,7 +34,7 @@ class SaveButton extends StatelessWidget {
         child: InkWell(
           onTap: isActive ? onPressed : null,
           borderRadius: BorderRadius.circular(16),
-          splashColor: Colors.white.withValues(alpha: .1),
+          splashColor: Colors.transparent,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             padding: const EdgeInsets.symmetric(vertical: 16),

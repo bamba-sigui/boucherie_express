@@ -29,7 +29,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     Text(
                       'Commande #${order.id.substring(0, 8).toUpperCase()}',
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -53,7 +53,7 @@ class OrderDetailsScreen extends StatelessWidget {
             const Text(
               'Suivi de commande',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -66,20 +66,20 @@ class OrderDetailsScreen extends StatelessWidget {
             const Text(
               'Articles',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 16),
             ...order.items.map((item) => _buildOrderItem(item)),
-            const Divider(height: 40, color: Colors.white10),
+            const Divider(height: 40, color: AppColors.border),
 
             // Address
             const Text(
               'Livré à',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -106,7 +106,7 @@ class OrderDetailsScreen extends StatelessWidget {
                       Expanded(
                         child: Text(
                           order.deliveryAddress,
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: AppColors.textPrimary),
                         ),
                       ),
                     ],
@@ -142,7 +142,7 @@ class OrderDetailsScreen extends StatelessWidget {
             const Text(
               'Paiement',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -164,7 +164,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     'Livraison',
                     FormatUtils.formatPrice(order.deliveryFee),
                   ),
-                  const Divider(height: 24, color: Colors.white10),
+                  const Divider(height: 24, color: AppColors.border),
                   _summaryRow(
                     'Total',
                     FormatUtils.formatPrice(order.totalAmount),
@@ -252,7 +252,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   width: 24,
                   height: 24,
                   decoration: BoxDecoration(
-                    color: isCompleted ? AppColors.primary : Colors.white12,
+                    color: isCompleted ? AppColors.primary : AppColors.border,
                     shape: BoxShape.circle,
                   ),
                   child: isCompleted
@@ -263,7 +263,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   Container(
                     width: 2,
                     height: 32,
-                    color: isCompleted ? AppColors.primary : Colors.white12,
+                    color: isCompleted ? AppColors.primary : AppColors.border,
                   ),
               ],
             ),
@@ -275,7 +275,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   Text(
                     _getStatusLabel(stage),
                     style: TextStyle(
-                      color: isCompleted ? Colors.white : AppColors.textGrey,
+                      color: isCompleted ? AppColors.textPrimary : AppColors.textGrey,
                       fontWeight: isCompleted
                           ? FontWeight.bold
                           : FontWeight.normal,
@@ -304,7 +304,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 Text(
                   item.productName,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -321,7 +321,7 @@ class OrderDetailsScreen extends StatelessWidget {
           Text(
             FormatUtils.formatPrice(item.price * item.quantity),
             style: const TextStyle(
-              color: Colors.white,
+              color: AppColors.textPrimary,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -339,7 +339,7 @@ class OrderDetailsScreen extends StatelessWidget {
           Text(
             label,
             style: TextStyle(
-              color: isTotal ? Colors.white : AppColors.textGrey,
+              color: isTotal ? AppColors.textPrimary : AppColors.textGrey,
               fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
               fontSize: isTotal ? 16 : 14,
             ),
@@ -347,7 +347,7 @@ class OrderDetailsScreen extends StatelessWidget {
           Text(
             value,
             style: TextStyle(
-              color: isTotal ? AppColors.primary : Colors.white,
+              color: isTotal ? AppColors.primary : AppColors.textPrimary,
               fontWeight: isTotal ? FontWeight.bold : FontWeight.w600,
               fontSize: isTotal ? 18 : 14,
             ),

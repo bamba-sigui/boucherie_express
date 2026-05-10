@@ -136,7 +136,7 @@ class OtpInputState extends State<OtpInput> {
               ? AppColors.error
               : isFocused
               ? AppColors.primary
-              : Colors.white.withValues(alpha: .1),
+              : AppColors.border,
           width: 1.5,
         ),
         boxShadow: isFocused

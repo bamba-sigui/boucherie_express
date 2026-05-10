@@ -135,13 +135,13 @@ class TimelineStepWidget extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
-              color: Colors.white.withValues(alpha: .1),
+              color: AppColors.border,
               width: 2,
             ),
           ),
           child: Icon(
             Icons.home_rounded,
-            color: Colors.white.withValues(alpha: .2),
+            color: AppColors.surface,
             size: 18,
           ),
         );
@@ -158,7 +158,7 @@ class TimelineStepWidget extends StatelessWidget {
     return Container(
       width: 2,
       height: 48,
-      color: isGreen ? AppColors.primary : Colors.white.withValues(alpha: .1),
+      color: isGreen ? AppColors.primary : AppColors.border,
     );
   }
 
@@ -167,22 +167,22 @@ class TimelineStepWidget extends StatelessWidget {
   Color get _titleColor {
     switch (step.status) {
       case DeliveryStatus.completed:
-        return Colors.white.withValues(alpha: .4);
+        return AppColors.textSecondary;
       case DeliveryStatus.active:
-        return Colors.white;
+        return AppColors.textPrimary;
       case DeliveryStatus.pending:
-        return Colors.white.withValues(alpha: .2);
+        return AppColors.surface;
     }
   }
 
   Color get _subtitleColor {
     switch (step.status) {
       case DeliveryStatus.completed:
-        return Colors.white.withValues(alpha: .2);
+        return AppColors.surface;
       case DeliveryStatus.active:
-        return Colors.white.withValues(alpha: .6);
+        return AppColors.textSecondary;
       case DeliveryStatus.pending:
-        return Colors.white.withValues(alpha: .1);
+        return AppColors.border;
     }
   }
 

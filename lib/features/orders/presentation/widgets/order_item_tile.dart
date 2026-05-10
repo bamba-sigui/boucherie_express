@@ -38,7 +38,7 @@ class OrderItemTile extends StatelessWidget {
                     errorBuilder: (_, __, ___) => const Center(
                       child: Icon(
                         Icons.restaurant,
-                        color: Colors.white38,
+                        color: AppColors.textSecondary,
                         size: 32,
                       ),
                     ),
@@ -46,7 +46,7 @@ class OrderItemTile extends StatelessWidget {
                 : const Center(
                     child: Icon(
                       Icons.restaurant,
-                      color: Colors.white38,
+                      color: AppColors.textSecondary,
                       size: 32,
                     ),
                   ),
@@ -68,7 +68,7 @@ class OrderItemTile extends StatelessWidget {
                       Text(
                         item.productName,
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),

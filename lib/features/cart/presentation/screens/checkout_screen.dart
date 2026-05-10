@@ -122,7 +122,7 @@ class _CheckoutView extends StatelessWidget {
                   child: Text(
                     'Adresse de livraison',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       letterSpacing: -0.3,
@@ -191,7 +191,7 @@ class _CheckoutView extends StatelessWidget {
               Text(
                 'BOUCHERIE EXPRESS • QUALITÉ GARANTIE',
                 style: TextStyle(
-                  color: Colors.white.withValues(alpha: .25),
+                  color: AppColors.textSecondary,
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 2,
@@ -299,7 +299,7 @@ class _CheckoutHeader extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.backgroundDark.withValues(alpha: .8),
               border: Border(
-                bottom: BorderSide(color: Colors.white.withValues(alpha: .1)),
+                bottom: BorderSide(color: AppColors.border),
               ),
             ),
             child: Row(
@@ -311,12 +311,12 @@ class _CheckoutHeader extends StatelessWidget {
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: .05),
+                      color: AppColors.surface,
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
                       Icons.arrow_back_ios_new_rounded,
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       size: 20,
                     ),
                   ),
@@ -328,7 +328,7 @@ class _CheckoutHeader extends StatelessWidget {
                     'Finaliser la commande',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       letterSpacing: -0.3,

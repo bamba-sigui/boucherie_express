@@ -29,7 +29,7 @@ class PreparationSelector extends StatelessWidget {
         Text(
           'PRÉPARATION',
           style: TextStyle(
-            color: Colors.white.withValues(alpha: .5),
+            color: AppColors.textSecondary,
             fontSize: 11,
             fontWeight: FontWeight.w700,
             letterSpacing: 3,
@@ -54,14 +54,14 @@ class PreparationSelector extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   border: isSelected
                       ? null
-                      : Border.all(color: Colors.white.withValues(alpha: .1)),
+                      : Border.all(color: AppColors.border),
                 ),
                 child: Text(
                   option,
                   style: TextStyle(
                     color: isSelected
                         ? AppColors.backgroundDark
-                        : Colors.white.withValues(alpha: .8),
+                        : AppColors.textPrimary,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),

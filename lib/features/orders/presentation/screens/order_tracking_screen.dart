@@ -135,7 +135,7 @@ class _OrderTrackingView extends StatelessWidget {
                             ),
                             border: Border(
                               top: BorderSide(
-                                color: Colors.white.withValues(alpha: .05),
+                                color: AppColors.surface,
                               ),
                             ),
                           ),
@@ -174,7 +174,7 @@ class _OrderTrackingView extends StatelessWidget {
           children: [
             Icon(
               Icons.error_outline_rounded,
-              color: Colors.white.withValues(alpha: .4),
+              color: AppColors.textSecondary,
               size: 48,
             ),
             const SizedBox(height: 16),
@@ -182,7 +182,7 @@ class _OrderTrackingView extends StatelessWidget {
               message,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white.withValues(alpha: .6),
+                color: AppColors.textSecondary,
                 fontSize: 14,
               ),
             ),

@@ -30,7 +30,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             const Text(
               'Choisissez votre mode de paiement',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -121,7 +121,7 @@ class _PaymentOption extends StatelessWidget {
               child: Text(
                 label,
                 style: TextStyle(
-                  color: isSelected ? Colors.white : AppColors.textGrey,
+                  color: isSelected ? AppColors.textPrimary : AppColors.textGrey,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
               ),

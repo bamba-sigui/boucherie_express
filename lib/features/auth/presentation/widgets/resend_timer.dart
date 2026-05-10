@@ -71,8 +71,8 @@ class ResendTimerState extends State<ResendTimer> {
       children: [
         Text(
           'Vous n\'avez pas reçu de code ?',
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: .3),
+          style: const TextStyle(
+            color: AppColors.textSecondary,
             fontSize: 14,
           ),
         ),
@@ -90,7 +90,7 @@ class ResendTimerState extends State<ResendTimer> {
               Icon(
                 Icons.schedule_rounded,
                 color: _remaining > 0
-                    ? Colors.white.withValues(alpha: .4)
+                    ? AppColors.textSecondary
                     : AppColors.primary,
                 size: 20,
               ),
@@ -99,7 +99,7 @@ class ResendTimerState extends State<ResendTimer> {
                 duration: const Duration(milliseconds: 200),
                 style: TextStyle(
                   color: _remaining > 0
-                      ? Colors.white.withValues(alpha: .3)
+                      ? AppColors.textSecondary
                       : AppColors.primary,
                   fontSize: 14,
                   fontWeight: FontWeight.w600,

@@ -44,7 +44,7 @@ class OrderDetailsHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.backgroundDark.withValues(alpha: 0.9),
         border: Border(
-          bottom: BorderSide(color: Colors.white.withValues(alpha: 0.05)),
+          bottom: BorderSide(color: AppColors.border),
         ),
       ),
       child: Row(
@@ -59,7 +59,7 @@ class OrderDetailsHeader extends StatelessWidget {
                 padding: EdgeInsets.all(12),
                 child: Icon(
                   Icons.arrow_back_ios_new,
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   size: 20,
                 ),
               ),
@@ -76,7 +76,7 @@ class OrderDetailsHeader extends StatelessWidget {
                 const Text(
                   'Détails de la Commande',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),

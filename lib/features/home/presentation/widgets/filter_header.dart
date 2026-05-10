@@ -21,7 +21,7 @@ class FilterHeader extends StatelessWidget {
             height: 4,
             margin: const EdgeInsets.only(top: 12, bottom: 20),
             decoration: BoxDecoration(
-              color: Colors.grey.shade700,
+              color: AppColors.border,
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -36,7 +36,7 @@ class FilterHeader extends StatelessWidget {
               const Text(
                 'Filtrer les produits',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -50,7 +50,7 @@ class FilterHeader extends StatelessWidget {
                     color: AppColors.categoryUnselected,
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(Icons.close, color: Colors.white, size: 18),
+                  child: const Icon(Icons.close, color: AppColors.textPrimary, size: 18),
                 ),
               ),
             ],

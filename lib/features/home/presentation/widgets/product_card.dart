@@ -83,7 +83,7 @@ class ProductCard extends StatelessWidget {
                                   : Icons.favorite_border,
                               color: isFavorite
                                   ? AppColors.accentRed
-                                  : Colors.white,
+                                  : AppColors.textPrimary,
                               size: 18,
                             ),
                           ),
@@ -126,7 +126,7 @@ class ProductCard extends StatelessWidget {
                       Text(
                         product.name,
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),

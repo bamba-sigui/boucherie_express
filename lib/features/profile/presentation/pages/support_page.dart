@@ -251,7 +251,7 @@ class _StickyHeader extends StatelessWidget {
             color: AppColors.backgroundDark.withValues(alpha: .9),
             border: Border(
               bottom: BorderSide(
-                color: Colors.white.withValues(alpha: .05),
+                color: AppColors.border,
               ),
             ),
           ),
@@ -268,7 +268,7 @@ class _StickyHeader extends StatelessWidget {
                     padding: EdgeInsets.all(8),
                     child: Icon(
                       Icons.arrow_back_ios_new_rounded,
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       size: 20,
                     ),
                   ),
@@ -280,7 +280,7 @@ class _StickyHeader extends StatelessWidget {
               const Text(
                 'Support & Aide',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                   letterSpacing: -0.3,
@@ -316,7 +316,7 @@ class _ErrorWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Text(
               message,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.textPrimary),
               textAlign: TextAlign.center,
             ),
           ),

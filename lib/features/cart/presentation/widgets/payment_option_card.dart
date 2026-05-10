@@ -39,7 +39,7 @@ class PaymentOptionCard extends StatelessWidget {
           border: Border.all(
             color: isSelected
                 ? AppColors.primary
-                : Colors.white.withValues(alpha: .05),
+                : AppColors.border,
             width: 2,
           ),
         ),
@@ -57,7 +57,7 @@ class PaymentOptionCard extends StatelessWidget {
                   Text(
                     method.name,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       height: 1,
@@ -66,8 +66,8 @@ class PaymentOptionCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     method.description,
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: .45),
+                    style: const TextStyle(
+                      color: AppColors.textSecondary,
                       fontSize: 12,
                     ),
                   ),
@@ -93,7 +93,7 @@ class PaymentOptionCard extends StatelessWidget {
               ? Color(method.logoBgColor!)
               : Colors.white,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.white.withValues(alpha: .08)),
+          border: Border.all(color: AppColors.border),
         ),
         padding: const EdgeInsets.all(4),
         child: ClipRRect(
@@ -114,10 +114,10 @@ class PaymentOptionCard extends StatelessWidget {
       width: 48,
       height: 48,
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: .1),
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: const Icon(Icons.payments_outlined, color: Colors.white, size: 24),
+      child: const Icon(Icons.payments_outlined, color: AppColors.textPrimary, size: 24),
     );
   }
 
@@ -131,7 +131,7 @@ class PaymentOptionCard extends StatelessWidget {
         border: Border.all(
           color: isSelected
               ? AppColors.primary
-              : Colors.white.withValues(alpha: .2),
+              : AppColors.border,
           width: 2,
         ),
       ),

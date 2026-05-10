@@ -63,7 +63,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 const Text(
                   'Choisissez votre moyen de paiement',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -105,7 +105,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                     children: [
                       const Text(
                         'Montant à payer',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style: TextStyle(color: AppColors.textPrimary, fontSize: 16),
                       ),
                       Text(
                         FormatUtils.formatPrice(cart.totalAmount),
@@ -200,7 +200,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           color: AppColors.cardDark,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isSelected ? AppColors.primary : Colors.white10,
+            color: isSelected ? AppColors.primary : AppColors.border,
             width: 2,
           ),
         ),
@@ -209,10 +209,10 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             CircleAvatar(
               backgroundColor: isSelected
                   ? AppColors.primary.withValues(alpha: 0.1)
-                  : Colors.white10,
+                  : AppColors.border,
               child: Icon(
                 icon,
-                color: isSelected ? AppColors.primary : Colors.white,
+                color: isSelected ? AppColors.primary : AppColors.textPrimary,
               ),
             ),
             const SizedBox(width: 16),
@@ -223,7 +223,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                   Text(
                     title,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -241,7 +241,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             if (isSelected)
               const Icon(Icons.check_circle, color: AppColors.primary)
             else
-              const Icon(Icons.radio_button_off, color: Colors.white10),
+              const Icon(Icons.radio_button_off, color: AppColors.border),
           ],
         ),
       ),

@@ -29,7 +29,7 @@ class FavoritesScreen extends StatelessWidget {
             return Center(
               child: Text(
                 state.message,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: AppColors.textPrimary),
               ),
             );
           }
@@ -48,7 +48,7 @@ class FavoritesScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     const Text(
                       'Aucun favori pour le moment',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(color: AppColors.textPrimary, fontSize: 18),
                     ),
                     const SizedBox(height: 8),
                     const Text(

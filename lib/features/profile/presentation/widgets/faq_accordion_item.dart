@@ -28,7 +28,7 @@ class FaqAccordionItem extends StatelessWidget {
           color: AppColors.cardDark,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: Colors.white.withValues(alpha: .05),
+            color: AppColors.border,
           ),
         ),
         clipBehavior: Clip.antiAlias,
@@ -56,7 +56,7 @@ class FaqAccordionItem extends StatelessWidget {
                     duration: const Duration(milliseconds: 200),
                     child: Icon(
                       Icons.expand_more_rounded,
-                      color: Colors.white.withValues(alpha: .35),
+                      color: AppColors.textSecondary,
                       size: 22,
                     ),
                   ),

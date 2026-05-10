@@ -78,7 +78,7 @@ class OrderProductAvatars extends StatelessWidget {
                   errorBuilder: (_, __, ___) => const Icon(
                     Icons.restaurant,
                     size: 14,
-                    color: Colors.white54,
+                    color: AppColors.textSecondary,
                   ),
                 )
               : const Icon(Icons.restaurant, size: 14, color: Colors.white54),
@@ -102,7 +102,7 @@ class OrderProductAvatars extends StatelessWidget {
           child: Text(
             '+$count',
             style: const TextStyle(
-              color: Colors.white,
+              color: AppColors.textPrimary,
               fontSize: 10,
               fontWeight: FontWeight.bold,
             ),

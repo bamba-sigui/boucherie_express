@@ -11,12 +11,15 @@ import '../bloc/phone_auth_bloc.dart';
 import '../widgets/phone_input_field.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  /// Optionally inject a [PhoneAuthBloc] (used in widget tests).
+  final PhoneAuthBloc? phoneAuthBloc;
+
+  const LoginScreen({super.key, this.phoneAuthBloc});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => GetIt.I<PhoneAuthBloc>(),
+      create: (_) => phoneAuthBloc ?? GetIt.I<PhoneAuthBloc>(),
       child: const _LoginView(),
     );
   }
@@ -62,7 +65,7 @@ class _LoginViewState extends State<_LoginView> {
           backgroundColor: AppColors.cardDark,
           title: const Text(
             'Mot de passe oublié',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: AppColors.textPrimary),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -75,7 +78,7 @@ class _LoginViewState extends State<_LoginView> {
               TextField(
                 controller: controller,
                 keyboardType: TextInputType.emailAddress,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: AppColors.textPrimary),
                 decoration: const InputDecoration(
                   hintText: 'votre@email.com',
                   prefixIcon: Icon(Icons.email_outlined, size: 20),
@@ -165,26 +168,71 @@ class _LoginViewState extends State<_LoginView> {
       ],
       child: Scaffold(
         backgroundColor: AppColors.backgroundDark,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => context.pop(),
-          ),
-          title: const Text(
-            'Se connecter',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-        ),
         body: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                const SizedBox(height: 16),
+
+                // ── Header inline ──
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: () => context.canPop() ? context.pop() : context.go('/home'),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: const BoxDecoration(
+                        color: AppColors.surface,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        size: 18,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 28),
+                Text.rich(
+                  const TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'BOUCHERIE',
+                        style: TextStyle(
+                          color: AppColors.textPrimary,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                      TextSpan(
+                        text: ' EXPRESS',
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 8),
+                const Text(
+                  'Connectez-vous pour commander,\nsuivre et gérer vos favoris.',
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 13,
+                    height: 1.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 32),
 
                 // ── Toggle Email / Numéro ──
                 _TabToggle(
@@ -230,10 +278,10 @@ class _LoginViewState extends State<_LoginView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Pas encore inscrit ?',
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: .5),
+                        color: AppColors.textSecondary,
                         fontSize: 12,
                       ),
                     ),
@@ -331,7 +379,7 @@ class _TabButton extends StatelessWidget {
             style: TextStyle(
               color: isSelected
                   ? AppColors.backgroundDark
-                  : Colors.white.withValues(alpha: .5),
+                  : AppColors.textSecondary,
               fontWeight:
                   isSelected ? FontWeight.bold : FontWeight.normal,
               fontSize: 15,
@@ -462,20 +510,20 @@ class _EmailTab extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: Divider(color: Colors.white.withValues(alpha: .12)),
+                child: Divider(color: AppColors.border),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   'Ou',
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: .4),
+                    color: AppColors.textSecondary,
                     fontSize: 13,
                   ),
                 ),
               ),
               Expanded(
-                child: Divider(color: Colors.white.withValues(alpha: .12)),
+                child: Divider(color: AppColors.border),
               ),
             ],
           ),
@@ -492,7 +540,7 @@ class _EmailTab extends StatelessWidget {
                 child: const Text(
                   '123',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 13,
                     fontWeight: FontWeight.bold,
                   ),
@@ -610,7 +658,7 @@ class _IconAuthButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.cardDark,
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white.withValues(alpha: .1)),
+          border: Border.all(color: AppColors.border),
         ),
         child: Center(child: child),
       ),

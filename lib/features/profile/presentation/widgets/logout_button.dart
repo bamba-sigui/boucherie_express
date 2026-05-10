@@ -21,23 +21,23 @@ class LogoutButton extends StatelessWidget {
         backgroundColor: AppColors.cardDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: Colors.white.withValues(alpha: .05)),
+          side: BorderSide(color: AppColors.border),
         ),
         title: const Text(
           'Déconnexion',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold),
         ),
-        content: Text(
+        content: const Text(
           'Êtes-vous sûr de vouloir vous déconnecter ?',
-          style: TextStyle(color: Colors.white.withValues(alpha: .5)),
+          style: TextStyle(color: AppColors.textSecondary),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: Text(
+            child: const Text(
               'ANNULER',
               style: TextStyle(
-                color: Colors.white.withValues(alpha: .4),
+                color: AppColors.textSecondary,
                 fontWeight: FontWeight.w600,
               ),
             ),

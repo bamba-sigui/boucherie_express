@@ -113,7 +113,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: Text(
                     'Boucherie Express v1.0.0',
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: .2),
+                      color: AppColors.textSecondary,
                       fontSize: 12,
                     ),
                   ),
@@ -148,7 +148,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           decoration: BoxDecoration(
             color: AppColors.backgroundDark.withValues(alpha: .9),
             border: Border(
-              bottom: BorderSide(color: Colors.white.withValues(alpha: .05)),
+              bottom: BorderSide(color: AppColors.border),
             ),
           ),
           child: Row(
@@ -161,7 +161,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   alignment: Alignment.center,
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white.withValues(alpha: .6),
+                    color: AppColors.textSecondary,
                     size: 20,
                   ),
                 ),
@@ -170,7 +170,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const Text(
                 'Paramètres',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -0.3,
@@ -188,8 +188,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       padding: const EdgeInsets.only(left: 4),
       child: Text(
         title,
-        style: TextStyle(
-          color: Colors.white.withValues(alpha: .3),
+        style: const TextStyle(
+          color: AppColors.textSecondary,
           fontSize: 11,
           fontWeight: FontWeight.bold,
           letterSpacing: 1.5,
@@ -210,17 +210,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
         decoration: BoxDecoration(
           color: AppColors.cardDark,
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: Colors.white.withValues(alpha: .05)),
+          border: Border.all(color: AppColors.border),
         ),
         child: Row(
           children: [
-            Icon(icon, color: Colors.white.withValues(alpha: .5), size: 20),
+            Icon(icon, color: AppColors.textSecondary, size: 20),
             const SizedBox(width: 14),
             Expanded(
               child: Text(
                 title,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
                 ),
@@ -228,7 +228,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             Icon(
               Icons.chevron_right_rounded,
-              color: Colors.white.withValues(alpha: .25),
+              color: AppColors.textSecondary,
               size: 20,
             ),
           ],
@@ -248,17 +248,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
       decoration: BoxDecoration(
         color: AppColors.cardDark,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.white.withValues(alpha: .05)),
+        border: Border.all(color: AppColors.border),
       ),
       child: Row(
         children: [
-          Icon(icon, color: Colors.white.withValues(alpha: .5), size: 20),
+          Icon(icon, color: AppColors.textSecondary, size: 20),
           const SizedBox(width: 14),
           Expanded(
             child: Text(
               title,
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
               ),
@@ -269,8 +269,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: onChanged,
             activeThumbColor: AppColors.primary,
             activeTrackColor: AppColors.primary.withValues(alpha: .3),
-            inactiveThumbColor: Colors.white.withValues(alpha: .3),
-            inactiveTrackColor: Colors.white.withValues(alpha: .1),
+            inactiveThumbColor: AppColors.border,
+            inactiveTrackColor: AppColors.border.withValues(alpha: .5),
           ),
         ],
       ),

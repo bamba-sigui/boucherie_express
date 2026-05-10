@@ -32,7 +32,7 @@ class CourierCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardDark.withValues(alpha: .9),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withValues(alpha: .1)),
+        border: Border.all(color: AppColors.border),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: .4),
@@ -104,7 +104,7 @@ class CourierCard extends StatelessWidget {
                 Text(
                   courier.name,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     height: 1,
@@ -122,7 +122,7 @@ class CourierCard extends StatelessWidget {
                     Text(
                       courier.rating.toString(),
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -131,7 +131,7 @@ class CourierCard extends StatelessWidget {
                     Text(
                       '• ${courier.vehicle}',
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: .4),
+                        color: AppColors.textSecondary,
                         fontSize: 10,
                       ),
                     ),
@@ -152,15 +152,15 @@ class CourierCard extends StatelessWidget {
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: .05),
+                    color: AppColors.surface,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: .1),
+                      color: AppColors.border,
                     ),
                   ),
                   child: const Icon(
                     Icons.sms_rounded,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     size: 20,
                   ),
                 ),

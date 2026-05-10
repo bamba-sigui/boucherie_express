@@ -31,7 +31,7 @@ class PaymentMethodSelector extends StatelessWidget {
               const Text(
                 'Mode de paiement',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -0.3,

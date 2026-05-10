@@ -25,16 +25,20 @@ class OtpVerificationScreen extends StatelessWidget {
   final String phone;
   final String formattedPhone;
 
+  /// Optionally inject a [PhoneAuthBloc] (used in widget tests).
+  final PhoneAuthBloc? phoneAuthBloc;
+
   const OtpVerificationScreen({
     super.key,
     required this.phone,
     required this.formattedPhone,
+    this.phoneAuthBloc,
   });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => GetIt.I<PhoneAuthBloc>(),
+      create: (_) => phoneAuthBloc ?? GetIt.I<PhoneAuthBloc>(),
       child: _OtpVerificationView(phone: phone, formattedPhone: formattedPhone),
     );
   }
@@ -139,10 +143,8 @@ class _OtpVerificationViewState extends State<_OtpVerificationView> {
                   ),
                   decoration: BoxDecoration(
                     color: AppColors.backgroundDark.withValues(alpha: .9),
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.white.withValues(alpha: .05),
-                      ),
+                    border: const Border(
+                      bottom: BorderSide(color: AppColors.border),
                     ),
                   ),
                   child: Row(
@@ -151,9 +153,9 @@ class _OtpVerificationViewState extends State<_OtpVerificationView> {
                         onTap: () => Navigator.maybePop(context),
                         child: Padding(
                           padding: const EdgeInsets.all(8),
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_back_ios_new_rounded,
-                            color: Colors.white,
+                            color: AppColors.textPrimary,
                             size: 20,
                           ),
                         ),
@@ -162,7 +164,7 @@ class _OtpVerificationViewState extends State<_OtpVerificationView> {
                       const Text(
                         'VÉRIFICATION',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                           fontSize: 18,
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.5,
@@ -206,7 +208,7 @@ class _OtpVerificationViewState extends State<_OtpVerificationView> {
                     const Text(
                       'Vérifier votre numéro',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -216,8 +218,8 @@ class _OtpVerificationViewState extends State<_OtpVerificationView> {
                     // Subtitle with phone number
                     Text.rich(
                       TextSpan(
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: .4),
+                        style: const TextStyle(
+                          color: AppColors.textSecondary,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
@@ -225,7 +227,7 @@ class _OtpVerificationViewState extends State<_OtpVerificationView> {
                           const TextSpan(text: 'Entrez le code envoyé au\n'),
                           TextSpan(
                             text: widget.formattedPhone,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: AppColors.textPrimary),
                           ),
                         ],
                       ),

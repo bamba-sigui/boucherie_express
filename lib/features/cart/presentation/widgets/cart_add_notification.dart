@@ -227,7 +227,7 @@ class _CartAddNotificationWidgetState extends State<_CartAddNotificationWidget>
                         Text(
                           '${widget.productName} × ${widget.quantity}',
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.textPrimary,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                           ),

@@ -61,7 +61,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         const Text(
                           'Adresse de livraison',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: AppColors.textPrimary,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -127,7 +127,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         const Text(
                           'Résumé de la commande',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: AppColors.textPrimary,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -158,7 +158,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 padding: const EdgeInsets.all(24),
                 decoration: const BoxDecoration(
                   color: AppColors.backgroundDark,
-                  border: Border(top: BorderSide(color: Colors.white10)),
+                  border: Border(top: BorderSide(color: AppColors.border)),
                 ),
                 child: SizedBox(
                   width: double.infinity,
@@ -204,7 +204,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           Text(
             label,
             style: TextStyle(
-              color: isTotal ? Colors.white : AppColors.textGrey,
+              color: isTotal ? AppColors.textPrimary : AppColors.textGrey,
               fontSize: isTotal ? 18 : 16,
               fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
             ),
@@ -212,7 +212,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           Text(
             value,
             style: TextStyle(
-              color: isTotal ? AppColors.primary : Colors.white,
+              color: isTotal ? AppColors.primary : AppColors.textPrimary,
               fontSize: isTotal ? 20 : 16,
               fontWeight: isTotal ? FontWeight.bold : FontWeight.w600,
             ),

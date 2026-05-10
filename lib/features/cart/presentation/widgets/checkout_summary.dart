@@ -27,7 +27,7 @@ class CheckoutSummary extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: .05),
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -50,7 +50,7 @@ class CheckoutSummary extends StatelessWidget {
           const SizedBox(height: 12),
 
           // Divider
-          Container(height: 1, color: Colors.white.withValues(alpha: .1)),
+          Container(height: 1, color: AppColors.border),
           const SizedBox(height: 12),
 
           // Total
@@ -60,7 +60,7 @@ class CheckoutSummary extends StatelessWidget {
               const Text(
                 'Total à payer',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -100,15 +100,15 @@ class _SummaryRow extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: .5),
+          style: const TextStyle(
+            color: AppColors.textSecondary,
             fontSize: 14,
           ),
         ),
         Text(
           value,
           style: TextStyle(
-            color: valueColor ?? Colors.white,
+            color: valueColor ?? AppColors.textPrimary,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),

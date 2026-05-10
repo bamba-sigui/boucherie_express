@@ -203,8 +203,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                               const SizedBox(width: 10),
                               Text(
                                 'Récolté aujourd\'hui',
-                                style: TextStyle(
-                                  color: Colors.white.withValues(alpha: .5),
+                                style: const TextStyle(
+                                  color: AppColors.textSecondary,
                                   fontSize: 13,
                                 ),
                               ),
@@ -217,7 +217,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                         Text(
                           product.name,
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.textPrimary,
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
                             letterSpacing: -0.5,
@@ -229,8 +229,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                         // Description subtitle
                         Text(
                           product.description,
-                          style: TextStyle(
-                            color: Colors.white.withValues(alpha: .5),
+                          style: const TextStyle(
+                            color: AppColors.textSecondary,
                             fontSize: 14,
                           ),
                         ),
@@ -243,7 +243,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                             Text(
                               FormatUtils.formatPrice(product.price),
                               style: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.textPrimary,
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
                                 height: 1,
@@ -253,21 +253,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                               const SizedBox(width: 10),
                               Text(
                                 FormatUtils.formatPrice(product.oldPrice!),
-                                style: TextStyle(
-                                  color: Colors.white.withValues(alpha: .4),
+                                style: const TextStyle(
+                                  color: AppColors.textSecondary,
                                   fontSize: 14,
                                   decoration: TextDecoration.lineThrough,
-                                  decorationColor: Colors.white.withValues(
-                                    alpha: .4,
-                                  ),
+                                  decorationColor: AppColors.textSecondary,
                                 ),
                               ),
                             ],
                             const SizedBox(width: 6),
                             Text(
                               '/ ${product.unit}',
-                              style: TextStyle(
-                                color: Colors.white.withValues(alpha: .4),
+                              style: const TextStyle(
+                                color: AppColors.textSecondary,
                                 fontSize: 14,
                               ),
                             ),
@@ -404,7 +402,7 @@ class _CartAddedBanner extends StatelessWidget {
             child: Text(
               '$productName × $quantity ajouté',
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
               ),

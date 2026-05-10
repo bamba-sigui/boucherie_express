@@ -25,14 +25,14 @@ class ProductInfoCards extends StatelessWidget {
         _InfoCard(
           title: 'À propos',
           icon: Icons.info_outline_rounded,
-          iconColor: Colors.white.withValues(alpha: .6),
+          iconColor: AppColors.textSecondary,
           backgroundColor: AppColors.cardDark,
-          borderColor: Colors.white.withValues(alpha: .05),
-          titleColor: Colors.white,
+          borderColor: AppColors.border,
+          titleColor: AppColors.textPrimary,
           child: Text(
             description,
-            style: TextStyle(
-              color: Colors.white.withValues(alpha: .7),
+            style: const TextStyle(
+              color: AppColors.textSecondary,
               fontSize: 14,
               height: 1.6,
             ),
@@ -51,8 +51,8 @@ class ProductInfoCards extends StatelessWidget {
             titleColor: AppColors.primary,
             child: Text(
               preparationAdvice!,
-              style: TextStyle(
-                color: Colors.white.withValues(alpha: .7),
+              style: const TextStyle(
+                color: AppColors.textSecondary,
                 fontSize: 14,
                 height: 1.6,
               ),

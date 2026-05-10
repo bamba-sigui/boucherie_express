@@ -22,7 +22,11 @@ class CacheFailure extends Failure {
 
 /// Authentication related failures
 class AuthFailure extends Failure {
-  const AuthFailure([super.message = 'Erreur d\'authentification']);
+  final String? code;
+  const AuthFailure([super.message = 'Erreur d\'authentification', this.code]);
+
+  @override
+  List<Object?> get props => [message, code];
 }
 
 /// Network connection failures
@@ -59,6 +63,15 @@ class NewGoogleUserFailure extends Failure {
 
   @override
   List<Object?> get props => [message, email, name, photoUrl];
+}
+
+/// Phone OTP verified but no existing account → redirect to signup
+class PhoneNewUserFailure extends Failure {
+  final String phone;
+  const PhoneNewUserFailure(this.phone) : super('Numéro non enregistré');
+
+  @override
+  List<Object?> get props => [message, phone];
 }
 
 /// Unknown/Unexpected failures

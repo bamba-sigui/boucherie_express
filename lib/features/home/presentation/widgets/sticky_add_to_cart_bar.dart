@@ -41,7 +41,7 @@ class StickyAddToCartBar extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.backgroundDark.withValues(alpha: .8),
             border: Border(
-              top: BorderSide(color: Colors.white.withValues(alpha: .1)),
+              top: BorderSide(color: AppColors.border),
             ),
           ),
           child: SizedBox(

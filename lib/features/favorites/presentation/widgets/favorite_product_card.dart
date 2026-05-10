@@ -40,7 +40,7 @@ class _FavoriteProductCardState extends State<FavoriteProductCard>
       decoration: BoxDecoration(
         color: AppColors.cardDark,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
+        border: Border.all(color: AppColors.border),
       ),
       clipBehavior: Clip.antiAlias,
       child: Column(
@@ -66,7 +66,7 @@ class _FavoriteProductCardState extends State<FavoriteProductCard>
                           Text(
                             widget.product.name,
                             style: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.textPrimary,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               height: 1.2,
@@ -227,7 +227,7 @@ class _FavoriteProductCardState extends State<FavoriteProductCard>
                       shape: BoxShape.circle,
                       color: index == _currentImageIndex
                           ? AppColors.primary
-                          : Colors.white.withValues(alpha: 0.3),
+                          : AppColors.textSecondary,
                     ),
                   ),
                 ),

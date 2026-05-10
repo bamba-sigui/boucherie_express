@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/injection.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/product_filter.dart';
 import '../bloc/filter_bloc.dart';
 import '../widgets/filter_availability_toggle.dart';
@@ -90,7 +91,7 @@ class _FilterBottomSheetContent extends StatelessWidget {
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeOutCubic,
             decoration: const BoxDecoration(
-              color: Color(0xFF121212),
+              color: AppColors.background,
               borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
             ),
             child: SafeArea(

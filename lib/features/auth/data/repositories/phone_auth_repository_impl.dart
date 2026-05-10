@@ -117,6 +117,8 @@ class PhoneAuthRepositoryImpl implements PhoneAuthRepository {
       );
 
       return Right(user);
+    } on PhoneNewUserException catch (e) {
+      return Left(PhoneNewUserFailure(e.phone));
     } on AuthException catch (e) {
       return Left(AuthFailure(e.message));
     } catch (e) {

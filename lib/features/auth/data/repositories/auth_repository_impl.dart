@@ -33,7 +33,7 @@ class AuthRepositoryImpl implements AuthRepository {
       final user = await remoteDataSource.signInWithEmail(email, password);
       return Right(user);
     } on AuthException catch (e) {
-      return Left(AuthFailure(e.message));
+      return Left(AuthFailure(e.message, e.code));
     } catch (e) {
       return Left(UnexpectedFailure(e.toString()));
     }

@@ -28,7 +28,7 @@ class OrderSummaryCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardDark,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
+        border: Border.all(color: AppColors.border),
       ),
       child: Column(
         children: [
@@ -41,7 +41,7 @@ class OrderSummaryCard extends StatelessWidget {
           const SizedBox(height: 12),
 
           // Divider
-          Container(height: 1, color: Colors.white.withValues(alpha: 0.05)),
+          Container(height: 1, color: AppColors.border),
           const SizedBox(height: 12),
 
           // Total
@@ -51,7 +51,7 @@ class OrderSummaryCard extends StatelessWidget {
               const Text(
                 'Total',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -79,7 +79,7 @@ class OrderSummaryCard extends StatelessWidget {
           label,
           style: TextStyle(color: Colors.grey.shade500, fontSize: 14),
         ),
-        Text(value, style: const TextStyle(color: Colors.white, fontSize: 14)),
+        Text(value, style: const TextStyle(color: AppColors.textPrimary, fontSize: 14)),
       ],
     );
   }

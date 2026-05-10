@@ -32,13 +32,13 @@ class ContactCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         splashColor: iconColor.withValues(alpha: .08),
-        highlightColor: Colors.white.withValues(alpha: .03),
+        highlightColor: Colors.transparent,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: Colors.white.withValues(alpha: .05),
+              color: AppColors.surface,
             ),
           ),
           child: Row(

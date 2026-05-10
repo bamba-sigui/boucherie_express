@@ -93,11 +93,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
       if (credential.user == null) throw AuthException('Échec de l\'inscription');
 
+      // Force-refresh the token right after creation so the backend
+      // receives a fully-propagated Firebase ID token.
+      await credential.user!.getIdToken(true);
+
       final data = await apiClient.put(
         ApiConstants.profile,
         data: {
           'name': name,
-          if (phone != null) 'phone': phone,
+          if (phone != null) 'phone': _normalizePhone(phone),
         },
       );
       return UserModel.fromJson(data as Map<String, dynamic>);
@@ -152,6 +156,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   /// Crée ou met à jour le profil backend pour les nouveaux utilisateurs
   /// (Google, téléphone) qui n'ont pas encore de document côté serveur.
+  /// Normalise un numéro vers le format E.164 (+225XXXXXXXXXX).
+  static String _normalizePhone(String phone) {
+    final cleaned = phone.replaceAll(RegExp(r'[\s\-]'), '');
+    if (cleaned.startsWith('+')) return cleaned;
+    return '+225$cleaned';
+  }
+
   Future<void> _ensureBackendProfile({
     required String name,
     required String email,
@@ -162,7 +173,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       await apiClient.put(ApiConstants.profile, data: {
         'name': name,
         'email': email,
-        if (phone != null) 'phone': phone,
+        if (phone != null) 'phone': _normalizePhone(phone),
         if (photoUrl != null) 'photo_url': photoUrl,
       });
     } catch (_) {
@@ -185,30 +196,24 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw AuthException('Échec de la vérification du code');
       }
 
-      if (userCredential.additionalUserInfo?.isNewUser == true) {
-        await _ensureBackendProfile(
-          name: 'Utilisateur',
-          email: firebaseUser.email ?? '',
-          phone: phone,
-        );
-      }
+      await _ensureBackendProfile(
+        name: firebaseUser.displayName ?? 'Utilisateur',
+        email: firebaseUser.email ?? '',
+        phone: phone,
+      );
 
       try {
         final data = await apiClient.get(ApiConstants.profile);
+        if (data == null) return _minimalUserModel(firebaseUser);
         return UserModel.fromJson(data as Map<String, dynamic>);
-      } on NotFoundException {
-        // Backend crée le document au prochain appel via require_auth.
-        // On retourne un modèle minimal pour ne pas bloquer la connexion.
-        return UserModel(
-          id: firebaseUser.uid,
-          email: firebaseUser.email ?? '',
-          name: firebaseUser.displayName ?? 'Utilisateur',
-          createdAt: DateTime.now(),
-        );
+      } catch (_) {
+        return _minimalUserModel(firebaseUser);
       }
     } on firebase_auth.FirebaseAuthException catch (e) {
       throw AuthException(_getPhoneErrorMessage(e.code), e.code);
     } on AuthException {
+      rethrow;
+    } on PhoneNewUserException {
       rethrow;
     } catch (e) {
       throw AuthException('Erreur lors de la vérification du code');
@@ -247,7 +252,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       final updates = <String, dynamic>{};
       if (name != null) updates['name'] = name;
-      if (phone != null) updates['phone'] = phone;
+      if (phone != null) updates['phone'] = _normalizePhone(phone);
 
       final data = await apiClient.put(ApiConstants.profile, data: updates);
       return UserModel.fromJson(data as Map<String, dynamic>);
@@ -265,15 +270,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<bool> checkPhoneExists(String phone) async {
     final data = await apiClient.get(
       ApiConstants.checkPhone,
-      queryParameters: {'phone': phone},
+      queryParameters: {'phone': _normalizePhone(phone)},
     );
     return (data as Map<String, dynamic>)['exists'] as bool;
   }
 
   @override
   Future<bool> checkEmailExists(String email) async {
-    final methods = await firebaseAuth.fetchSignInMethodsForEmail(email);
-    return methods.isNotEmpty;
+    return false;
   }
 
   @override
@@ -285,25 +289,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         final data = await apiClient.get(ApiConstants.profile);
         return UserModel.fromJson(data as Map<String, dynamic>);
       } on NetworkException {
-        // Backend injoignable : on garde l'utilisateur connecté avec les
-        // données Firebase disponibles pour ne pas le déconnecter inutilement.
-        return UserModel(
-          id: firebaseUser.uid,
-          email: firebaseUser.email ?? '',
-          name: firebaseUser.displayName ?? 'Utilisateur',
-          photoUrl: firebaseUser.photoURL,
-          createdAt: DateTime.now(),
-        );
+        // Backend injoignable : garder l'utilisateur connecté.
+        return _minimalUserModel(firebaseUser);
       } on NotFoundException {
-        // Profil backend inexistant (nouvel utilisateur OAuth) :
-        // garder l'utilisateur connecté, le profil sera créé par le usecase.
-        return UserModel(
-          id: firebaseUser.uid,
-          email: firebaseUser.email ?? '',
-          name: firebaseUser.displayName ?? 'Utilisateur',
-          photoUrl: firebaseUser.photoURL,
-          createdAt: DateTime.now(),
-        );
+        // Profil backend inexistant (nouvel utilisateur OAuth).
+        return _minimalUserModel(firebaseUser);
+      } on AuthException {
+        return _minimalUserModel(firebaseUser);
+      } on ServerException {
+        return _minimalUserModel(firebaseUser);
       } catch (_) {
         return null;
       }
@@ -350,6 +344,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final data = await apiClient.post('/users/me/avatar', data: formData);
     return (data as Map<String, dynamic>)['photoUrl'] as String;
   }
+
+  UserModel _minimalUserModel(firebase_auth.User firebaseUser) => UserModel(
+        id: firebaseUser.uid,
+        email: firebaseUser.email ?? '',
+        name: firebaseUser.displayName ?? 'Utilisateur',
+        phone: firebaseUser.phoneNumber,
+        photoUrl: firebaseUser.photoURL,
+        createdAt: DateTime.now(),
+      );
 
   String _getPhoneErrorMessage(String code) {
     switch (code) {

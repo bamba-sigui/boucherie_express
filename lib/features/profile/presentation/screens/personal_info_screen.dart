@@ -79,14 +79,14 @@ class _PersonalInfoView extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.error_outline_rounded,
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       size: 20,
                     ),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
                         state.message,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: AppColors.textPrimary),
                       ),
                     ),
                   ],
@@ -213,7 +213,7 @@ class _PersonalInfoView extends StatelessWidget {
                     'avec des tiers conformément à notre politique de confidentialité.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: .2),
+                      color: AppColors.textSecondary,
                       fontSize: 10,
                       height: 1.6,
                     ),

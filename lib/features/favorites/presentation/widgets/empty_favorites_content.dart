@@ -73,7 +73,7 @@ class _EmptyFavoritesContentState extends State<EmptyFavoritesContent>
                 const Text(
                   'Aucun produit en favori',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     height: 1.2,
@@ -88,8 +88,8 @@ class _EmptyFavoritesContentState extends State<EmptyFavoritesContent>
                   width: 240,
                   child: Text(
                     'Ajoutez vos produits préférés pour les retrouver plus facilement lors de vos prochaines commandes.',
-                    style: TextStyle(
-                      color: Colors.grey.shade500,
+                    style: const TextStyle(
+                      color: AppColors.textSecondary,
                       fontSize: 14,
                       height: 1.5,
                     ),
@@ -165,7 +165,7 @@ class _EmptyFavoritesContentState extends State<EmptyFavoritesContent>
                     child: Icon(
                       Icons.set_meal,
                       size: 36,
-                      color: Colors.white.withValues(alpha: 0.05),
+                      color: AppColors.textSecondary.withValues(alpha: 0.15),
                     ),
                   ),
                 ),
@@ -179,7 +179,7 @@ class _EmptyFavoritesContentState extends State<EmptyFavoritesContent>
                     child: Icon(
                       Icons.restaurant,
                       size: 36,
-                      color: Colors.white.withValues(alpha: 0.05),
+                      color: AppColors.textSecondary.withValues(alpha: 0.15),
                     ),
                   ),
                 ),
@@ -188,7 +188,7 @@ class _EmptyFavoritesContentState extends State<EmptyFavoritesContent>
                 Icon(
                   Icons.shopping_basket,
                   size: 96,
-                  color: Colors.white.withValues(alpha: 0.1),
+                  color: AppColors.textSecondary.withValues(alpha: 0.15),
                 ),
 
                 // Cœur rouge (centré sur le panier)
@@ -216,7 +216,7 @@ class _EmptyFavoritesContentState extends State<EmptyFavoritesContent>
           child: InkWell(
             onTap: widget.onDiscoverProducts,
             borderRadius: BorderRadius.circular(16),
-            splashColor: Colors.white.withValues(alpha: 0.1),
+            splashColor: Colors.transparent,
             child: Container(
               height: 56,
               decoration: BoxDecoration(

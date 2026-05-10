@@ -26,7 +26,7 @@ class SocialLinksWidget extends StatelessWidget {
         color: AppColors.cardDark.withValues(alpha: .5),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Colors.white.withValues(alpha: .05),
+          color: AppColors.surface,
         ),
       ),
       child: Column(
@@ -73,7 +73,7 @@ class _SocialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white.withValues(alpha: .05),
+      color: AppColors.surface,
       shape: const CircleBorder(),
       child: InkWell(
         onTap: onTap,

@@ -106,23 +106,23 @@ class _ContactSupportButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(20),
-        splashColor: Colors.white.withValues(alpha: 0.1),
+        splashColor: Colors.transparent,
         child: Container(
           width: double.infinity,
           height: 56,
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.05),
+            color: AppColors.surface,
             borderRadius: BorderRadius.circular(20),
           ),
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.support_agent, color: Colors.white, size: 22),
+              Icon(Icons.support_agent, color: AppColors.textPrimary, size: 22),
               SizedBox(width: 8),
               Text(
                 'Contacter le support',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),

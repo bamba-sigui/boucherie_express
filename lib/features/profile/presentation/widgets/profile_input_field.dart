@@ -77,8 +77,8 @@ class _ProfileInputFieldState extends State<ProfileInputField> {
           padding: const EdgeInsets.only(left: 4, bottom: 8),
           child: Text(
             widget.label,
-            style: TextStyle(
-              color: Colors.white.withValues(alpha: .4),
+            style: const TextStyle(
+              color: AppColors.textSecondary,
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),
@@ -96,7 +96,7 @@ class _ProfileInputFieldState extends State<ProfileInputField> {
                   ? AppColors.accentRed.withValues(alpha: .6)
                   : _isFocused
                   ? AppColors.primary
-                  : Colors.white.withValues(alpha: .05),
+                  : AppColors.border,
               width: _isFocused || hasError ? 1.5 : 1,
             ),
           ),
@@ -107,8 +107,8 @@ class _ProfileInputFieldState extends State<ProfileInputField> {
             keyboardType: widget.keyboardType,
             style: TextStyle(
               color: widget.readOnly
-                  ? Colors.white.withValues(alpha: .5)
-                  : Colors.white,
+                  ? AppColors.textSecondary
+                  : AppColors.textPrimary,
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
@@ -128,15 +128,15 @@ class _ProfileInputFieldState extends State<ProfileInputField> {
                     key: ValueKey(_isFocused),
                     color: _isFocused
                         ? AppColors.primary
-                        : Colors.white.withValues(alpha: .3),
+                        : AppColors.textSecondary,
                     size: 22,
                   ),
                 ),
               ),
               prefixIconConstraints: const BoxConstraints(minWidth: 50),
               hintText: widget.placeholder,
-              hintStyle: TextStyle(
-                color: Colors.white.withValues(alpha: .2),
+              hintStyle: const TextStyle(
+                color: AppColors.textSecondary,
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),

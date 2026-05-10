@@ -64,34 +64,60 @@ class _SignupScreenState extends State<SignupScreen> {
       },
       child: Scaffold(
         backgroundColor: AppColors.backgroundDark,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => context.pop(),
-          ),
-        ),
         body: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
+            padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
             child: Form(
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Créer un compte',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
+                  // ── Header inline ──
+                  GestureDetector(
+                    onTap: () => context.canPop() ? context.pop() : context.go('/home'),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: const BoxDecoration(
+                        color: AppColors.surface,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        size: 18,
+                        color: AppColors.textPrimary,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 28),
+                  Text.rich(
+                    const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'BOUCHERIE',
+                          style: TextStyle(
+                            color: AppColors.textPrimary,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: -0.5,
+                          ),
+                        ),
+                        TextSpan(
+                          text: ' EXPRESS',
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: -0.5,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 6),
                   const Text(
-                    'Rejoignez Boucherie Express pour une expérience premium.',
-                    style: TextStyle(color: AppColors.textGrey, fontSize: 16),
+                    'Créez votre compte pour commander\net accéder à vos favoris.',
+                    style: TextStyle(color: AppColors.textSecondary, fontSize: 13, height: 1.5),
                   ),
                   const SizedBox(height: 32),
 
@@ -99,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   const Text(
                     'Nom complet',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
@@ -121,7 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   const Text(
                     'Email',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
@@ -142,7 +168,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   const Text(
                     'Téléphone',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
@@ -163,7 +189,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   const Text(
                     'Mot de passe',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
@@ -245,7 +271,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         style: TextStyle(color: AppColors.textGrey, fontSize: 12),
                       ),
                       TextButton(
-                        onPressed: () => context.pop(),
+                        onPressed: () => context.go('/login'),
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.symmetric(horizontal: 6),
                           minimumSize: Size.zero,

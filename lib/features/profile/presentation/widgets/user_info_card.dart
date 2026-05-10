@@ -29,7 +29,7 @@ class UserInfoCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardDark,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: .05)),
+        border: Border.all(color: AppColors.border),
       ),
       child: Row(
         children: [
@@ -61,7 +61,7 @@ class UserInfoCard extends StatelessWidget {
                 Text(
                   name,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -69,8 +69,8 @@ class UserInfoCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   phone,
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: .4),
+                  style: const TextStyle(
+                    color: AppColors.textSecondary,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -86,13 +86,13 @@ class UserInfoCard extends StatelessWidget {
               child: Container(
                 width: 36,
                 height: 36,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: .05),
+                decoration: const BoxDecoration(
+                  color: AppColors.surface,
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   Icons.edit_rounded,
-                  color: Colors.white.withValues(alpha: .4),
+                  color: AppColors.textSecondary,
                   size: 16,
                 ),
               ),

@@ -16,9 +16,9 @@ class AuthGate extends StatelessWidget {
   const AuthGate({
     super.key,
     required this.child,
-    this.icon = Icons.lock_outline_rounded,
+    this.icon = Icons.storefront_rounded,
     this.title = 'Connectez-vous',
-    this.subtitle = 'Connectez-vous pour accéder à cette section.',
+    this.subtitle = 'Connectez-vous pour accéder à vos favoris, commandes et profil.',
   });
 
   @override
@@ -69,7 +69,7 @@ class _LoginPrompt extends StatelessWidget {
               Text(
                 title,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
@@ -79,8 +79,8 @@ class _LoginPrompt extends StatelessWidget {
               // Sous-titre
               Text(
                 subtitle,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: .5),
+                style: const TextStyle(
+                  color: AppColors.textSecondary,
                   fontSize: 14,
                   height: 1.5,
                 ),
@@ -107,15 +107,20 @@ class _LoginPrompt extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
 
               // Lien « Créer un compte »
-              GestureDetector(
-                onTap: () => context.push('/login'),
-                child: Text(
+              TextButton(
+                onPressed: () => context.push('/signup'),
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                child: const Text(
                   'Créer un compte',
                   style: TextStyle(
-                    color: AppColors.primary.withValues(alpha: .8),
+                    color: AppColors.textSecondary,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),

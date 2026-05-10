@@ -137,7 +137,7 @@ class _PaymentMethodsView extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          color: Colors.white.withValues(alpha: .3),
+          color: AppColors.textSecondary,
           fontSize: 11,
           fontWeight: FontWeight.bold,
           letterSpacing: 1.5,
@@ -161,7 +161,7 @@ class _PaymentMethodsView extends StatelessWidget {
             color: AppColors.backgroundDark.withValues(alpha: .9),
             border: Border(
               bottom: BorderSide(
-                color: Colors.white.withValues(alpha: .05),
+                color: AppColors.border,
               ),
             ),
           ),
@@ -176,7 +176,7 @@ class _PaymentMethodsView extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white.withValues(alpha: .6),
+                    color: AppColors.textSecondary,
                     size: 20,
                   ),
                 ),
@@ -187,7 +187,7 @@ class _PaymentMethodsView extends StatelessWidget {
               const Text(
                 'Moyens de paiement',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -0.3,
@@ -207,7 +207,7 @@ class _PaymentMethodsView extends StatelessWidget {
         backgroundColor: AppColors.cardDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: Colors.white.withValues(alpha: .05)),
+          side: BorderSide(color: AppColors.border),
         ),
         title: const Row(
           children: [
@@ -216,7 +216,7 @@ class _PaymentMethodsView extends StatelessWidget {
             Text(
               'Prochainement',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -226,7 +226,7 @@ class _PaymentMethodsView extends StatelessWidget {
         content: Text(
           'Le paiement par carte bancaire sera disponible dans une prochaine mise à jour.\n\nUtilisez Orange Money, MTN MoMo ou Wave pour payer dès maintenant.',
           style: TextStyle(
-            color: Colors.white.withValues(alpha: .5),
+            color: AppColors.textSecondary,
             fontSize: 14,
             height: 1.5,
           ),
@@ -256,7 +256,7 @@ class _PaymentMethodsView extends StatelessWidget {
         backgroundColor: AppColors.cardDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: Colors.white.withValues(alpha: .05)),
+          side: BorderSide(color: AppColors.border),
         ),
         title: Text(
           'Configurer ${method.providerName}',
@@ -280,15 +280,15 @@ class _PaymentMethodsView extends StatelessWidget {
             TextField(
               controller: controller,
               keyboardType: TextInputType.phone,
-              style: const TextStyle(color: Colors.white, fontSize: 16),
+              style: const TextStyle(color: AppColors.textPrimary, fontSize: 16),
               decoration: InputDecoration(
                 hintText: '07 08 09 10 11',
                 hintStyle: TextStyle(
-                  color: Colors.white.withValues(alpha: .2),
+                  color: AppColors.surface,
                 ),
                 prefixText: '+225 ',
                 prefixStyle: TextStyle(
-                  color: Colors.white.withValues(alpha: .4),
+                  color: AppColors.textSecondary,
                   fontSize: 16,
                 ),
                 filled: true,
@@ -296,13 +296,13 @@ class _PaymentMethodsView extends StatelessWidget {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(
-                    color: Colors.white.withValues(alpha: .1),
+                    color: AppColors.border,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(
-                    color: Colors.white.withValues(alpha: .1),
+                    color: AppColors.border,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -321,7 +321,7 @@ class _PaymentMethodsView extends StatelessWidget {
             child: Text(
               'ANNULER',
               style: TextStyle(
-                color: Colors.white.withValues(alpha: .4),
+                color: AppColors.textSecondary,
                 fontWeight: FontWeight.w600,
               ),
             ),

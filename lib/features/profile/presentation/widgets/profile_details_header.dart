@@ -30,7 +30,7 @@ class ProfileDetailsHeader extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.backgroundDark.withValues(alpha: .9),
             border: Border(
-              bottom: BorderSide(color: Colors.white.withValues(alpha: .05)),
+              bottom: BorderSide(color: AppColors.border),
             ),
           ),
           child: Row(
@@ -47,7 +47,7 @@ class ProfileDetailsHeader extends StatelessWidget {
                   ),
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white.withValues(alpha: .6),
+                    color: AppColors.textSecondary,
                     size: 20,
                   ),
                 ),
@@ -59,7 +59,7 @@ class ProfileDetailsHeader extends StatelessWidget {
                   'Informations personnelles',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),

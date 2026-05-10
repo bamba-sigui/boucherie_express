@@ -214,7 +214,7 @@ class HomePageState extends State<HomePage> {
             const SizedBox(height: 16),
             Text(
               message,
-              style: const TextStyle(color: Colors.white, fontSize: 16),
+              style: const TextStyle(color: AppColors.textPrimary, fontSize: 16),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),

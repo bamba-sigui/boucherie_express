@@ -45,7 +45,7 @@ class _HomeProductCardState extends State<HomeProductCard> {
       decoration: BoxDecoration(
         color: AppColors.cardDark,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
+        border: Border.all(color: AppColors.border),
       ),
       clipBehavior: Clip.antiAlias,
       child: Column(
@@ -72,7 +72,7 @@ class _HomeProductCardState extends State<HomeProductCard> {
                           Text(
                             widget.product.name,
                             style: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.textPrimary,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               height: 1.2,
@@ -81,8 +81,8 @@ class _HomeProductCardState extends State<HomeProductCard> {
                           const SizedBox(height: 3),
                           Text(
                             widget.product.description,
-                            style: TextStyle(
-                              color: Colors.grey.shade500,
+                            style: const TextStyle(
+                              color: AppColors.textSecondary,
                               fontSize: 12,
                             ),
                           ),
@@ -251,7 +251,7 @@ class _HomeProductCardState extends State<HomeProductCard> {
                       shape: BoxShape.circle,
                       color: index == _currentImageIndex
                           ? AppColors.primary
-                          : Colors.white.withValues(alpha: 0.3),
+                          : AppColors.textSecondary,
                     ),
                   ),
                 ),
@@ -277,7 +277,7 @@ class _HomeProductCardState extends State<HomeProductCard> {
                 ),
                 child: Icon(
                   widget.isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: widget.isFavorite ? AppColors.accentRed : Colors.white,
+                  color: widget.isFavorite ? AppColors.accentRed : AppColors.textPrimary,
                   size: 22,
                 ),
               ),

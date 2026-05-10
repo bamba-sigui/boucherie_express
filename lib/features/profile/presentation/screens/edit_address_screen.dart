@@ -130,7 +130,7 @@ class _EditAddressViewState extends State<_EditAddressView> {
             return Center(
               child: Text(
                 'Adresse introuvable',
-                style: TextStyle(color: Colors.white.withValues(alpha: .5)),
+                style: TextStyle(color: AppColors.textSecondary),
               ),
             );
           }

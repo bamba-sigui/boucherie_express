@@ -32,7 +32,7 @@ class CartSummary extends StatelessWidget {
         const SizedBox(height: 16),
 
         // Divider
-        Container(height: 1, color: Colors.white.withValues(alpha: .05)),
+        Container(height: 1, color: AppColors.border),
         const SizedBox(height: 16),
 
         // Total
@@ -42,7 +42,7 @@ class CartSummary extends StatelessWidget {
             const Text(
               'Total',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -53,17 +53,17 @@ class CartSummary extends StatelessWidget {
                 Text(
                   FormatUtils.formatPrice(cart.totalAmount),
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 24,
                     fontWeight: FontWeight.w900,
                     height: 1,
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(
+                const Text(
                   'TAXES INCLUSES',
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: .35),
+                    color: AppColors.textSecondary,
                     fontSize: 10,
                     fontWeight: FontWeight.w500,
                     letterSpacing: .5,
@@ -105,7 +105,7 @@ class _SummaryRow extends StatelessWidget {
         Text(
           value,
           style: TextStyle(
-            color: valueColor ?? Colors.white,
+            color: valueColor ?? AppColors.textPrimary,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),

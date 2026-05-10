@@ -109,7 +109,7 @@ class AddressRepositoryImpl implements AddressRepository {
         id: map['id'].toString(),
         label: map['label'] as String? ?? '',
         fullAddress: map['address'] as String? ?? '',
-        isDefault: map['isDefault'] as bool? ?? false,
+        isDefault: map['is_default'] as bool? ?? false,
         type: _parseAddressType(map['type'] as String?),
         latitude: (map['latitude'] as num?)?.toDouble(),
         longitude: (map['longitude'] as num?)?.toDouble(),

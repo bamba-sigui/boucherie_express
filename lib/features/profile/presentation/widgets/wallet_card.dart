@@ -40,7 +40,7 @@ class WalletCard extends StatelessWidget {
             color: AppColors.cardDark,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: Colors.white.withValues(alpha: .05),
+              color: AppColors.border,
             ),
           ),
           child: Row(
@@ -57,7 +57,7 @@ class WalletCard extends StatelessWidget {
                     Text(
                       method.providerName,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -68,7 +68,7 @@ class WalletCard extends StatelessWidget {
                           ? 'Connecté • ${method.maskedPhone}'
                           : 'Non configuré',
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: .4),
+                        color: AppColors.textSecondary,
                         fontSize: 12,
                       ),
                     ),
@@ -188,12 +188,12 @@ class WalletCard extends StatelessWidget {
           width: 48,
           height: 48,
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: .05),
+            color: AppColors.surface,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(
             Icons.account_balance_wallet_rounded,
-            color: Colors.white.withValues(alpha: .4),
+            color: AppColors.textSecondary,
             size: 24,
           ),
         );

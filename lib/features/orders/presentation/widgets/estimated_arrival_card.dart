@@ -98,7 +98,7 @@ class EstimatedArrivalCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.primary,
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 2),
+                    border: Border.all(color: AppColors.border, width: 2),
                     boxShadow: [
                       BoxShadow(
                         color: AppColors.primary.withValues(alpha: .6),
@@ -127,7 +127,7 @@ class EstimatedArrivalCard extends StatelessWidget {
                     color: Colors.black.withValues(alpha: .8),
                     borderRadius: BorderRadius.circular(100),
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: .1),
+                      color: AppColors.surface,
                     ),
                   ),
                   child: Row(
@@ -145,7 +145,7 @@ class EstimatedArrivalCard extends StatelessWidget {
                       Text(
                         etaBannerMessage,
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                           fontSize: 10,
                           fontWeight: FontWeight.w700,
                           letterSpacing: -0.2,

@@ -56,7 +56,7 @@ class CashPaymentCard extends StatelessWidget {
                   'Vous pouvez payer en espèces ou par mobile money '
                   'directement lors de la réception de votre commande.',
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: .6),
+                    color: AppColors.textSecondary,
                     fontSize: 14,
                     height: 1.5,
                   ),

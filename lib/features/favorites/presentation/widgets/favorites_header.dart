@@ -21,7 +21,7 @@ class FavoritesHeader extends StatelessWidget {
           const Text(
             'Favoris',
             style: TextStyle(
-              color: Colors.white,
+              color: AppColors.textPrimary,
               fontSize: 22,
               fontWeight: FontWeight.w900,
               letterSpacing: 0.5,
@@ -44,7 +44,7 @@ class FavoritesHeader extends StatelessWidget {
                     ),
                     child: const Icon(
                       Icons.shopping_cart_outlined,
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       size: 22,
                     ),
                   ),

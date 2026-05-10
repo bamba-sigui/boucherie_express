@@ -73,7 +73,7 @@ class _EmptyOrdersContentState extends State<EmptyOrdersContent>
                 const Text(
                   'Historique vide',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 24,
                     fontWeight: FontWeight.w800,
                     height: 1.2,
@@ -127,7 +127,7 @@ class _EmptyOrdersContentState extends State<EmptyOrdersContent>
             decoration: BoxDecoration(
               color: AppColors.cardDark,
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
+              border: Border.all(color: AppColors.border),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.4),
@@ -182,7 +182,7 @@ class _EmptyOrdersContentState extends State<EmptyOrdersContent>
           child: InkWell(
             onTap: widget.onCommanderMaintenant,
             borderRadius: BorderRadius.circular(16),
-            splashColor: Colors.white.withValues(alpha: 0.1),
+            splashColor: Colors.transparent,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 150),
               height: 56,

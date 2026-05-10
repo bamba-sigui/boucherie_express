@@ -104,7 +104,7 @@ class ProfileAvatarSection extends StatelessWidget {
         Text(
           'PHOTO DE PROFIL',
           style: TextStyle(
-            color: Colors.white.withValues(alpha: .4),
+            color: AppColors.textSecondary,
             fontSize: 11,
             fontWeight: FontWeight.w500,
             letterSpacing: 2.5,

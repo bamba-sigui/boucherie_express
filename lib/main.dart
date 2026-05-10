@@ -59,7 +59,7 @@ class BoucherieExpressApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Boucherie Express',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
       routerConfig: AppRouter.router,
     );
   }

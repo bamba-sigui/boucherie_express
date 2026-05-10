@@ -40,6 +40,12 @@ class NotFoundException extends AppException {
   NotFoundException([super.message = 'Ressource introuvable', super.code]);
 }
 
+/// Phone OTP verified but no existing account found → redirect to signup
+class PhoneNewUserException implements Exception {
+  final String phone;
+  const PhoneNewUserException(this.phone);
+}
+
 /// Google sign-in detected a new (unregistered) user
 class NewGoogleUserException implements Exception {
   final String email;

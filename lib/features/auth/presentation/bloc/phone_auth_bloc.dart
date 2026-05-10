@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/error/failures.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/usecases/check_phone_exists.dart';
 import '../../domain/usecases/request_otp.dart';
@@ -50,22 +51,11 @@ class PhoneAuthBloc extends Bloc<PhoneAuthEvent, PhoneAuthState> {
     CheckPhoneAndLogin event,
     Emitter<PhoneAuthState> emit,
   ) async {
+    // Skip backend check — it only knows Firebase Phone Auth UIDs, not
+    // email-registered users who added a phone to their profile.
+    // Firebase's isNewUser flag after OTP verification is the source of truth.
     emit(PhoneChecking());
-
-    final result = await checkPhoneExistsUseCase(
-      CheckPhoneParams(phone: event.phone),
-    );
-
-    result.fold(
-      (failure) => emit(PhoneAuthError(message: failure.message)),
-      (exists) {
-        if (exists) {
-          add(SubmitPhoneNumber(phone: event.phone));
-        } else {
-          emit(PhoneNotRegistered(phone: event.phone));
-        }
-      },
-    );
+    add(SubmitPhoneNumber(phone: event.phone));
   }
 
   Future<void> _onSubmitPhone(
@@ -100,7 +90,13 @@ class PhoneAuthBloc extends Bloc<PhoneAuthEvent, PhoneAuthState> {
     );
 
     result.fold(
-      (failure) => emit(PhoneAuthError(message: failure.message)),
+      (failure) {
+        if (failure is PhoneNewUserFailure) {
+          emit(PhoneNotRegistered(phone: failure.phone));
+        } else {
+          emit(PhoneAuthError(message: failure.message));
+        }
+      },
       (user) => emit(OtpVerifiedSuccess(user: user)),
     );
   }

@@ -45,7 +45,7 @@ class DeliveryAddressCard extends StatelessWidget {
                 Text(
                   address.title,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     height: 1.3,
@@ -56,8 +56,8 @@ class DeliveryAddressCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   '${address.detail} • ${address.city}',
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: .5),
+                  style: const TextStyle(
+                    color: AppColors.textSecondary,
                     fontSize: 14,
                   ),
                   maxLines: 2,

@@ -5,35 +5,35 @@ import 'app_colors.dart';
 class AppTheme {
   AppTheme._();
 
-  /// Dark theme (primary theme for the app)
-  static ThemeData get darkTheme {
+  /// Light theme — driven by the THEME CONFIG block in AppColors
+  static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
 
       // Color Scheme
-      colorScheme: const ColorScheme.dark(
+      colorScheme: const ColorScheme.light(
         primary: AppColors.primary,
         secondary: AppColors.accentRed,
-        surface: AppColors.cardDark,
+        surface: AppColors.surface,
         error: AppColors.error,
-        onPrimary: AppColors.backgroundDark,
+        onPrimary: AppColors.textWhite,
         onSecondary: AppColors.textWhite,
-        onSurface: AppColors.textWhite,
+        onSurface: AppColors.textPrimary,
         onError: AppColors.textWhite,
       ),
 
       // Scaffold Background
-      scaffoldBackgroundColor: AppColors.backgroundDark,
+      scaffoldBackgroundColor: AppColors.background,
 
       // App Bar Theme
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.backgroundDark,
+        backgroundColor: AppColors.background,
         elevation: 0,
         centerTitle: true,
-        iconTheme: IconThemeData(color: AppColors.textWhite),
+        iconTheme: IconThemeData(color: AppColors.textPrimary),
         titleTextStyle: TextStyle(
-          color: AppColors.textWhite,
+          color: AppColors.textPrimary,
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
@@ -41,7 +41,7 @@ class AppTheme {
 
       // Card Theme
       cardTheme: CardThemeData(
-        color: AppColors.cardDark,
+        color: AppColors.surface,
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
@@ -50,7 +50,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.backgroundDark,
+          foregroundColor: AppColors.textWhite,
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           shape: RoundedRectangleBorder(
@@ -71,14 +71,14 @@ class AppTheme {
       // Input Decoration Theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.cardDark,
+        fillColor: AppColors.surface,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.white12),
+          borderSide: const BorderSide(color: AppColors.border),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.white12),
+          borderSide: const BorderSide(color: AppColors.border),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -92,24 +92,31 @@ class AppTheme {
           horizontal: 20,
           vertical: 16,
         ),
-        hintStyle: TextStyle(color: AppColors.textGrey.withValues(alpha: 0.6)),
+        hintStyle: TextStyle(
+          color: AppColors.textSecondary.withValues(alpha: 0.8),
+        ),
       ),
 
       // Bottom Navigation Bar Theme
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColors.backgroundDark,
+        backgroundColor: AppColors.background,
         selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.textGrey,
+        unselectedItemColor: AppColors.textSecondary,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
       ),
 
       // Icon Theme
-      iconTheme: const IconThemeData(color: AppColors.textWhite),
+      iconTheme: const IconThemeData(color: AppColors.textPrimary),
 
       // Divider Theme
-      dividerTheme: const DividerThemeData(color: Colors.white12, thickness: 1),
+      dividerTheme: const DividerThemeData(
+        color: AppColors.border,
+        thickness: 1,
+      ),
     );
   }
 
+  /// Kept for backward compatibility — points to lightTheme
+  static ThemeData get darkTheme => lightTheme;
 }

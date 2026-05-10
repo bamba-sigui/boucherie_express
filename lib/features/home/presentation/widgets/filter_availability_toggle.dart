@@ -24,7 +24,7 @@ class FilterAvailabilityToggle extends StatelessWidget {
           const Text(
             'Disponibilité',
             style: TextStyle(
-              color: Colors.white,
+              color: AppColors.textPrimary,
               fontSize: 16,
               fontWeight: FontWeight.w600,
             ),
@@ -66,16 +66,16 @@ class FilterAvailabilityToggle extends StatelessWidget {
                       const Text(
                         'En stock',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       const SizedBox(height: 2),
-                      Text(
+                      const Text(
                         'Afficher uniquement les produits disponibles',
                         style: TextStyle(
-                          color: Colors.grey.shade500,
+                          color: AppColors.textSecondary,
                           fontSize: 11,
                         ),
                       ),

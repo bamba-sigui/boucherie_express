@@ -81,14 +81,14 @@ class OrderCard extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(20),
-          splashColor: Colors.white.withValues(alpha: 0.05),
-          highlightColor: Colors.white.withValues(alpha: 0.03),
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           child: Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: AppColors.cardDark,
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
+              border: Border.all(color: AppColors.border),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +101,7 @@ class OrderCard extends StatelessWidget {
                 // ── Séparateur ──
                 Container(
                   height: 1,
-                  color: Colors.white.withValues(alpha: 0.05),
+                  color: AppColors.surface,
                 ),
 
                 const SizedBox(height: 16),
@@ -141,7 +141,7 @@ class OrderCard extends StatelessWidget {
               Text(
                 '#${order.id}',
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

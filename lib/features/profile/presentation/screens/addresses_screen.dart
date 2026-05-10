@@ -119,13 +119,13 @@ class _AddressesView extends StatelessWidget {
                             Icon(
                               Icons.location_off_rounded,
                               size: 72,
-                              color: Colors.white.withValues(alpha: .15),
+                              color: AppColors.textSecondary,
                             ),
                             const SizedBox(height: 16),
                             Text(
                               'Aucune adresse enregistrée',
-                              style: TextStyle(
-                                color: Colors.white.withValues(alpha: .4),
+                              style: const TextStyle(
+                                color: AppColors.textPrimary,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -134,8 +134,8 @@ class _AddressesView extends StatelessWidget {
                             Text(
                               'Ajoutez une adresse pour faciliter\nvos livraisons.',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white.withValues(alpha: .2),
+                              style: const TextStyle(
+                                color: AppColors.textSecondary,
                                 fontSize: 14,
                               ),
                             ),
@@ -211,7 +211,7 @@ class _AddressesView extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.backgroundDark.withValues(alpha: .9),
             border: Border(
-              bottom: BorderSide(color: Colors.white.withValues(alpha: .05)),
+              bottom: BorderSide(color: AppColors.border),
             ),
           ),
           child: Row(
@@ -225,7 +225,7 @@ class _AddressesView extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white.withValues(alpha: .6),
+                    color: AppColors.textSecondary,
                     size: 20,
                   ),
                 ),
@@ -236,7 +236,7 @@ class _AddressesView extends StatelessWidget {
               const Text(
                 'Mes adresses',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -0.3,
@@ -261,7 +261,7 @@ class _AddressesView extends StatelessWidget {
                       const Center(
                         child: Icon(
                           Icons.shopping_cart_outlined,
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                           size: 22,
                         ),
                       ),
@@ -323,7 +323,7 @@ class _AddressesView extends StatelessWidget {
         child: InkWell(
           onTap: () => context.push('/addresses/add'),
           borderRadius: BorderRadius.circular(12),
-          splashColor: Colors.white.withValues(alpha: .1),
+          splashColor: Colors.transparent,
           child: Ink(
             decoration: BoxDecoration(
               color: AppColors.accentRed,
@@ -370,23 +370,23 @@ class _AddressesView extends StatelessWidget {
         backgroundColor: AppColors.cardDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: Colors.white.withValues(alpha: .05)),
+          side: BorderSide(color: AppColors.border),
         ),
         title: const Text(
           'Supprimer l\'adresse',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold),
         ),
         content: Text(
           'Êtes-vous sûr de vouloir supprimer cette adresse ?',
-          style: TextStyle(color: Colors.white.withValues(alpha: .5)),
+          style: const TextStyle(color: AppColors.textSecondary),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogCtx),
-            child: Text(
+            child: const Text(
               'ANNULER',
               style: TextStyle(
-                color: Colors.white.withValues(alpha: .4),
+                color: AppColors.textSecondary,
                 fontWeight: FontWeight.w600,
               ),
             ),

@@ -223,7 +223,7 @@ class AddressFormFields extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: Colors.white.withValues(alpha: .5),
+        color: AppColors.textSecondary,
         fontSize: 13,
         fontWeight: FontWeight.w500,
       ),
@@ -240,19 +240,19 @@ class AddressFormFields extends StatelessWidget {
       controller: controller,
       maxLines: maxLines,
       validator: validator,
-      style: const TextStyle(color: Colors.white, fontSize: 15),
+      style: const TextStyle(color: AppColors.textPrimary, fontSize: 15),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.white.withValues(alpha: .2)),
+        hintStyle: TextStyle(color: AppColors.surface),
         filled: true,
         fillColor: AppColors.cardDark,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.white.withValues(alpha: .1)),
+          borderSide: BorderSide(color: AppColors.border),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.white.withValues(alpha: .1)),
+          borderSide: BorderSide(color: AppColors.border),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -294,7 +294,7 @@ class AddressFormFields extends StatelessWidget {
                   border: Border.all(
                     color: selected
                         ? AppColors.primary.withValues(alpha: .5)
-                        : Colors.white.withValues(alpha: .08),
+                        : AppColors.border,
                     width: selected ? 1.5 : 1,
                   ),
                 ),
@@ -303,7 +303,7 @@ class AddressFormFields extends StatelessWidget {
                     Icon(icon,
                         color: selected
                             ? AppColors.primary
-                            : Colors.white.withValues(alpha: .3),
+                            : AppColors.textSecondary,
                         size: 20),
                     const SizedBox(height: 4),
                     Text(
@@ -311,7 +311,7 @@ class AddressFormFields extends StatelessWidget {
                       style: TextStyle(
                         color: selected
                             ? AppColors.primary
-                            : Colors.white.withValues(alpha: .4),
+                            : AppColors.textSecondary,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -341,7 +341,7 @@ class AddressFormFields extends StatelessWidget {
               border: Border.all(
                 color: isDefault
                     ? AppColors.primary
-                    : Colors.white.withValues(alpha: .2),
+                    : AppColors.border,
                 width: 2,
               ),
             ),
@@ -354,7 +354,7 @@ class AddressFormFields extends StatelessWidget {
           Text(
             'Définir comme adresse par défaut',
             style: TextStyle(
-              color: Colors.white.withValues(alpha: .7),
+              color: AppColors.textSecondary,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
@@ -386,7 +386,7 @@ class AddressFormHeader extends StatelessWidget {
             color: AppColors.backgroundDark.withValues(alpha: .9),
             border: Border(
               bottom:
-                  BorderSide(color: Colors.white.withValues(alpha: .05)),
+                  BorderSide(color: AppColors.border),
             ),
           ),
           child: Row(
@@ -399,7 +399,7 @@ class AddressFormHeader extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white.withValues(alpha: .6),
+                    color: AppColors.textSecondary,
                     size: 20,
                   ),
                 ),
@@ -408,7 +408,7 @@ class AddressFormHeader extends StatelessWidget {
               Text(
                 title,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -0.3,

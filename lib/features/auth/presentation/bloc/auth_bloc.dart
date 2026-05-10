@@ -59,15 +59,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(AuthLoading());
-    final result = await signInWithEmail.repository.checkEmailExists(event.email);
+    final result = await signInWithEmail(
+      SignInParams(email: event.email, password: event.password),
+    );
     result.fold(
-      (failure) => emit(AuthError(failure.message)),
-      (exists) {
-        if (exists) {
-          add(SignInRequested(email: event.email, password: event.password));
-        } else {
+      (failure) {
+        // user-not-found → redirect to signup with pre-filled email
+        if (failure is AuthFailure && failure.code == 'user-not-found') {
           emit(EmailNotRegistered(event.email));
+        } else {
+          emit(AuthError(failure.message));
         }
+      },
+      (user) {
+        emit(Authenticated(user));
+        saveFcmToken(); // ignore: unawaited_futures
       },
     );
   }

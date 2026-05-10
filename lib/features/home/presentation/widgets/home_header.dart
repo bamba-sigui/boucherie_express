@@ -17,8 +17,8 @@ class HomeHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       decoration: BoxDecoration(
         color: AppColors.backgroundDark.withValues(alpha: 0.9),
-        border: Border(
-          bottom: BorderSide(color: Colors.white.withValues(alpha: 0.05)),
+        border: const Border(
+          bottom: BorderSide(color: AppColors.border),
         ),
       ),
       child: Row(
@@ -31,7 +31,7 @@ class HomeHeader extends StatelessWidget {
                 const TextSpan(
                   text: 'BOUCHERIE',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.w900,
                     letterSpacing: -0.5,
@@ -69,7 +69,7 @@ class HomeHeader extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.shopping_cart_outlined,
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                         size: 22,
                       ),
                       if (itemCount > 0)

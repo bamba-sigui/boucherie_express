@@ -29,14 +29,14 @@ class SearchBarWidget extends StatelessWidget {
       child: TextField(
         controller: controller,
         onChanged: onChanged,
-        style: const TextStyle(color: Colors.white, fontSize: 13),
+        style: const TextStyle(color: AppColors.textPrimary, fontSize: 13),
         decoration: InputDecoration(
           filled: false,
           hintText: 'Rechercher...',
-          hintStyle: TextStyle(color: Colors.grey.shade600, fontSize: 13),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.only(left: 14, right: 8),
-            child: Icon(Icons.search, color: Colors.grey.shade600, size: 18),
+          hintStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+          prefixIcon: const Padding(
+            padding: EdgeInsets.only(left: 14, right: 8),
+            child: Icon(Icons.search, color: AppColors.textSecondary, size: 18),
           ),
           prefixIconConstraints: const BoxConstraints(
             minWidth: 0,
@@ -49,9 +49,9 @@ class SearchBarWidget extends StatelessWidget {
                     controller?.clear();
                     onClear?.call();
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.close,
-                    color: Colors.grey.shade600,
+                    color: AppColors.textSecondary,
                     size: 18,
                   ),
                 )

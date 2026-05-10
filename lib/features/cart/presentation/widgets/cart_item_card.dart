@@ -83,7 +83,7 @@ class CartItemCard extends StatelessWidget {
                           Text(
                             item.productName,
                             style: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.textPrimary,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
@@ -115,7 +115,7 @@ class CartItemCard extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 4),
                         child: Icon(
                           Icons.delete_outline_rounded,
-                          color: Colors.white.withValues(alpha: .4),
+                          color: AppColors.textSecondary,
                           size: 20,
                         ),
                       ),
@@ -165,7 +165,7 @@ class _Badge extends StatelessWidget {
       decoration: BoxDecoration(
         color: isPrimary
             ? AppColors.primary.withValues(alpha: .1)
-            : Colors.white.withValues(alpha: .05),
+            : AppColors.surfaceAlt,
         borderRadius: BorderRadius.circular(100),
       ),
       child: Text(
@@ -198,7 +198,7 @@ class _CartQuantitySelector extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: .05),
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(100),
       ),
       child: Row(
@@ -210,16 +210,16 @@ class _CartQuantitySelector extends StatelessWidget {
             child: Container(
               width: 28,
               height: 28,
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: .1),
+              decoration: const BoxDecoration(
+                color: AppColors.border,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.remove_rounded,
                 size: 16,
                 color: quantity > 1
-                    ? Colors.white
-                    : Colors.white.withValues(alpha: .25),
+                    ? AppColors.textPrimary
+                    : AppColors.textSecondary,
               ),
             ),
           ),
@@ -231,7 +231,7 @@ class _CartQuantitySelector extends StatelessWidget {
               '$quantity',
               textAlign: TextAlign.center,
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.textPrimary,
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),

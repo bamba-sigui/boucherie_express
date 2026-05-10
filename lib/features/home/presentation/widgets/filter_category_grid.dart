@@ -32,7 +32,7 @@ class FilterCategoryGrid extends StatelessWidget {
           const Text(
             'Catégories',
             style: TextStyle(
-              color: Colors.white,
+              color: AppColors.textPrimary,
               fontSize: 16,
               fontWeight: FontWeight.w600,
             ),
@@ -94,7 +94,7 @@ class FilterCategoryGrid extends StatelessWidget {
                         style: TextStyle(
                           color: isSelected
                               ? Colors.white
-                              : Colors.grey.shade400,
+                              : AppColors.textPrimary,
                           fontSize: 14,
                           fontWeight: isSelected
                               ? FontWeight.bold

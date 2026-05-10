@@ -52,7 +52,7 @@ class AddressCard extends StatelessWidget {
           border: Border.all(
             color: isDefault
                 ? AppColors.primary.withValues(alpha: .5)
-                : Colors.white.withValues(alpha: .05),
+                : AppColors.border,
             width: isDefault ? 2 : 1,
           ),
         ),
@@ -69,14 +69,14 @@ class AddressCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: isDefault
                         ? AppColors.primary.withValues(alpha: .1)
-                        : Colors.white.withValues(alpha: .05),
+                        : AppColors.surface,
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     _iconForType(address.type),
                     color: isDefault
                         ? AppColors.primary
-                        : Colors.white.withValues(alpha: .4),
+                        : AppColors.textSecondary,
                     size: 20,
                   ),
                 ),
@@ -92,7 +92,7 @@ class AddressCard extends StatelessWidget {
                           Text(
                             address.label,
                             style: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.textPrimary,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
@@ -124,8 +124,8 @@ class AddressCard extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         address.fullAddress,
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: .4),
+                        style: const TextStyle(
+                          color: AppColors.textSecondary,
                           fontSize: 14,
                         ),
                       ),
@@ -145,7 +145,7 @@ class AddressCard extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 12),
                 decoration: BoxDecoration(
                   border: Border(
-                    top: BorderSide(color: Colors.white.withValues(alpha: .05)),
+                    top: BorderSide(color: AppColors.border),
                   ),
                 ),
                 child: Row(
@@ -158,14 +158,14 @@ class AddressCard extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.edit_rounded,
-                            color: Colors.white.withValues(alpha: .4),
+                            color: AppColors.textSecondary,
                             size: 18,
                           ),
                           const SizedBox(width: 6),
                           Text(
                             'Modifier',
-                            style: TextStyle(
-                              color: Colors.white.withValues(alpha: .4),
+                            style: const TextStyle(
+                              color: AppColors.textSecondary,
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
@@ -225,7 +225,7 @@ class _RadioIndicator extends StatelessWidget {
         border: Border.all(
           color: isSelected
               ? AppColors.primary
-              : Colors.white.withValues(alpha: .1),
+              : AppColors.border,
           width: isSelected ? 7 : 2,
         ),
         color: isSelected ? AppColors.backgroundDark : AppColors.backgroundDark,

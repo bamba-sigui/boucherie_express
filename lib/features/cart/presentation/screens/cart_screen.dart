@@ -86,7 +86,7 @@ class _CartScreenState extends State<CartScreen> {
                   Icon(
                     Icons.shopping_cart_outlined,
                     size: 80,
-                    color: Colors.white.withValues(alpha: .15),
+                    color: AppColors.textSecondary.withValues(alpha: .4),
                   ),
                   const SizedBox(height: 20),
                   const Text(
@@ -98,10 +98,10 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text(
+                  const Text(
                     'Ajoutez des produits pour commencer',
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: .4),
+                      color: AppColors.textSecondary,
                       fontSize: 14,
                     ),
                   ),
@@ -198,20 +198,20 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: AppColors.cardDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: Colors.white.withValues(alpha: .05)),
+          side: const BorderSide(color: AppColors.border),
         ),
         title: const Text(
           'Connexion requise',
           style: TextStyle(
-            color: Colors.white,
+            color: AppColors.textPrimary,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
         ),
-        content: Text(
+        content: const Text(
           'Vous devez être connecté pour passer une commande.',
           style: TextStyle(
-            color: Colors.white.withValues(alpha: .6),
+            color: AppColors.textSecondary,
             fontSize: 14,
             height: 1.5,
           ),
@@ -219,10 +219,10 @@ class _CartScreenState extends State<CartScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogCtx),
-            child: Text(
+            child: const Text(
               'ANNULER',
               style: TextStyle(
-                color: Colors.white.withValues(alpha: .4),
+                color: AppColors.textSecondary,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -264,8 +264,8 @@ class _CartHeader extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
             color: AppColors.backgroundDark.withValues(alpha: .9),
-            border: Border(
-              bottom: BorderSide(color: Colors.white.withValues(alpha: .05)),
+            border: const Border(
+              bottom: BorderSide(color: AppColors.border),
             ),
           ),
           child: Row(
@@ -276,13 +276,13 @@ class _CartHeader extends StatelessWidget {
                 child: Container(
                   width: 40,
                   height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: .05),
+                  decoration: const BoxDecoration(
+                    color: AppColors.surface,
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     size: 18,
                   ),
                 ),
@@ -294,7 +294,7 @@ class _CartHeader extends StatelessWidget {
                   'Mon Panier',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -308,13 +308,13 @@ class _CartHeader extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: .1),
+                  color: AppColors.surface,
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: Text(
                   '$itemCount',
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
@@ -352,8 +352,8 @@ class _CartFooter extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardDark,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(40)),
-        border: Border(
-          top: BorderSide(color: Colors.white.withValues(alpha: .05)),
+        border: const Border(
+          top: BorderSide(color: AppColors.border),
         ),
         boxShadow: [
           BoxShadow(

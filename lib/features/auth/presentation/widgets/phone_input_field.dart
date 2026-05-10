@@ -16,8 +16,7 @@ class PhoneInputField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final bool hasError;
 
-  /// Couleur de fond de l'input (design : #1e2621).
-  static const Color _inputBg = Color(0xFF1E2621);
+  static const Color _inputBg = AppColors.surface;
 
   const PhoneInputField({
     super.key,
@@ -37,7 +36,7 @@ class PhoneInputField extends StatelessWidget {
           child: Text(
             'Numéro de téléphone',
             style: TextStyle(
-              color: Colors.white.withValues(alpha: .7),
+              color: AppColors.textSecondary,
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),
@@ -65,7 +64,7 @@ class PhoneInputField extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
-                      color: Colors.white.withValues(alpha: .1),
+                      color: AppColors.border,
                     ),
                   ),
                 ),
@@ -93,7 +92,7 @@ class PhoneInputField extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Expanded(child: Container(color: Colors.white)),
+                          Expanded(child: Container(color: AppColors.border)),
                           Expanded(
                             child: Container(
                               decoration: const BoxDecoration(
@@ -112,7 +111,7 @@ class PhoneInputField extends StatelessWidget {
                     const Text(
                       '+225',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
@@ -128,7 +127,7 @@ class PhoneInputField extends StatelessWidget {
                   onChanged: onChanged,
                   keyboardType: TextInputType.phone,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2,
@@ -141,7 +140,7 @@ class PhoneInputField extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: '07 00 00 00 00',
                     hintStyle: TextStyle(
-                      color: Colors.white.withValues(alpha: .2),
+                      color: AppColors.textSecondary,
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
                       letterSpacing: 0,
@@ -168,7 +167,7 @@ class PhoneInputField extends StatelessWidget {
             'pour confirmer votre identité.',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.white.withValues(alpha: .3),
+              color: AppColors.textSecondary,
               fontSize: 11,
             ),
           ),

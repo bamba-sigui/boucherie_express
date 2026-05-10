@@ -32,7 +32,7 @@ class QuantitySelector extends StatelessWidget {
         Text(
           'QUANTITÉ',
           style: TextStyle(
-            color: Colors.white.withValues(alpha: .5),
+            color: AppColors.textSecondary,
             fontSize: 11,
             fontWeight: FontWeight.w700,
             letterSpacing: 3,
@@ -46,7 +46,7 @@ class QuantitySelector extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.cardDark,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withValues(alpha: .1)),
+            border: Border.all(color: AppColors.border),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -54,10 +54,10 @@ class QuantitySelector extends StatelessWidget {
               // Minus
               _ControlButton(
                 icon: Icons.remove_rounded,
-                backgroundColor: Colors.white.withValues(alpha: .05),
+                backgroundColor: AppColors.border.withValues(alpha: .5),
                 iconColor: quantity <= min
-                    ? Colors.white.withValues(alpha: .25)
-                    : Colors.white,
+                    ? AppColors.textSecondary.withValues(alpha: .5)
+                    : AppColors.textPrimary,
                 onTap: quantity > min ? () => onChanged(quantity - 1) : null,
               ),
 
@@ -68,7 +68,7 @@ class QuantitySelector extends StatelessWidget {
                   '$quantity',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),

@@ -141,14 +141,14 @@ class _ProductCarouselState extends State<ProductCarousel> {
                   blur: true,
                   child: const Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     size: 20,
                   ),
                 ),
                 // Favorite button
                 _CircleButton(
                   onTap: widget.onFavoriteToggle,
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppColors.surface,
                   child: Icon(
                     widget.isFavorite ? Icons.favorite : Icons.favorite_border,
                     color: widget.isFavorite
@@ -174,16 +174,16 @@ class _ProductCarouselState extends State<ProductCarousel> {
                       width: 80,
                       height: 80,
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: .2),
+                        color: AppColors.surface,
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.white.withValues(alpha: .4),
+                          color: AppColors.textSecondary,
                           width: 1.5,
                         ),
                       ),
                       child: const Icon(
                         Icons.play_arrow_rounded,
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                         size: 40,
                       ),
                     ),
@@ -211,8 +211,8 @@ class _ProductCarouselState extends State<ProductCarousel> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(2),
                       color: isActive
-                          ? Colors.white
-                          : Colors.white.withValues(alpha: .4),
+                          ? AppColors.textPrimary
+                          : AppColors.textSecondary,
                     ),
                   );
                 }),
@@ -247,7 +247,7 @@ class _CircleButton extends StatelessWidget {
         shape: BoxShape.circle,
         color: backgroundColor,
         border: blur
-            ? Border.all(color: Colors.white.withValues(alpha: .1))
+            ? Border.all(color: AppColors.border)
             : null,
       ),
       child: Center(child: child),

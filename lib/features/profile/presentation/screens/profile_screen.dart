@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/di/injection.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/widgets/auth_gate.dart';
 import '../bloc/profile_bloc.dart';
 import '../widgets/logout_button.dart';
 import '../widgets/profile_header.dart';
@@ -22,9 +23,14 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<ProfileBloc>()..add(LoadProfile()),
-      child: const _ProfileView(),
+    return AuthGate(
+      icon: Icons.person_outline_rounded,
+      title: 'Connectez-vous',
+      subtitle: 'Connectez-vous pour accéder à votre profil.',
+      child: BlocProvider(
+        create: (context) => getIt<ProfileBloc>()..add(LoadProfile()),
+        child: const _ProfileView(),
+      ),
     );
   }
 }
@@ -50,74 +56,6 @@ class _ProfileView extends StatelessWidget {
             );
           }
 
-          // --- Non authentifié ---
-          if (state is ProfileNotAuthenticated) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        color: AppColors.primary.withValues(alpha: .1),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.person_outline_rounded,
-                        size: 40,
-                        color: AppColors.primary,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    const Text(
-                      'Connectez-vous',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Accédez à votre profil, vos commandes et vos adresses en vous connectant.',
-                      style: TextStyle(
-                        color: Colors.white.withValues(alpha: .5),
-                        fontSize: 14,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 32),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 52,
-                      child: ElevatedButton(
-                        onPressed: () => context.push('/login'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
-                          foregroundColor: AppColors.backgroundDark,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                        ),
-                        child: const Text(
-                          'Se connecter',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }
-
           // --- Error ---
           if (state is ProfileError) {
             return Center(
@@ -134,7 +72,7 @@ class _ProfileView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
                       state.message,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: AppColors.textPrimary),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -231,8 +169,8 @@ class _ProfileView extends StatelessWidget {
                       // Version
                       Text(
                         'Boucherie Express v1.0.0',
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: .2),
+                        style: const TextStyle(
+                          color: AppColors.textSecondary,
                           fontSize: 12,
                         ),
                       ),

@@ -31,7 +31,7 @@ class ProfileHeader extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.backgroundDark.withValues(alpha: .9),
             border: Border(
-              bottom: BorderSide(color: Colors.white.withValues(alpha: .05)),
+              bottom: BorderSide(color: AppColors.border),
             ),
           ),
           child: Row(
@@ -44,7 +44,7 @@ class ProfileHeader extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.w900,
                     letterSpacing: -0.5,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                   ),
                   children: [
                     TextSpan(text: 'BOUCHERIE '),
@@ -72,7 +72,7 @@ class ProfileHeader extends StatelessWidget {
                       const Center(
                         child: Icon(
                           Icons.shopping_cart_outlined,
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                           size: 22,
                         ),
                       ),

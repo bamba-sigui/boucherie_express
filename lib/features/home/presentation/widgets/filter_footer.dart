@@ -41,7 +41,7 @@ class FilterFooter extends StatelessWidget {
                 child: const Text(
                   'Réinitialiser',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),

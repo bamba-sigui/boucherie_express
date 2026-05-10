@@ -66,7 +66,7 @@ class FreeDeliveryProgress extends StatelessWidget {
                     TextSpan(
                       text: FormatUtils.formatPrice(remaining),
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -86,7 +86,7 @@ class FreeDeliveryProgress extends StatelessWidget {
             child: Stack(
               children: [
                 // Background
-                Container(color: Colors.white.withValues(alpha: .05)),
+                Container(color: AppColors.border),
                 // Fill
                 AnimatedFractionallySizedBox(
                   duration: const Duration(milliseconds: 400),

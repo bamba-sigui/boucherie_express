@@ -136,7 +136,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage>
                   onPressed: () => Navigator.of(context).pop(),
                   icon: const Icon(
                     Icons.arrow_back_ios_new,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     size: 20,
                   ),
                 ),
@@ -193,7 +193,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage>
                   onPressed: () => Navigator.of(context).pop(),
                   icon: const Icon(
                     Icons.arrow_back_ios_new,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     size: 20,
                   ),
                 ),
@@ -201,7 +201,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage>
                 const Text(
                   'Détails de la Commande',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -224,7 +224,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage>
                     const SizedBox(height: 16),
                     Text(
                       message,
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                      style: const TextStyle(color: AppColors.textPrimary, fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
@@ -343,7 +343,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage>
           decoration: BoxDecoration(
             color: AppColors.cardDark,
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
+            border: Border.all(color: AppColors.border),
           ),
           child: Column(children: _buildItemTiles(order.items)),
         ),
@@ -361,7 +361,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage>
           Container(
             height: 1,
             margin: const EdgeInsets.symmetric(horizontal: 16),
-            color: Colors.white.withValues(alpha: 0.05),
+            color: AppColors.border,
           ),
         );
       }
