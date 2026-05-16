@@ -46,12 +46,16 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<UserModel?> getCurrentUser() async {
-    try {
-      final firebaseUser = firebaseAuth.currentUser;
-      if (firebaseUser == null) return null;
+    final firebaseUser = firebaseAuth.currentUser;
+    if (firebaseUser == null) return null;
 
+    try {
       final data = await apiClient.get(ApiConstants.profile);
       return UserModel.fromJson(data as Map<String, dynamic>);
+    } on NotFoundException {
+      return _minimalUserModel(firebaseUser);
+    } on NetworkException {
+      return _minimalUserModel(firebaseUser);
     } catch (e) {
       throw ServerException('Erreur lors de la récupération de l\'utilisateur');
     }
@@ -59,13 +63,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<UserModel> signInWithEmail(String email, String password) async {
+    firebase_auth.User? firebaseUser;
     try {
       final credential = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      if (credential.user == null) throw AuthException('Échec de la connexion');
+      firebaseUser = credential.user;
+      if (firebaseUser == null) throw AuthException('Échec de la connexion');
 
       final data = await apiClient.get(ApiConstants.profile);
       return UserModel.fromJson(data as Map<String, dynamic>);
@@ -73,6 +78,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       throw AuthException(_getAuthErrorMessage(e.code), e.code);
     } on AuthException {
       rethrow;
+    } on NotFoundException catch (_) {
+      return _minimalUserModel(firebaseUser!);
+    } on NetworkException catch (_) {
+      return _minimalUserModel(firebaseUser!);
+    } on ServerException catch (_) {
+      return _minimalUserModel(firebaseUser!);
     } catch (e) {
       throw AuthException('Erreur lors de la connexion');
     }
@@ -133,12 +144,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final firebaseUser = userCredential.user;
       if (firebaseUser == null) throw AuthException('Échec de la connexion Google');
 
-      // Nouvel utilisateur → sign out et signaler pour redirection inscription
       if (userCredential.additionalUserInfo?.isNewUser == true) {
-        await firebaseAuth.signOut();
-        throw NewGoogleUserException(
+        await _ensureBackendProfile(
+          name: firebaseUser.displayName ?? googleUser.displayName ?? 'Utilisateur',
           email: firebaseUser.email ?? googleUser.email,
-          name: firebaseUser.displayName ?? googleUser.displayName ?? '',
           photoUrl: firebaseUser.photoURL,
         );
       }
@@ -196,6 +205,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw AuthException('Échec de la vérification du code');
       }
 
+      // Force-refresh pour que Firebase Admin SDK reconnaisse le nouveau compte
+      await firebaseUser.getIdToken(true);
+
       await _ensureBackendProfile(
         name: firebaseUser.displayName ?? 'Utilisateur',
         email: firebaseUser.email ?? '',
@@ -223,6 +235,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> signOut() async {
     try {
+      apiClient.clearTokenCache();
       await Future.wait([
         firebaseAuth.signOut(),
         _googleSignIn.signOut(),
@@ -299,7 +312,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       } on ServerException {
         return _minimalUserModel(firebaseUser);
       } catch (_) {
-        return null;
+        return _minimalUserModel(firebaseUser);
       }
     });
   }

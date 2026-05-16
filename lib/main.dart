@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,10 @@ void main() async {
 
   // Initialize Firebase
   await Firebase.initializeApp();
+  // Attendre que Firebase restaure la session persistante avant de lancer l'app.
+  // Sans ce await, firebaseAuth.currentUser est null au démarrage même si l'utilisateur
+  // est connecté, car la restauration depuis le stockage local est asynchrone.
+  await FirebaseAuth.instance.authStateChanges().first;
 
   // Initialize Hive
   await Hive.initFlutter();

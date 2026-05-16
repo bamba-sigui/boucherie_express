@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Paramètres du Back-office - Boucherie Express</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#181111] dark:text-white min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-[#2d1a1a] border-b border-[#e6dbdb] dark:border-[#3d2a2a] px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#181111] dark:text-white">arrow_back</span>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Paramètres</h2>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold">Enregistrer</button>
+</header>
+<main class="max-w-md mx-auto pb-10">
+<!-- Section: Info Plateforme -->
+<section class="mt-4 bg-white dark:bg-[#2d1a1a] shadow-sm">
+<h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Info Plateforme</h2>
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-sm font-medium leading-normal pb-2">Nom de la boutique</p>
+<input class="form-input flex w-full rounded-lg border border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-[#1a0c0c] h-14 placeholder:text-[#896161] p-[15px] text-base font-normal leading-normal" value="Boucherie Express"/>
+</label>
+</div>
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-sm font-medium leading-normal pb-2">Email de contact</p>
+<input class="form-input flex w-full rounded-lg border border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-[#1a0c0c] h-14 placeholder:text-[#896161] p-[15px] text-base font-normal leading-normal" value="contact@boucherie-express.com"/>
+</label>
+</div>
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-sm font-medium leading-normal pb-2">Numéro de téléphone</p>
+<input class="form-input flex w-full rounded-lg border border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-[#1a0c0c] h-14 placeholder:text-[#896161] p-[15px] text-base font-normal leading-normal" value="+225 07 01 02 03 04"/>
+</label>
+</div>
+<div class="h-4"></div>
+</section>
+<!-- Section: Moyens de Paiement -->
+<section class="mt-4 bg-white dark:bg-[#2d1a1a] shadow-sm">
+<h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Moyens de Paiement</h2>
+<!-- Payment Toggle Items -->
+<div class="flex items-center justify-between px-4 py-4 border-b border-[#f0e8e8] dark:border-[#3d2a2a]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-[#ff7900]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#ff7900]">payments</span>
+</div>
+<div>
+<p class="font-semibold text-base">Orange Money</p>
+<p class="text-xs text-gray-500">Paiement via API Orange</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between px-4 py-4 border-b border-[#f0e8e8] dark:border-[#3d2a2a]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-[#ffcc00]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#e6b800]">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-semibold text-base">MTN Mobile Money</p>
+<p class="text-xs text-gray-500">MoMo Intégration</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-[#1da1f2]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#1da1f2]">waves</span>
+</div>
+<div>
+<p class="font-semibold text-base">Wave</p>
+<p class="text-xs text-gray-500">Paiement par QR Code Wave</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="h-2"></div>
+</section>
+<!-- Section: Zones de Livraison -->
+<section class="mt-4 bg-white dark:bg-[#2d1a1a] shadow-sm">
+<div class="flex items-center justify-between px-4 pb-3 pt-5">
+<h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em]">Zones de Livraison</h2>
+<button class="p-1 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="px-4 pb-4">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#f0e8e8] dark:border-[#3d2a2a] bg-[#fafafa] dark:bg-[#1a0c0c]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">location_on</span>
+<span class="font-medium">Abidjan - Cocody</span>
+</div>
+<div class="flex gap-2">
+<button class="text-gray-400"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-primary"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#f0e8e8] dark:border-[#3d2a2a] bg-[#fafafa] dark:bg-[#1a0c0c]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">location_on</span>
+<span class="font-medium">Abidjan - Plateau</span>
+</div>
+<div class="flex gap-2">
+<button class="text-gray-400"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-primary"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#f0e8e8] dark:border-[#3d2a2a] bg-[#fafafa] dark:bg-[#1a0c0c]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">location_on</span>
+<span class="font-medium">Abidjan - Marcory</span>
+</div>
+<div class="flex gap-2">
+<button class="text-gray-400"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-primary"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Utilisateurs Admin -->
+<section class="mt-4 bg-white dark:bg-[#2d1a1a] shadow-sm">
+<div class="flex items-center justify-between px-4 pb-3 pt-5">
+<h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em]">Admin Users</h2>
+<button class="text-primary text-sm font-semibold">Gérer</button>
+</div>
+<div class="px-4 pb-6">
+<div class="flex items-center gap-4 py-3 border-b border-[#f0e8e8] dark:border-[#3d2a2a]">
+<div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+<img alt="Admin avatar" class="w-full h-full object-cover" data-alt="Avatar of a male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsKRMVsTgywVIua3m9KjQQ2mpAn1OYolQMR8nz0oI_EymCIyn8Klpe7QMH__2BhrQGGVZm39vX6OBOtuVa-bsF6Npb0qOYctRsRdqmSIoK_VTsApm0pA6sABrZKN1qDn3o3JDDqaRO9NIvxJrTUfq9fJTlNb08w2fHQlMHA_5CLHwaCPNJ6flxtQbGy_Bp6f3ugqlHXeqyFOv5J3x3m4zFma9aC5gFIfi2s2ZVvlaRudeGUp0hEUIgBvy4nt3Rm4rfpp6FnppLwA"/>
+</div>
+<div class="flex-1">
+<p class="font-semibold">Jean Kouassi</p>
+<p class="text-xs text-gray-500">Super Administrateur</p>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-b border-[#f0e8e8] dark:border-[#3d2a2a]">
+<div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+<img alt="Admin avatar" class="w-full h-full object-cover" data-alt="Avatar of a female administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF7Sm4V9epSv8Ahuj6zBwf5cz3M5vEelyw7KPLgNFG0tIX5m4k_1q7DsDdpkYH6sIy-JPZQM4XACzc2y2gXY3FFwcz5hxE2pNtb5US-zpo3P_DY7Y08hKK9Tw9jN8xucS42QgVOW7rqaDEvuThwWPK20JjAJsvgmH8BovEtOv1JZxcP2Rcv9yGWSUafI5otbELXmNyMisPVy1MBiM-UP9Ryb6OZZOSYqu0qSIDPmWyvZ3tpre2Xn4YSF3m8V23USkscHDxfmxE-w"/>
+</div>
+<div class="flex-1">
+<p class="font-semibold">Awa Traoré</p>
+<p class="text-xs text-gray-500">Gestionnaire des Stocks</p>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+<div class="mt-6">
+<button class="w-full py-3 rounded-xl border-2 border-dashed border-[#e6dbdb] dark:border-[#3d2a2a] text-[#896161] font-medium flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">person_add</span>
+                        Ajouter un collaborateur
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Button for Mobile -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm">
+<button class="w-full bg-primary text-white py-4 rounded-full font-bold shadow-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+            Sauvegarder les modifications
+        </button>
+</div>
+</body></html>

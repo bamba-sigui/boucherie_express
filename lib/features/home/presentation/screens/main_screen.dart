@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:boucherie_express/core/theme/app_colors.dart';
+import 'package:boucherie_express/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:boucherie_express/features/home/domain/entities/product_filter.dart';
 import 'package:boucherie_express/features/home/presentation/pages/filter_bottom_sheet.dart';
 import 'package:boucherie_express/features/home/presentation/pages/home_page.dart';
@@ -66,14 +68,9 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
       return;
     }
 
-    // Synchroniser les données entre les onglets
+    // Mettre à jour les icônes favoris sur la home quand on y revient
     if (index == 0) {
       _homeKey.currentState?.refreshFavorites();
-      _homeKey.currentState?.reloadProducts();
-    } else if (index == 1) {
-      _favoritesKey.currentState?.reload();
-    } else if (index == 3) {
-      _ordersKey.currentState?.reload();
     }
 
     setState(() => _currentIndex = index);
@@ -102,13 +99,20 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.backgroundDark,
-      body: IndexedStack(index: _currentIndex, children: _screens),
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: _currentIndex,
-        onTap: _onNavTap,
-        isFilterEnabled: _currentIndex == 0,
+    return BlocListener<AuthBloc, AuthState>(
+      listenWhen: (previous, current) =>
+          current is Authenticated && previous is! Authenticated,
+      listener: (context, state) {
+        setState(() => _currentIndex = 0);
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundDark,
+        body: IndexedStack(index: _currentIndex, children: _screens),
+        bottomNavigationBar: CustomBottomNavBar(
+          currentIndex: _currentIndex,
+          onTap: _onNavTap,
+          isFilterEnabled: _currentIndex == 0,
+        ),
       ),
     );
   }

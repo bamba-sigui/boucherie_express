@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "brand-red": "#C62828",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "input-bg": "#1e2621",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white min-h-screen flex flex-col">
+<header class="p-5 flex justify-end">
+<button class="size-10 rounded-full bg-card-dark flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col px-6 pb-12">
+<div class="mt-8 mb-12 text-center">
+<div class="inline-flex items-center justify-center size-20 rounded-3xl bg-primary/10 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl font-bold">restaurant</span>
+</div>
+<h1 class="text-2xl font-black tracking-tighter text-white uppercase">
+                BOUCHERIE <span class="text-primary">EXPRESS</span>
+</h1>
+<p class="text-slate-400 mt-2 font-medium">Connexion / Inscription</p>
+</div>
+<div class="space-y-8 max-w-sm mx-auto w-full">
+<div class="space-y-4">
+<label class="block text-sm font-semibold text-slate-300 ml-1">Numéro de téléphone</label>
+<div class="relative group">
+<div class="absolute left-0 top-0 bottom-0 flex items-center pl-4 border-r border-white/10 pr-3">
+<img alt="CI Flag" class="rounded-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Jt6xTBpWj3insOR2FU4m8aa-35qMdK-sFY5pRgIU7X_8jt1KiSfzKMBu5NsHgP9WFp517Pa8DZXa0iNYKuvDjwHN4YyEooHIX7lo6YhozmFTcp5DbC2q3VEQhSWyWAvmvkJKC8ocYbCh1oULR0jSzIXBM1eyZQ312jGHvkZ1MWfYozzIFNhpMwUKy1UJG5c70ruIenNE4_wumxuvLal4RMMfKSJxYg-ixc0pj_pjRMAja3WUcPl3J-KBXYpw6ToVXDjHXHqx3g" srcset="https://flagcdn.com/w80/ci.png 2x" width="20"/>
+<span class="ml-2 text-white font-bold text-sm">+225</span>
+</div>
+<input class="w-full bg-input-bg border-2 border-transparent focus:border-primary/50 focus:ring-0 rounded-2xl py-4 pl-32 pr-4 text-lg font-bold tracking-widest placeholder:text-slate-600 placeholder:font-normal placeholder:tracking-normal transition-all" placeholder="07 00 00 00 00" type="tel"/>
+</div>
+<p class="text-[11px] text-slate-500 text-center px-4">
+                    Un code de vérification vous sera envoyé par SMS pour confirmer votre identité.
+                </p>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-black py-4 rounded-2xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                Se connecter / S'inscrire
+                <span class="material-symbols-outlined font-bold">arrow_forward</span>
+</button>
+<div class="pt-8 opacity-40">
+<div class="flex justify-between gap-2 max-w-[280px] mx-auto">
+<div class="size-12 rounded-xl bg-card-dark border border-white/5 flex items-center justify-center font-bold text-lg">-</div>
+<div class="size-12 rounded-xl bg-card-dark border border-white/5 flex items-center justify-center font-bold text-lg">-</div>
+<div class="size-12 rounded-xl bg-card-dark border border-white/5 flex items-center justify-center font-bold text-lg">-</div>
+<div class="size-12 rounded-xl bg-card-dark border border-white/5 flex items-center justify-center font-bold text-lg">-</div>
+</div>
+</div>
+</div>
+<footer class="mt-auto pt-12 text-center">
+<p class="text-xs text-slate-600">
+                En continuant, vous acceptez nos <br/>
+<a class="underline text-slate-500" href="#">Conditions d'utilisation</a> &amp; <a class="underline text-slate-500" href="#">Politique de confidentialité</a>
+</p>
+</footer>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-xl border-t border-white/5 px-2 pb-8 pt-3 flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Accueil</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Favoris</span>
+</button>
+<div class="relative -top-8">
+<button class="size-16 rounded-full bg-card-dark text-slate-500 shadow-lg flex flex-col items-center justify-center border-4 border-background-dark">
+<span class="material-symbols-outlined text-2xl font-bold">tune</span>
+<span class="text-[9px] font-black uppercase">Filtrer</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">person</span>
+<span class="text-[10px] font-bold">Profil</span>
+</button>
+</nav>
+
+</body></html>

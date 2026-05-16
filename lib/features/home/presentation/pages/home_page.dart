@@ -44,8 +44,11 @@ class HomePageState extends State<HomePage> {
   }
 
   /// Recharger les produits et catégories depuis l'API.
+  /// Skip si les données sont déjà en mémoire (état HomeLoaded).
   void reloadProducts() {
-    _homeBloc.add(const HomeLoadRequested());
+    if (_homeBloc.state is! HomeLoaded) {
+      _homeBloc.add(const HomeLoadRequested());
+    }
   }
 
   /// Appliquer les produits filtrés depuis le FilterBottomSheet.

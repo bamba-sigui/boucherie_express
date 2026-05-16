@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boucherie Express - Gestion des Commandes (Web)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#c62828",
+                "background-light": "#f9f9fa",
+                "background-dark": "#0f0f10",
+                "surface-dark": "#18181b",
+                "card-dark": "#242427",
+                "border-dark": "rgba(255,255,255,0.08)",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @media (min-width: 1024px) {
+            .sidebar-link.active {
+                @apply bg-primary text-white;
+            }
+            .sidebar-link:not(.active) {
+                @apply text-slate-400 hover:bg-white/5 hover:text-white;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="hidden lg:flex flex-col w-64 bg-surface-dark border-r border-border-dark">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">restaurant_menu</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight text-white">Boucherie Express</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">Admin Panel</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Tableau de Bord
+                </a>
+<a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-bold" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+                    Commandes
+                </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Catalogue
+                </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Clients
+                </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+                    Analyses
+                </a>
+<a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Paramètres
+                </a>
+</nav>
+<div class="p-4 border-t border-border-dark">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-white/5">
+<img alt="Admin user" class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuHlb-YoPbojbcVfMOP32d1CV3RoU__lCqCdntGn1O0Fup4W4KCl8gwPZ5DgjeqzGakzxJn5RwmXyYZHxKItWauTnptZYmBCg5BbnFsI0e_XV-nfMO6hPLUpbTfQfQE_zyidppT72EpS5XMCgmTlbpNTEb6_9qLlh2oXyb-eAnQe8PNdYW3c1nMSu4-Ko1JvWR7pnZ9rrBoWtDE7ehhPwcJaNid8rB0GkeYpSfvda_qH7fxDgHQH8WFBUMpJW0zeij-fD_h1lAVA"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-white truncate">Admin Principal</p>
+<p class="text-[10px] text-slate-500 truncate">admin@boucherie.ci</p>
+</div>
+<button class="ml-auto text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-surface-dark/50 border-b border-slate-200 dark:border-border-dark backdrop-blur-md z-10">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold">Gestion des Commandes</h2>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Direct</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="bg-slate-100 dark:bg-white/5 border-none rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/50" placeholder="Rechercher une commande..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-white/10 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-surface-dark"></span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 bg-slate-50 dark:bg-background-dark">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Total Commandes</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold">1,284</h3>
+<span class="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">+12%</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">En Préparation</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-amber-500">18</h3>
+<span class="text-[10px] font-bold text-amber-500 bg-amber-500/10 px-2 py-1 rounded">Urgent</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">En Livraison</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-blue-500">12</h3>
+<span class="text-[10px] font-bold text-blue-500 bg-blue-500/10 px-2 py-1 rounded">Live</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">CA Total (FCFA)</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-emerald-500">2.4M</h3>
+<span class="text-xs font-bold text-slate-500">Aujourd'hui</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-border-dark shadow-sm mb-6 flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-3">
+<label class="text-sm font-medium text-slate-500">Période:</label>
+<input class="bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-lg text-sm focus:ring-primary focus:border-primary" type="date"/>
+<span class="text-slate-400">à</span>
+<input class="bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-lg text-sm focus:ring-primary focus:border-primary" type="date"/>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-white/10 hidden md:block"></div>
+<div class="flex items-center gap-3">
+<label class="text-sm font-medium text-slate-500">Statut:</label>
+<select class="bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-lg text-sm focus:ring-primary focus:border-primary pr-10">
+<option>Tous les statuts</option>
+<option>Préparation</option>
+<option>Livraison</option>
+<option>Livrée</option>
+</select>
+</div>
+<div class="flex items-center gap-3">
+<label class="text-sm font-medium text-slate-500">Paiement:</label>
+<select class="bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 rounded-lg text-sm focus:ring-primary focus:border-primary pr-10">
+<option>Tous</option>
+<option>Espèces</option>
+<option>Mobile Money</option>
+<option>Carte Bancaire</option>
+</select>
+</div>
+<button class="ml-auto bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-lg">filter_alt</span>
+                        Appliquer
+                    </button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-white/5 border-b border-slate-200 dark:border-border-dark">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">ID Commande</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Client</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Articles</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Date &amp; Heure</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Prix Total</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Statut</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-border-dark">
+<tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-mono text-sm font-bold text-primary">#BE-4509</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold">Jean-Marc Kouadio</span>
+<span class="text-[10px] text-slate-500">+225 07 01 23 45 67</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">
+<span class="bg-slate-100 dark:bg-white/10 px-2 py-1 rounded text-xs font-medium">3 items</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">
+                                    Aujourd'hui, 14:20
+                                </td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold">24,500 <span class="text-[10px] font-normal text-slate-500">FCFA</span></span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="text-xs font-bold text-amber-500 uppercase">Préparation</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-all" title="Voir">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="bg-primary text-white px-3 py-1.5 rounded-lg text-[11px] font-bold hover:bg-primary/90 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                                            Assigner
+                                        </button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-mono text-sm font-bold text-primary">#BE-4508</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold">Fatou Diop</span>
+<span class="text-[10px] text-slate-500">+225 01 44 88 22 11</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">
+<span class="bg-slate-100 dark:bg-white/10 px-2 py-1 rounded text-xs font-medium">1 item</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">
+                                    Aujourd'hui, 13:45
+                                </td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold">12,000 <span class="text-[10px] font-normal text-slate-500">FCFA</span></span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+<span class="text-xs font-bold text-blue-500 uppercase">Livraison</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 rounded-lg border border-blue-500/20">
+<img alt="Driver" class="w-4 h-4 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj4nWwdP0InXiylTZHw45bbnORhN_hgilDaTnU6vwG2mqRrE2M8-tyd0SruOydZtM0Lz_uthaPgBOJW0Uzf_0u0Kzbf3eUaaSMCFqdFCeaGu4g8aU-edARUUjJPGCTD6pXmz4u97HjaYJYIB0a2p5_5-UbBVmZJzKSuy--o0PiynSaW5TBQ5Av664v6WXDt9UyLXpZT9ftqwif7uZeJ6TGFDPDvi9N_Ew_BOzr0BaHcDKMUBLw_XsNE9xxlP9KVs3_GEkDiiaF1Q"/>
+<span class="text-[11px] font-bold text-blue-500">Moussa K.</span>
+</div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-mono text-sm font-bold text-primary">#BE-4507</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold">Bakary Sanogo</span>
+<span class="text-[10px] text-slate-500">+225 05 99 33 22 11</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">
+<span class="bg-slate-100 dark:bg-white/10 px-2 py-1 rounded text-xs font-medium">5 items</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">
+                                    Aujourd'hui, 12:10
+                                </td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold">35,200 <span class="text-[10px] font-normal text-slate-500">FCFA</span></span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold text-emerald-500 uppercase">Livré</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-slate-50 dark:bg-white/5 border-t border-slate-200 dark:border-border-dark flex items-center justify-between">
+<span class="text-xs text-slate-500">Affichage de 1 à 10 sur 1,284 commandes</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-slate-200 dark:border-white/10 rounded bg-white dark:bg-surface-dark text-xs disabled:opacity-50">Précédent</button>
+<button class="px-3 py-1 border border-primary bg-primary text-white rounded text-xs">1</button>
+<button class="px-3 py-1 border border-slate-200 dark:border-white/10 rounded bg-white dark:bg-surface-dark text-xs">2</button>
+<button class="px-3 py-1 border border-slate-200 dark:border-white/10 rounded bg-white dark:bg-surface-dark text-xs">3</button>
+<button class="px-3 py-1 border border-slate-200 dark:border-white/10 rounded bg-white dark:bg-surface-dark text-xs">Suivant</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

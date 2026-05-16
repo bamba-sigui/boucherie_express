@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestion de la Clientèle - Boucherie Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d21e1e",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211111",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-[#382929]">
+<div class="flex items-center p-4 justify-between">
+<div class="flex items-center gap-3">
+<button class="text-gray-900 dark:text-white flex size-10 items-center justify-center hover:bg-gray-100 dark:hover:bg-[#382929] rounded-lg">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Clients</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 px-3 bg-primary text-white gap-2 text-sm font-bold shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+<span class="hidden sm:inline">Export Marketing</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<!-- Quick Stats Section -->
+<section class="flex flex-wrap gap-3 p-4">
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-xl p-4 border border-gray-200 dark:border-[#523d3d] bg-white dark:bg-transparent">
+<p class="text-gray-500 dark:text-[#b79e9e] text-xs font-medium uppercase tracking-wider">Total Clients</p>
+<p class="text-2xl font-bold leading-tight">1,240</p>
+<div class="flex items-center gap-1 text-green-500 text-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12% mois</span>
+</div>
+</div>
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-xl p-4 border border-gray-200 dark:border-[#523d3d] bg-white dark:bg-transparent">
+<p class="text-gray-500 dark:text-[#b79e9e] text-xs font-medium uppercase tracking-wider">LTV Moyenne</p>
+<p class="text-2xl font-bold leading-tight">45.50 €</p>
+<div class="flex items-center gap-1 text-primary text-xs font-semibold">
+<span>VIP: 124</span>
+</div>
+</div>
+</section>
+<!-- Search and Filters -->
+<section class="px-4 py-2 space-y-3">
+<label class="flex flex-col w-full h-12">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden shadow-sm">
+<div class="text-gray-400 dark:text-[#b79e9e] flex border-none bg-white dark:bg-[#382929] items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-white dark:bg-[#382929] text-gray-900 dark:text-white focus:ring-0 h-full placeholder:text-gray-400 dark:placeholder:text-[#b79e9e] pl-2 text-base font-normal" placeholder="Rechercher (nom, tel, ville...)" value=""/>
+</div>
+</label>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-4">
+<span class="text-sm font-medium">Tous</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-[#382929] px-4 border border-gray-200 dark:border-transparent">
+<span class="text-sm font-medium">Nouveaux</span>
+<span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-[#382929] px-4 border border-gray-200 dark:border-transparent">
+<span class="text-sm font-medium">Top Acheteurs</span>
+<span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-[#382929] px-4 border border-gray-200 dark:border-transparent">
+<span class="text-sm font-medium">Inactifs</span>
+<span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+</div>
+</section>
+<!-- Customer List (Table Alternative) -->
+<section class="p-4 pt-2">
+<div class="flex flex-col gap-3">
+<!-- Customer Item 1 -->
+<div class="group bg-white dark:bg-[#2a1a1a] p-4 rounded-xl border border-gray-100 dark:border-[#3d2b2b] shadow-sm hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                                JD
+                            </div>
+<div>
+<h3 class="font-bold text-base">Jean Dupont</h3>
+<p class="text-sm text-gray-500 dark:text-[#b79e9e]">06 12 34 56 78</p>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider mb-1">Fidèle</span>
+<p class="text-xs text-gray-400 dark:text-[#b79e9e]">Inscrit le 12/01/24</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-3 border-t border-gray-50 dark:border-[#382929]">
+<div>
+<p class="text-[10px] uppercase text-gray-400 dark:text-[#b79e9e] font-semibold">Commandes</p>
+<p class="text-sm font-bold">24 commandes</p>
+</div>
+<div>
+<p class="text-[10px] uppercase text-gray-400 dark:text-[#b79e9e] font-semibold">LTV (Valeur Totale)</p>
+<p class="text-sm font-bold text-primary">845,20 €</p>
+</div>
+</div>
+</div>
+<!-- Customer Item 2 -->
+<div class="group bg-white dark:bg-[#2a1a1a] p-4 rounded-xl border border-gray-100 dark:border-[#3d2b2b] shadow-sm hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-200 dark:bg-[#382929] flex items-center justify-center text-gray-600 dark:text-white font-bold">
+                                ML
+                            </div>
+<div>
+<h3 class="font-bold text-base">Marie Lefèvre</h3>
+<p class="text-sm text-gray-500 dark:text-[#b79e9e]">07 88 22 11 00</p>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider mb-1">Nouveau</span>
+<p class="text-xs text-gray-400 dark:text-[#b79e9e]">Inscrit le 05/03/24</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-3 border-t border-gray-50 dark:border-[#382929]">
+<div>
+<p class="text-[10px] uppercase text-gray-400 dark:text-[#b79e9e] font-semibold">Commandes</p>
+<p class="text-sm font-bold">1 commande</p>
+</div>
+<div>
+<p class="text-[10px] uppercase text-gray-400 dark:text-[#b79e9e] font-semibold">LTV (Valeur Totale)</p>
+<p class="text-sm font-bold text-primary">32,50 €</p>
+</div>
+</div>
+</div>
+<!-- Customer Item 3 -->
+<div class="group bg-white dark:bg-[#2a1a1a] p-4 rounded-xl border border-gray-100 dark:border-[#3d2b2b] shadow-sm hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold">
+                                AM
+                            </div>
+<div>
+<h3 class="font-bold text-base">Antoine Martin</h3>
+<p class="text-sm text-gray-500 dark:text-[#b79e9e]">06 00 11 22 33</p>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-1">Inactif</span>
+<p class="text-xs text-gray-400 dark:text-[#b79e9e]">Inscrit le 20/11/23</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-3 border-t border-gray-50 dark:border-[#382929]">
+<div>
+<p class="text-[10px] uppercase text-gray-400 dark:text-[#b79e9e] font-semibold">Commandes</p>
+<p class="text-sm font-bold">8 commandes</p>
+</div>
+<div>
+<p class="text-[10px] uppercase text-gray-400 dark:text-[#b79e9e] font-semibold">LTV (Valeur Totale)</p>
+<p class="text-sm font-bold text-primary">124,00 €</p>
+</div>
+</div>
+</div>
+<button class="mt-4 flex w-full items-center justify-center p-3 rounded-lg border-2 border-dashed border-gray-200 dark:border-[#3d2b2b] text-gray-400 dark:text-[#b79e9e] text-sm font-medium hover:border-primary/50 hover:text-primary transition-colors">
+                    Charger plus de clients
+                </button>
+</div>
+</section>
+</main>
+<!-- Navigation Drawer Overlay (Simulated) -->
+<div class="fixed inset-y-0 left-0 z-50 w-72 bg-background-light dark:bg-[#171111] shadow-2xl transform -translate-x-full transition-transform duration-300 hidden">
+<div class="p-6 h-full flex flex-col">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">restaurant</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">Boucherie Admin</h1>
+</div>
+<ul class="flex flex-col gap-2">
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 hover:bg-gray-100 dark:hover:bg-[#382929] cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-base font-bold truncate">Tableau de bord</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 hover:bg-gray-100 dark:hover:bg-[#382929] cursor-pointer">
+<span class="material-symbols-outlined">shopping_cart</span>
+<p class="text-base font-bold truncate">Commandes</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 hover:bg-gray-100 dark:hover:bg-[#382929] cursor-pointer">
+<span class="material-symbols-outlined">inventory_2</span>
+<p class="text-base font-bold truncate">Produits</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 bg-primary/10 text-primary cursor-pointer border border-primary/20">
+<span class="material-symbols-outlined">group</span>
+<p class="text-base font-bold truncate">Clients</p>
+</li>
+</ul>
+<div class="mt-auto pt-6 border-t border-gray-200 dark:border-[#382929]">
+<li class="flex h-12 items-center gap-4 rounded-xl px-4 hover:bg-red-50 dark:hover:bg-red-900/20 text-red-500 cursor-pointer list-none">
+<span class="material-symbols-outlined">logout</span>
+<p class="text-base font-bold truncate">Déconnexion</p>
+</li>
+</div>
+</div>
+</div>
+<!-- Bottom Tab Bar for Mobile Navigation Context -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#171111] border-t border-gray-200 dark:border-[#382929] flex justify-around items-center h-16 px-4 z-40">
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Clients</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Réglages</span>
+</div>
+</nav>
+<div class="h-20 bg-transparent"></div> <!-- Spacer for bottom nav -->
+
+```</body></html>

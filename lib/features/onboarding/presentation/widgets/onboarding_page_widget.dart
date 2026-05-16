@@ -127,7 +127,7 @@ class OnboardingPageWidget extends StatelessWidget {
               page.description,
               textAlign: TextAlign.start,
               style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.7),
+                color: AppColors.textSecondary,
                 fontSize: 16,
                 height: 1.5,
               ),
@@ -156,7 +156,7 @@ class OnboardingPageWidget extends StatelessWidget {
       spans.add(
         TextSpan(
           text: line,
-          style: TextStyle(color: isGreen ? AppColors.primary : Colors.white),
+          style: TextStyle(color: isGreen ? AppColors.primary : AppColors.textPrimary),
         ),
       );
 

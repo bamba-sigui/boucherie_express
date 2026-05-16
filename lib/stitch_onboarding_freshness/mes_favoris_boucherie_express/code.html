@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#931f33",
+                        "background-light": "#f1f2f4",
+                        "background-dark": "#17191c",
+                        "card-dark": "#25292f",
+                        "accent-green": "#4ECDC4"
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { font-family: 'Noto Serif', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen flex flex-col">
+<!-- Header / TopAppBar -->
+<header class="sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<div class="flex items-center px-4 py-6 justify-between max-w-md mx-auto w-full">
+<div class="w-10 flex items-center justify-start">
+<span class="material-symbols-outlined text-white cursor-pointer">arrow_back_ios</span>
+</div>
+<h1 class="text-white text-xl font-bold leading-tight tracking-tight flex-1 text-center font-display">Mes Favoris</h1>
+<div class="w-10 flex items-center justify-end">
+<span class="material-symbols-outlined text-white cursor-pointer">tune</span>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-1 overflow-y-auto max-w-md mx-auto w-full px-4 pb-24">
+<!-- Product Card 1 -->
+<div class="bg-card-dark rounded-xl overflow-hidden mb-6 shadow-2xl ring-1 ring-white/10">
+<div class="relative group">
+<!-- Carousel Mockup (Horizontal Scroll) -->
+<div class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory">
+<div class="shrink-0 w-full snap-start aspect-[4/3] bg-center bg-cover" data-alt="Premium marbled ribeye steak on dark stone background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfR-gA4P-Tn3Tj9s5yE8akxnv1XP0DbMK1uyGKDt0xWs6hkXdvm9Md03hrDrgkA8ICAF_YceekTZ5jP7jD5YKALzJoRL8SaxAxsTQOB3aTn1NOkzAbleKrGzBA5YolXq-pzKW8L-NHvh-IHuvskHKCCGkVG8IIWz94uuUxL8wa_gJdZX3x14tQllXgBBZa7qAlRgL6izvM0WwEEcap6E3IFP8L_mvOvCq3sSdfkHEUj3w_R8qvE1AQeB6pyeFJ80D6TEjxj0z8FQ");'>
+</div>
+<div class="shrink-0 w-full snap-start aspect-[4/3] bg-center bg-cover" data-alt="Close up of raw seasoned meat texture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbBSr9mUSPzrK2WpW2yjG4sSQkvm0K6_xfnuWTermSFwihF9_7c3_dWTGm99rsZ5t-3Yj2ZErETs9r2uLq_mEV6hvbZmWNagoYbYXarBzISpsrW6FPxAogdJCC2YvEoi44KtyXJtzwJLMCX0iNbr7Wl4uLKMk3hrnxQfAniV_zYdtq5Nv41nccW7mHbZtFx6P-RHNXovr16WPF1MarSayMTfRNXTUV5sv6heg3Owl6rrQd9JKPM2g7eryVTptFRpVoxnyc8K3mfA");'>
+</div>
+</div>
+<!-- Badge & Heart -->
+<div class="absolute top-4 left-4">
+<span class="bg-accent-green text-background-dark text-[10px] font-bold px-2 py-1 rounded-full tracking-widest uppercase">100% FRAIS</span>
+</div>
+<div class="absolute top-4 right-4 bg-background-dark/40 backdrop-blur-sm p-2 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<!-- Page Indicators -->
+<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold font-display text-white">Côte de Bœuf maturée</h3>
+<p class="text-primary font-bold text-lg">34,90€/kg</p>
+</div>
+<p class="text-white/60 text-sm mb-4 line-clamp-2">Sélection d'exception, maturée 45 jours minimum en cave sèche. Persillage intense.</p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm">shopping_cart</span>
+<span class="text-sm uppercase tracking-wider">Ajouter au panier</span>
+</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-card-dark rounded-xl overflow-hidden mb-6 shadow-2xl ring-1 ring-white/10">
+<div class="relative">
+<div class="aspect-[4/3] bg-center bg-cover" data-alt="Pork tenderloin prepared with herbs" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDs273tao_RQPFfw-wsHw0w7ditoxdg2st417oI28yJGfoB-AnFAwSIvsqoAI7qXJKdRLw9nJvvG1OyojMMhLDfOTK-s7CVPL29KoU73cBqdgU4mW7J0WAIrlAUiDA2EF78d0cdblxejwMadlBRRDDNdWujidLsl4-yTJeBoaXIjeq7XyHVc_Blzch1xx1dzcJOxQGBrJDCtRJ3M1LWTr5W83qBitPfx1pUSQPWK1xbJ_KFrsHAKJuRq4C8fzA1o1LF5Wq8aJ9XqA");'>
+</div>
+<div class="absolute top-4 left-4">
+<span class="bg-accent-green text-background-dark text-[10px] font-bold px-2 py-1 rounded-full tracking-widest uppercase">100% FRAIS</span>
+</div>
+<div class="absolute top-4 right-4 bg-background-dark/40 backdrop-blur-sm p-2 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold font-display text-white">Filet de Mignon de Porc</h3>
+<p class="text-primary font-bold text-lg">19,50€/kg</p>
+</div>
+<p class="text-white/60 text-sm mb-4">Origine Bretagne. Morceau très tendre et maigre, idéal pour les repas en famille.</p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm">shopping_cart</span>
+<span class="text-sm uppercase tracking-wider">Ajouter au panier</span>
+</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-card-dark rounded-xl overflow-hidden mb-6 shadow-2xl ring-1 ring-white/10 opacity-80">
+<div class="relative">
+<div class="aspect-[4/3] bg-center bg-cover grayscale" data-alt="Leg of lamb with rosemary and garlic" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARTxkLdg_5Llw0hnidSWmnmILX-GdRIKMwhIe10-qP-ZwEIX86EtaYjZ8eloHj_PixZ3tUR13H4eNFrMDCevbDcdbDeFxsh4zZWnhCa10fe8QLpwAA4EPg2YPi5c7JCN6t2qm8C0N0PlzKL4Dvlv2SXGJ5TF_5ZcjlMVNCsNAMhNUotr4_8B0jpbKsb6S_0cDJM8XCM-Ij4wUKVoVeGgulCYtcDc35KgEufA_oyIfvCOH-QF6DXtamBU2_z3eiOtRZPrOketwYAg");'>
+</div>
+<div class="absolute inset-0 bg-background-dark/50 flex items-center justify-center">
+<span class="bg-background-dark text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-tighter ring-1 ring-white/20">Rupture de stock</span>
+</div>
+<div class="absolute top-4 right-4 bg-background-dark/40 backdrop-blur-sm p-2 rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold font-display text-white/50">Gigot d'Agneau de Lait</h3>
+<p class="text-white/40 font-bold text-lg">28,00€/kg</p>
+</div>
+<button class="w-full bg-white/5 text-white/40 font-bold py-3 rounded-lg flex items-center justify-center gap-2 cursor-not-allowed" disabled="">
+<span class="text-sm uppercase tracking-wider">Indisponible</span>
+</button>
+</div>
+</div>
+</main>
+<!-- iOS Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-lg border-t border-white/5 px-4 pt-3 pb-8 z-50">
+<div class="max-w-md mx-auto flex justify-between items-center">
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="material-symbols-outlined text-white/40 group-hover:text-white">home</span>
+<span class="text-[10px] font-medium text-white/40">Accueil</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="material-symbols-outlined text-white/40 group-hover:text-white">search</span>
+<span class="text-[10px] font-medium text-white/40">Explorer</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-[10px] font-medium text-primary">Favoris</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer relative">
+<span class="material-symbols-outlined text-white/40 group-hover:text-white">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+<span class="text-[10px] font-medium text-white/40">Panier</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="material-symbols-outlined text-white/40 group-hover:text-white">person</span>
+<span class="text-[10px] font-medium text-white/40">Profil</span>
+</div>
+</div>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute -top-[10%] -left-[20%] w-[60%] h-[60%] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-[10%] -right-[20%] w-[50%] h-[50%] bg-accent-green/5 blur-[100px] rounded-full"></div>
+</div>
+</body></html>

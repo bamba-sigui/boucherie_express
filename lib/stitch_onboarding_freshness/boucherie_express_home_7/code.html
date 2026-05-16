@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "brand-red": "#C62828",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "category-unselected": "#2a2a2a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white min-h-screen pb-32">
+<header class="sticky top-0 z-50 bg-background-dark/90 backdrop-blur-md px-5 py-4 flex items-center justify-between border-b border-white/5">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Mes adresses</h1>
+</div>
+<button class="relative p-2 rounded-full bg-card-dark text-white">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-0 right-0 size-4 bg-primary text-background-dark text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
+</button>
+</header>
+<main class="p-4 space-y-4">
+<section class="space-y-4">
+<div class="relative p-4 bg-card-dark rounded-2xl border-2 border-primary/50 flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">home</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-bold text-slate-100">Maison</h3>
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Par défaut</span>
+</div>
+<p class="text-sm text-slate-400">12 Rue des Jardins, Cocody, Abidjan</p>
+</div>
+</div>
+<label class="relative flex items-center cursor-pointer">
+<input checked="" class="w-6 h-6 text-primary bg-background-dark border-white/10 focus:ring-primary focus:ring-offset-background-dark" name="default_address" type="radio"/>
+</label>
+</div>
+<div class="flex items-center justify-end gap-4 pt-2 border-t border-white/5">
+<button class="flex items-center gap-1.5 text-slate-400 text-sm font-semibold hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+                        Modifier
+                    </button>
+<button class="flex items-center gap-1.5 text-brand-red text-sm font-semibold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">delete</span>
+                        Supprimer
+                    </button>
+</div>
+</div>
+<div class="p-4 bg-card-dark rounded-2xl border border-white/5 flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">work</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-100">Bureau</h3>
+<p class="text-sm text-slate-400">Immeuble CCIA, Plateau, Abidjan</p>
+</div>
+</div>
+<label class="relative flex items-center cursor-pointer">
+<input class="w-6 h-6 text-primary bg-background-dark border-white/10 focus:ring-primary focus:ring-offset-background-dark" name="default_address" type="radio"/>
+</label>
+</div>
+<div class="flex items-center justify-end gap-4 pt-2 border-t border-white/5">
+<button class="flex items-center gap-1.5 text-slate-400 text-sm font-semibold hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+                        Modifier
+                    </button>
+<button class="flex items-center gap-1.5 text-brand-red text-sm font-semibold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">delete</span>
+                        Supprimer
+                    </button>
+</div>
+</div>
+<div class="p-4 bg-card-dark rounded-2xl border border-white/5 flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">location_on</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-100">Parents</h3>
+<p class="text-sm text-slate-400">Quartier Kennedy, Bouaké</p>
+</div>
+</div>
+<label class="relative flex items-center cursor-pointer">
+<input class="w-6 h-6 text-primary bg-background-dark border-white/10 focus:ring-primary focus:ring-offset-background-dark" name="default_address" type="radio"/>
+</label>
+</div>
+<div class="flex items-center justify-end gap-4 pt-2 border-t border-white/5">
+<button class="flex items-center gap-1.5 text-slate-400 text-sm font-semibold hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+                        Modifier
+                    </button>
+<button class="flex items-center gap-1.5 text-brand-red text-sm font-semibold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">delete</span>
+                        Supprimer
+                    </button>
+</div>
+</div>
+</section>
+<section class="pt-6">
+<button class="w-full bg-brand-red text-white font-black py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-brand-red/20 active:scale-[0.98] transition-all uppercase tracking-wide">
+<span class="material-symbols-outlined">add_location_alt</span>
+                Ajouter une nouvelle adresse
+            </button>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-xl border-t border-white/5 px-2 pb-8 pt-3 flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Accueil</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Favoris</span>
+</button>
+<div class="relative -top-8">
+<button class="size-16 rounded-full bg-primary text-background-dark shadow-[0_0_20px_rgba(56,224,123,0.3)] flex flex-col items-center justify-center border-4 border-background-dark">
+<span class="material-symbols-outlined text-2xl font-bold">tune</span>
+<span class="text-[9px] font-black uppercase">Filtrer</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">person</span>
+<span class="text-[10px] font-bold">Profil</span>
+</button>
+</nav>
+
+</body></html>

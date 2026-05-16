@@ -46,7 +46,7 @@ class SplashScreen extends StatelessWidget {
                 const Text(
                   'Boucherie Express',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Paramètres de la Plateforme - Boucherie Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#181111",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #543b3b;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-display">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-[#271c1c] p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Paramètres</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-slate-900 dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto custom-scrollbar pb-32">
+<!-- Section: Infos Plateforme -->
+<section class="mb-6">
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Infos Plateforme</h2>
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-2">Nom de la Boucherie</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-1 focus:ring-primary border border-gray-300 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] h-14 placeholder:text-gray-400 dark:placeholder:text-[#b99d9d] p-[15px] text-base font-normal leading-normal" type="text" value="Boucherie Express Abidjan"/>
+</label>
+</div>
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-2">Email Support</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-1 focus:ring-primary border border-gray-300 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] h-14 placeholder:text-gray-400 dark:placeholder:text-[#b99d9d] p-[15px] text-base font-normal leading-normal" type="email" value="contact@boucherieexpress.ci"/>
+</label>
+</div>
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-2">Téléphone</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-1 focus:ring-primary border border-gray-300 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] h-14 placeholder:text-gray-400 dark:placeholder:text-[#b99d9d] p-[15px] text-base font-normal leading-normal" type="tel" value="+225 07 00 00 00 00"/>
+</label>
+</div>
+</section>
+<!-- Section: Modes de Paiement -->
+<section class="mb-6">
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 border-t border-gray-200 dark:border-[#271c1c] mt-4">Modes de Paiement</h2>
+<div class="px-4 space-y-3">
+<!-- Wave -->
+<div class="flex items-center justify-between p-4 bg-white dark:bg-[#271c1c] rounded-xl border border-gray-200 dark:border-[#543b3b]">
+<div class="flex items-center gap-3">
+<div class="bg-blue-500/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-blue-500">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Wave</p>
+<p class="text-xs text-slate-500 dark:text-[#b99d9d]">Configuré • Actif</p>
+</div>
+</div>
+<button class="text-primary font-semibold text-sm">Modifier</button>
+</div>
+<!-- Orange Money -->
+<div class="flex items-center justify-between p-4 bg-white dark:bg-[#271c1c] rounded-xl border border-gray-200 dark:border-[#543b3b]">
+<div class="flex items-center gap-3">
+<div class="bg-orange-500/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-orange-500">payments</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Orange Money</p>
+<p class="text-xs text-slate-500 dark:text-[#b99d9d]">Non configuré</p>
+</div>
+</div>
+<button class="bg-primary text-white px-3 py-1.5 rounded-lg text-sm font-bold">Configurer</button>
+</div>
+<!-- MTN -->
+<div class="flex items-center justify-between p-4 bg-white dark:bg-[#271c1c] rounded-xl border border-gray-200 dark:border-[#543b3b]">
+<div class="flex items-center gap-3">
+<div class="bg-yellow-500/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-yellow-600">smartphone</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">MTN MoMo</p>
+<p class="text-xs text-slate-500 dark:text-[#b99d9d]">En attente de validation</p>
+</div>
+</div>
+<button class="text-primary font-semibold text-sm">Vérifier</button>
+</div>
+</div>
+</section>
+<!-- Section: Rôles & Permissions -->
+<section class="mb-6">
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 border-t border-gray-200 dark:border-[#271c1c] mt-4">Rôles &amp; Permissions</h2>
+<div class="px-4 py-2">
+<!-- Admin Role -->
+<div class="mb-4">
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+<span class="font-bold text-slate-900 dark:text-white">Administrateur</span>
+</div>
+<span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full font-bold">Accès Total</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-[#b99d9d] pl-8">Gestion complète de la plateforme, des finances et des utilisateurs.</p>
+</div>
+<div class="h-px bg-gray-200 dark:bg-[#271c1c] my-4"></div>
+<!-- Operator Role -->
+<div>
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500 dark:text-[#b99d9d]">support_agent</span>
+<span class="font-bold text-slate-900 dark:text-white">Opérateur</span>
+</div>
+<button class="text-primary text-sm font-semibold">Éditer</button>
+</div>
+<div class="pl-8 space-y-3 mt-2">
+<div class="flex items-center justify-between">
+<span class="text-sm text-slate-700 dark:text-slate-300">Gérer les commandes</span>
+<div class="relative inline-block w-10 h-6 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-primary appearance-none cursor-pointer right-0" id="toggle-1" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer" for="toggle-1"></label>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-slate-700 dark:text-slate-300">Modifier l'inventaire</span>
+<div class="relative inline-block w-10 h-6 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-gray-300 dark:border-[#543b3b] appearance-none cursor-pointer" id="toggle-2" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 dark:bg-[#271c1c] cursor-pointer" for="toggle-2"></label>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-slate-700 dark:text-slate-300">Voir les rapports financiers</span>
+<div class="relative inline-block w-10 h-6 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-2 border-gray-300 dark:border-[#543b3b] appearance-none cursor-pointer" id="toggle-3" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 dark:bg-[#271c1c] cursor-pointer" for="toggle-3"></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Save Button Container -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-[#271c1c]">
+<button class="w-full bg-primary hover:bg-red-700 text-white h-14 rounded-xl text-lg font-bold shadow-lg flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined">save</span>
+            Enregistrer les modifications
+        </button>
+</div>
+<style>
+        /* Custom Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #ec1313;
+        }
+        .toggle-checkbox:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .toggle-checkbox {
+            right: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</body></html>

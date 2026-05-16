@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestion des Stocks &amp; Éleveurs - Boucherie Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c82828",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#201212",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #372a2a;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<nav class="sticky top-0 z-50 bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-white/10">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Stocks &amp; Éleveurs</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-2xl">ios_share</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Alert Banner (High Priority) -->
+<div class="px-4 pt-4">
+<div class="bg-primary/10 border border-primary/20 rounded-xl p-3 flex items-center gap-3">
+<div class="bg-primary rounded-full p-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">priority_high</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-primary">Alerte : 4 produits en stock critique</p>
+<p class="text-xs text-primary/80">Action requise pour éviter une rupture.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">chevron_right</span>
+</div>
+</div>
+<!-- SearchBar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-gray-400 dark:text-[#b6a0a0] flex border-none bg-white dark:bg-[#372a2a] items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-white dark:bg-[#372a2a] focus:border-none h-full placeholder:text-gray-400 dark:placeholder:text-[#b6a0a0] px-4 pl-2 text-base font-normal" placeholder="Rechercher bœuf, saumon..." value=""/>
+</div>
+</label>
+</div>
+<!-- Chips (Filters) -->
+<div class="flex gap-3 px-4 py-2 overflow-x-auto custom-scrollbar no-scrollbar">
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 shadow-lg shadow-primary/20">
+<p class="text-white text-sm font-semibold">Tout</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#372a2a] px-5 border border-gray-100 dark:border-transparent">
+<span class="material-symbols-outlined text-sm">restaurant</span>
+<p class="text-slate-600 dark:text-white text-sm font-medium">Viandes</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#372a2a] px-5 border border-gray-100 dark:border-transparent">
+<span class="material-symbols-outlined text-sm">set_meal</span>
+<p class="text-slate-600 dark:text-white text-sm font-medium">Poissons</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#372a2a] px-5 border border-gray-100 dark:border-transparent">
+<span class="material-symbols-outlined text-sm text-primary">warning</span>
+<p class="text-slate-600 dark:text-white text-sm font-medium">Stock Faible</p>
+</div>
+</div>
+<!-- SectionHeader -->
+<div class="flex items-center justify-between px-4 pt-6 pb-2">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Inventaire Temps Réel</h3>
+<button class="text-primary text-sm font-semibold flex items-center gap-1">
+            Mise à jour <span class="material-symbols-outlined text-base">refresh</span>
+</button>
+</div>
+<!-- Inventory List -->
+<div class="flex-1 overflow-y-auto px-4 space-y-3 pb-24">
+<!-- Low Stock Item 1 -->
+<div class="flex flex-col gap-3 bg-white dark:bg-[#2d1e1e] p-4 rounded-xl border border-primary/30 dark:border-primary/20 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 ring-1 ring-primary/20" data-alt="Premium raw beef fillet cut" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFYlTH61-6pmMaBF23LR-TeKlfz7UkmP0DFnJMNyVYmXLto_LvGGUMthWQZ5CHPqmZrpt9R2pPI3vUTf2BBeJjriRK02nNkmVs6yjIlgT13ds6GKsTGP-5YnNCwOfThb8kSm6n77CpFVFdrje4wJ6lj6vGyysT-nrVXGOmra9Oqn90HqVyoYx5b78wR_T3bNE9UGDKSr3hMxv8ZCpB1d1tc5TwD2IKgj1drSpwgRzjPHe_Q7BX9vuNcg2q45kcLePvAxgePfq-cg");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-white text-base font-bold">Filet de Bœuf</p>
+<div class="flex items-center gap-1 text-primary text-sm font-semibold">
+<span class="material-symbols-outlined text-sm">warning</span>
+                            Stock Faible: 12.5 kg
+                        </div>
+</div>
+</div>
+<div class="shrink-0">
+<div class="flex size-6 items-center justify-center rounded-full bg-primary/20">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-black/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[15%]"></div>
+</div>
+<div class="flex items-center justify-between mt-1 pt-2 border-t border-gray-100 dark:border-white/5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-lg">person_pin</span>
+<p class="text-gray-500 dark:text-[#b6a0a0] text-xs font-medium">Ferme des Prairies</p>
+</div>
+<button class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Réappro</button>
+</div>
+</div>
+<!-- Low Stock Item 2 -->
+<div class="flex flex-col gap-3 bg-white dark:bg-[#2d1e1e] p-4 rounded-xl border border-primary/30 dark:border-primary/20 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 ring-1 ring-primary/20" data-alt="Fresh salmon steak on ice" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxjsoku78CGIlTBv5md3qZ4huF4mvmD6eTFRhIz0zixh7J2rKwOau990tWJZEVfG4FAsvI_Qk0Qv-tHYDqjWs4sWTPcnab9E6JsyC2iX_fM6wwLvZlgYfcJMzWt0f4pi4r2VuTNK9jUaCMnNfU_tDfH-fdBzCvdMqlXGqPxFVYH6Re-QCxCzA_xY_NX_vLgbzOIdvGkK5FECbc7Ja2MgQIcSAP1XH89amdjbx-VyznYNXC58cfsJ5GglMGsb1iTTtlBdQIXL8v6A");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-white text-base font-bold">Pavé de Saumon</p>
+<div class="flex items-center gap-1 text-primary text-sm font-semibold">
+<span class="material-symbols-outlined text-sm">warning</span>
+                            Stock Faible: 5 unités
+                        </div>
+</div>
+</div>
+<div class="shrink-0">
+<div class="flex size-6 items-center justify-center rounded-full bg-primary/20">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-black/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[8%]"></div>
+</div>
+<div class="flex items-center justify-between mt-1 pt-2 border-t border-gray-100 dark:border-white/5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-lg">water_drop</span>
+<p class="text-gray-500 dark:text-[#b6a0a0] text-xs font-medium">Élevage Breton &amp; Co</p>
+</div>
+<button class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Réappro</button>
+</div>
+</div>
+<!-- Normal Stock Item -->
+<div class="flex flex-col gap-3 bg-white dark:bg-white/5 p-4 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 grayscale-[0.3]" data-alt="Fresh whole chicken" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDx2CmB6eKw2utiGjAU1cJhEmAjlVD1dBnO9a0JW-DSFQz_AgwSglaMXRv2n_rR-j0yvHW5izcivo0TrNxyL_Xxgsf69UQ5-Wu1wtYi8HxWEG0YYQmAcT8Qr1URerK-nEwqZ2khu_p8hQEqzv0_nGLk_UnPqMvekHRmizF8w15r-7_o0YAZPX6oq2AlPOXIcMaS55paMxEF7jqo6cYAaT7SBP08M_Z0I2B4tsvOMW2H4uaVEZJ35IE84EXbyCLGHItghyKs96uBjg");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-white text-base font-bold">Poulet Fermier</p>
+<p class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold">Stock Optimal: 45 kg</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="flex size-6 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30">
+<div class="size-2.5 rounded-full bg-emerald-500"></div>
+</div>
+</div>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-black/20 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[72%]"></div>
+</div>
+<div class="flex items-center justify-between mt-1 pt-2 border-t border-gray-100 dark:border-white/5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-lg">house</span>
+<p class="text-gray-500 dark:text-[#b6a0a0] text-xs font-medium">Domaine de la Volaille</p>
+</div>
+<span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+</div>
+</div>
+<!-- Normal Stock Item 2 -->
+<div class="flex flex-col gap-3 bg-white dark:bg-white/5 p-4 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 grayscale-[0.3]" data-alt="Lamb chops close up" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7b7VMmu29nazlGiXYiMUTJU6GGoyhmjfqtt1at7lsxtiUyKifz-dCWE7p_yv4gKF1zQ_dui60cYyHfiALPNIzKDNpxcwkn_356kBhy6T5sftoVat24jcLYEA0sytQtq8r9E6AfP1Rce4DkYoorQGu-P15xDJHHBRRY6-7kIhkAgegJFLJIyTTrZkIgJH53qzwTPl3oQmXwt2H3jsm_v8JeRWnFeCTZNcSlbCX2jXOXc3ni3mjJVCnmqT9qBaVwZ74uSOOMeozBQ");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-white text-base font-bold">Côte d'Agneau</p>
+<p class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold">Stock Optimal: 28 kg</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="flex size-6 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30">
+<div class="size-2.5 rounded-full bg-emerald-500"></div>
+</div>
+</div>
+</div>
+<div class="h-1.5 w-full bg-gray-100 dark:bg-black/20 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[60%]"></div>
+</div>
+<div class="flex items-center justify-between mt-1 pt-2 border-t border-gray-100 dark:border-white/5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-lg">person_pin</span>
+<p class="text-gray-500 dark:text-[#b6a0a0] text-xs font-medium">Élevage des Monts</p>
+</div>
+<span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 z-50">
+<button class="flex items-center gap-2 h-14 px-6 bg-primary text-white rounded-full shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined font-bold">add</span>
+<span class="font-bold tracking-wide">MÀJ STOCK</span>
+</button>
+</div>
+<!-- Bottom Navigation (iOS Style) -->
+<div class="fixed bottom-0 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-xl border-t border-gray-200 dark:border-white/5 pb-6 pt-2">
+<div class="flex justify-around items-center px-4">
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Tableau</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Stocks</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Éleveurs</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Rapports</span>
+</div>
+</div>
+</div>
+</body></html>

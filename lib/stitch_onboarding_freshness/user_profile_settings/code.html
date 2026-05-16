@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boucherie Express - Profil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#38e07b",
+              "background-light": "#f6f8f7",
+              "background-dark": "#122017",
+            },
+            fontFamily: {
+              "display": ["Public Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: "Public Sans", sans-serif;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-[430px] mx-auto overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 sticky top-0 z-10">
+<div class="text-primary flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-[28px]">arrow_back_ios_new</span>
+</div>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Profil</h2>
+</header>
+<main class="flex-1 px-4">
+<!-- ProfileHeader -->
+<section class="flex py-6 @container">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="flex gap-4 flex-col items-center">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 ring-4 ring-primary/20" data-alt="Close-up portrait of a smiling West African man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2VXILO0U9dP5p9DZRX_3GxKyh4-ldOKqFkphfiukY-adQWymXvG_9lLdFRrRYfvnoW8pokhhjg3Bf2qM1MKH0Axot_pLBdI4EAALLaN9Ye4tqAxrGmBWUgzbDYoH_CKmIKoTUevSjszzgRP6m8xKaX_Fq4wvDtW-8IFjK1EBuxchV1obKyqm6TCKdxLx8VUDhS0OwNwZ_AF-bCWqXN9Q27B5nTqHqnGYEtZbQf8AoRt5lkJoYUbjFAVF0DgMBbu_AKxtG92GtlA");'>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary p-2 rounded-full border-4 border-background-light dark:border-background-dark shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm font-bold">edit</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-gray-900 dark:text-white text-[24px] font-bold leading-tight tracking-[-0.015em] text-center">Koffi Kouadio</p>
+<p class="text-gray-500 dark:text-primary text-base font-medium leading-normal text-center">+225 07 00 00 00 00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- List Options Section -->
+<div class="flex flex-col gap-2 mt-4">
+<!-- ListItem: Mes adresses -->
+<div class="flex items-center gap-4 bg-white/50 dark:bg-[#1a2e21] px-4 min-h-[72px] justify-between rounded-xl cursor-pointer hover:bg-white/80 dark:hover:bg-[#233d2c] transition-colors border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal flex-1 truncate">Mes adresses</p>
+</div>
+<div class="shrink-0">
+<div class="text-gray-400 dark:text-gray-500 flex size-7 items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- ListItem: Historique des commandes -->
+<div class="flex items-center gap-4 bg-white/50 dark:bg-[#1a2e21] px-4 min-h-[72px] justify-between rounded-xl cursor-pointer hover:bg-white/80 dark:hover:bg-[#233d2c] transition-colors border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal flex-1 truncate">Historique des commandes</p>
+</div>
+<div class="shrink-0">
+<div class="text-gray-400 dark:text-gray-500 flex size-7 items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- ListItem: Support client -->
+<div class="flex items-center gap-4 bg-white/50 dark:bg-[#1a2e21] px-4 min-h-[72px] justify-between rounded-xl cursor-pointer hover:bg-white/80 dark:hover:bg-[#233d2c] transition-colors border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal flex-1 truncate">Support client</p>
+</div>
+<div class="shrink-0">
+<div class="text-gray-400 dark:text-gray-500 flex size-7 items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="h-8"></div>
+<!-- ListItem: Déconnexion -->
+<div class="flex items-center gap-4 bg-red-50 dark:bg-red-900/10 px-4 min-h-[72px] justify-between rounded-xl cursor-pointer hover:bg-red-100 dark:hover:bg-red-900/20 transition-colors border border-red-100 dark:border-red-900/30 mb-10">
+<div class="flex items-center gap-4">
+<div class="text-red-500 dark:text-red-400 flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20 shrink-0 size-12">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<p class="text-red-600 dark:text-red-400 text-base font-bold leading-normal flex-1 truncate">Déconnexion</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Tab Bar Placeholder (iOS Style) -->
+<nav class="flex justify-around items-center bg-white dark:bg-[#1a2e21] border-t border-gray-100 dark:border-gray-800 h-20 pb-4">
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Accueil</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-medium">Panier</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[28px] fill-[1]">person</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profil</span>
+</div>
+</nav>
+</div>
+</body></html>

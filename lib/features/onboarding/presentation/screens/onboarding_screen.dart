@@ -89,7 +89,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: Text(
                           'Boucherie Express',
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.textPrimary,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -134,7 +134,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             decoration: BoxDecoration(
                               color: index == _currentPage
                                   ? AppColors.primary
-                                  : Colors.white24,
+                                  : AppColors.border,
                               borderRadius: BorderRadius.circular(3),
                             ),
                           ),

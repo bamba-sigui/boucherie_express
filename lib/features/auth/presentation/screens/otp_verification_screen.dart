@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/auth_session.dart';
+import '../bloc/auth_bloc.dart';
 import '../bloc/phone_auth_bloc.dart';
 import '../widgets/otp_input.dart';
 import '../widgets/resend_timer.dart';
@@ -95,7 +96,8 @@ class _OtpVerificationViewState extends State<_OtpVerificationView> {
     return BlocListener<PhoneAuthBloc, PhoneAuthState>(
       listener: (context, state) {
         if (state is OtpVerifiedSuccess) {
-          // Succès → Home
+          // Informer AuthBloc immédiatement (sans attendre authStateChanges)
+          context.read<AuthBloc>().add(AuthChanged(state.user));
           context.go('/home');
         } else if (state is OtpResent) {
           // OTP renvoyé → reset timer + feedback

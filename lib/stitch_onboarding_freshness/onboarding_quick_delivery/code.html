@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boucherie Express - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c23d29",
+                        "background-light": "#fafaf9",
+                        "background-dark": "#131315",
+                        "surface-dark": "#1c1c1e",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Spline Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .image-gradient-overlay {
+            background: linear-gradient(to bottom, transparent 60%, #131315 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<div class="flex items-center justify-between p-6 pt-8 z-20">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md">
+<span class="material-symbols-outlined text-white text-xl">chevron_left</span>
+</div>
+<button class="text-white/60 text-sm font-medium tracking-wide uppercase hover:text-white transition-colors">
+            Passer
+        </button>
+</div>
+<!-- Main Hero Image Section -->
+<div class="relative flex-grow flex flex-col items-center justify-start px-4">
+<div class="relative w-full aspect-[4/5] max-h-[50vh] overflow-hidden rounded-xl shadow-2xl">
+<div class="absolute inset-0 bg-center bg-cover" data-alt="Close up of fresh marbled beef steak on dark stone background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEdUn1U5YMEOf3OH2D9p8WovwCgpJxE6khJeUdr5EF_lZtTi6uyW_Dr1ggz0YXn1dIQ6y6Rx11043vERL6OyJImnCnlTR3N01n4rEp0otDbJP4fyZCiiC3D6gItX3TS1dKZ71F_QVAycGKy_tjOy-jskMOZ8wEfzDnvsY_SUnZ__KCWP-lao-TJ8ihSEVPkaizU1jj_eTH1gatx_Obg9Ifqkk__SFUZ9vq-Zc9LS4SnCz5mpgrDbkxpKAulq-IGOFU31oONRwaUQ');">
+</div>
+<div class="absolute inset-0 image-gradient-overlay"></div>
+</div>
+<!-- Floating Content Card -->
+<div class="relative -mt-20 w-full max-w-md bg-surface-dark/80 backdrop-blur-xl border border-white/5 rounded-xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<!-- Pagination Indicators -->
+<div class="flex w-full flex-row items-center justify-center gap-2 mb-8">
+<div class="h-1.5 w-6 rounded-full bg-white/10"></div>
+<div class="h-1.5 w-10 rounded-full bg-primary shadow-[0_0_10px_rgba(194,61,41,0.5)]"></div>
+<div class="h-1.5 w-6 rounded-full bg-white/10"></div>
+</div>
+<!-- Text Content -->
+<div class="space-y-4">
+<h1 class="text-white text-3xl font-bold leading-[1.1] tracking-tight text-center">
+                    Commandez et recevez rapidement
+                </h1>
+<p class="text-white/70 text-base font-normal leading-relaxed text-center px-2">
+                    Paiement Mobile Money ou à la livraison pour votre confort. La fraîcheur n'attend pas.
+                </p>
+</div>
+<!-- CTA Section -->
+<div class="mt-10 flex flex-col gap-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-full shadow-lg shadow-primary/20 transition-all active:scale-95 flex items-center justify-center gap-2">
+<span>Suivant</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Payment Badges (Subtle hints) -->
+<div class="flex justify-center items-center gap-6 pt-2 opacity-40 grayscale">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+<span class="text-[10px] uppercase tracking-tighter font-bold">Cash</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">smartphone</span>
+<span class="text-[10px] uppercase tracking-tighter font-bold">Mobile Money</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Aesthetic Padding -->
+<div class="h-12 w-full"></div>
+</body></html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suivre ma commande - Boucherie Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .timeline-line {
+            width: 2px;
+            background: linear-gradient(to bottom, #38e07b 50%, #29382f 50%);
+        }
+        .active-glow {
+            box-shadow: 0 0 15px rgba(56, 224, 123, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white antialiased">
+<div class="max-w-md mx-auto flex flex-col min-h-screen relative">
+<!-- Header -->
+<header class="flex items-center p-4 pt-6 justify-between sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-4">
+<div class="flex size-10 items-center justify-center rounded-full bg-slate-100 dark:bg-[#1c2620] cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</div>
+<div>
+<h1 class="text-sm font-medium text-slate-500 dark:text-[#9eb7a8]">Commande #BE-4921</h1>
+<p class="text-lg font-bold leading-tight">Suivi en direct</p>
+</div>
+</div>
+<div class="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">help_outline</span>
+</div>
+</header>
+<!-- Map Section -->
+<div class="px-4 py-2">
+<div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden shadow-2xl border border-slate-200 dark:border-[#29382f]">
+<div class="absolute inset-0 bg-center bg-no-repeat bg-cover" data-alt="Map of Abidjan showing delivery route and driver location" data-location="Abidjan, Ivory Coast" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHqWLOzjOh8PsvDws5xUEku7XFX5Ok5EQX3HyOZuKqWb3Lhc_8n1myKraLbEMCXzJuxRuqkU7RIN40PVh2PbjKsPWs2FfzyQVeuOzD59OTgdH07jcgXS4Gctwk0iOi3W9JHiIxL5LUGgJq39urbdL27hJD0CGp68-TgNPTL4oR7ajj1FtYv3lfco8kmoMnVmSjUdaZrDV3zkQt4Q7gNSH54eCsJu1soXsVu6UPKvuMoFRguWSxVyFqHJNAtQ-6D4SaYGsSXpN-Lw');">
+</div>
+<!-- Map Overlay Elements -->
+<div class="absolute top-4 left-4 bg-white dark:bg-[#1c2620] px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg">
+<div class="size-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-bold uppercase tracking-wider">En direct</span>
+</div>
+<div class="absolute bottom-4 right-4 bg-primary text-black px-4 py-2 rounded-lg font-bold shadow-lg flex flex-col items-center leading-none">
+<span class="text-[10px] uppercase opacity-70 mb-1">Arrivée</span>
+<span class="text-xl">12 min</span>
+</div>
+</div>
+</div>
+<!-- Progress Section -->
+<div class="flex-1 px-4 mt-6">
+<div class="bg-white dark:bg-[#1c2620] rounded-xl p-6 shadow-sm">
+<h3 class="text-lg font-bold mb-6">Statut de la livraison</h3>
+<div class="grid grid-cols-[48px_1fr] gap-x-2">
+<!-- Step 1: Completed -->
+<div class="flex flex-col items-center gap-1">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-black active-glow">
+<span class="material-symbols-outlined text-xl">restaurant</span>
+</div>
+<div class="w-[2px] bg-primary h-12"></div>
+</div>
+<div class="flex flex-col pt-1 pb-8">
+<p class="text-slate-900 dark:text-white text-base font-bold">En préparation</p>
+<p class="text-slate-500 dark:text-[#9eb7a8] text-sm leading-snug">Votre viande est soigneusement découpée par nos bouchers.</p>
+</div>
+<!-- Step 2: Active -->
+<div class="flex flex-col items-center gap-1">
+<div class="size-10 rounded-full border-2 border-primary bg-primary/20 flex items-center justify-center text-primary relative">
+<span class="material-symbols-outlined text-xl">motorcycle</span>
+<!-- Animated Ring -->
+<div class="absolute inset-0 rounded-full border border-primary animate-ping opacity-25"></div>
+</div>
+<div class="w-[2px] bg-slate-200 dark:bg-[#3d5245] h-12"></div>
+</div>
+<div class="flex flex-col pt-1 pb-8">
+<div class="flex items-center gap-2">
+<p class="text-slate-900 dark:text-white text-base font-bold">En cours de livraison</p>
+<span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Actuel</span>
+</div>
+<p class="text-slate-500 dark:text-[#9eb7a8] text-sm leading-snug">Koffi a récupéré votre colis et se dirige vers Cocody.</p>
+</div>
+<!-- Step 3: Pending -->
+<div class="flex flex-col items-center gap-1">
+<div class="size-10 rounded-full border-2 border-slate-200 dark:border-[#3d5245] flex items-center justify-center text-slate-400 dark:text-[#3d5245]">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+</div>
+<div class="flex flex-col pt-1">
+<p class="text-slate-400 dark:text-[#3d5245] text-base font-bold">Livré</p>
+<p class="text-slate-400 dark:text-[#3d5245] text-sm leading-snug">Arrivée prévue à destination d'ici peu.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for bottom card -->
+<div class="h-32"></div>
+<!-- Driver Card (Sticky Bottom) -->
+<div class="fixed bottom-0 left-0 right-0 p-4 max-w-md mx-auto z-50">
+<div class="bg-white dark:bg-[#1c2620] border border-slate-100 dark:border-[#29382f] rounded-xl p-4 shadow-[0_-8px_30px_rgb(0,0,0,0.12)] flex items-center justify-between gap-4">
+<div class="flex items-center gap-3 flex-1">
+<div class="size-14 rounded-full bg-center bg-cover border-2 border-primary/30" data-alt="Portrait of delivery driver Koffi Konan" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCw0nxpECjjVMN5Si5uy-HbacH6LgbNZ1cEXHJoL8_SqWhR-2T7wTev3VJRp_rB-c366GYuh4XpE4WHGW37hKgel7AJhrwSahZEe60tUje6trM21O5fag-DeRHp9Jcm34IHAP1jlNIwYqxzPF1KSBlVTk9GjMkxeEJWu78IXYalJ-EaSFDlPs2YEUAwU43xYGf3ayQtBRzNsq4j-vaBZWBr53YkOYW74tqjGB3U1_vdui1uHQkaoIw_IrrO34kQGjCIckTgBuw8nw');">
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<p class="text-slate-900 dark:text-white font-bold">Koffi Konan</p>
+<div class="flex items-center text-primary ml-1">
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 dark:text-[#9eb7a8]">Yamaha TMAX • 24-AB-92</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="size-12 rounded-full bg-slate-100 dark:bg-[#29382f] text-slate-900 dark:text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<button class="size-12 rounded-full bg-primary text-black flex items-center justify-center shadow-[0_4px_14px_rgba(56,224,123,0.4)]">
+<span class="material-symbols-outlined font-bold">call</span>
+</button>
+</div>
+</div>
+<!-- iOS Home Indicator Safe Area -->
+<div class="h-4"></div>
+</div>
+</div>
+</body></html>

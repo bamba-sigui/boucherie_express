@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "brand-red": "#C62828",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "category-unselected": "#2a2a2a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+        }
+        .carousel-item {
+            scroll-snap-align: start;
+        }
+        .bottom-sheet-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #C62828;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white min-h-screen pb-32 overflow-hidden">
+<header class="sticky top-0 z-40 bg-background-dark/90 backdrop-blur-md px-5 py-4 flex items-center justify-between border-b border-white/5">
+<h1 class="text-lg font-black tracking-tighter text-white uppercase">BOUCHERIE <span class="text-primary">EXPRESS</span></h1>
+<button class="relative p-2 rounded-full bg-card-dark text-white">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-0 right-0 size-4 bg-primary text-background-dark text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
+</button>
+</header>
+<main class="p-4 space-y-4 blur-[2px]">
+<section>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="w-full bg-card-dark border-none rounded-full py-3 pl-11 pr-4 text-sm focus:ring-1 focus:ring-primary placeholder:text-slate-500" placeholder="Rechercher..." type="text"/>
+</div>
+</section>
+<section class="flex overflow-x-auto hide-scrollbar gap-3 pb-2">
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-brand-red text-white text-sm font-bold">Poulet</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-category-unselected text-slate-300 text-sm font-semibold">Poisson</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-category-unselected text-slate-300 text-sm font-semibold">Bœuf</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-category-unselected text-slate-300 text-sm font-semibold">Mouton</button>
+</section>
+<div class="space-y-6 pt-2">
+<div class="bg-card-dark rounded-2xl overflow-hidden border border-white/5">
+<div class="relative h-64 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXM2Istfc26EaBBsg-xZ0Kb4Dj8pnSaOjHMUlzgzns3n6hqDx6nMpI04g_Cpg-9dmNtuZUH00lM6Hz6rWOyhc7u2EB3IkUTiI_WB7g-FkqMuyx1nRDHSAYr2sIsJVT4BQdpNYG1LzIQw0wBrkvU76qpLqde40wphL9OgPW-pUgxN7LqfR0gswOxDSy-YVtyS-keueDzrhNCgcjYd8rPRple36wsuUxrVbN_qDQP5lF0pEf7IG4HSmAZOTAG7-xtijpjRzG2DeI0A')"></div>
+<div class="p-5">
+<h3 class="text-xl font-bold">Filet de Bœuf Premium</h3>
+<span class="text-xl font-black text-primary">5.500 FCFA</span>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 z-[60] bottom-sheet-overlay flex flex-col justify-end">
+<div class="bg-card-dark rounded-t-[2.5rem] w-full max-h-[85vh] overflow-y-auto px-6 pt-3 pb-8 shadow-2xl border-t border-white/10">
+<div class="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6"></div>
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-xl font-bold">Filtrer les produits</h2>
+<button class="size-8 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="space-y-8">
+<div>
+<label class="block text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Catégories</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl bg-brand-red text-white font-bold border-2 border-brand-red">
+<span class="text-sm">Poulet</span>
+</button>
+<button class="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl bg-category-unselected text-slate-300 font-semibold border-2 border-transparent">
+<span class="text-sm">Poisson</span>
+</button>
+<button class="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl bg-category-unselected text-slate-300 font-semibold border-2 border-transparent">
+<span class="text-sm">Bœuf</span>
+</button>
+<button class="flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl bg-category-unselected text-slate-300 font-semibold border-2 border-transparent">
+<span class="text-sm">Mouton</span>
+</button>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-6">
+<label class="text-sm font-bold text-slate-400 uppercase tracking-wider">Prix (FCFA)</label>
+<span class="text-sm font-bold text-primary">0 - 15.000</span>
+</div>
+<div class="relative px-2">
+<input class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-brand-red" max="15000" min="0" step="500" type="range"/>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white/5 p-4 rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<div>
+<p class="font-bold">En stock</p>
+<p class="text-xs text-slate-500">Uniquement produits disponibles</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="mt-10 flex items-center gap-4">
+<button class="flex-1 text-slate-400 font-bold text-sm py-4">Réinitialiser</button>
+<button class="flex-[2] bg-brand-red hover:bg-red-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-brand-red/20 transition-colors">
+                Appliquer les filtres
+            </button>
+</div>
+</div>
+</div>
+<nav class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-xl border-t border-white/5 px-2 pb-8 pt-3 flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">home</span>
+<span class="text-[10px] font-bold">Accueil</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Favoris</span>
+</button>
+<div class="relative -top-8">
+<button class="size-16 rounded-full bg-brand-red text-white shadow-[0_0_20px_rgba(198,40,40,0.3)] flex flex-col items-center justify-center border-4 border-background-dark">
+<span class="material-symbols-outlined text-2xl font-bold">tune</span>
+<span class="text-[9px] font-black uppercase">Filtrer</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profil</span>
+</button>
+</nav>
+
+</body></html>

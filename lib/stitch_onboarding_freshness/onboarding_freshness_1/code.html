@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Public Sans", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen flex flex-col overflow-hidden">
+<div class="flex items-center justify-between p-6 pt-12">
+<div class="flex items-center gap-1">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold text-xl">restaurant</span>
+</div>
+<p class="text-white text-lg font-bold tracking-tight">Boucherie Express</p>
+</div>
+<div class="w-10"></div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="relative px-6 py-4 flex-1 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl transform scale-75"></div>
+<div class="relative w-full aspect-square max-w-[340px] @container">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover rounded-xl shadow-2xl border-4 border-white/5" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgUVvi-7l09Mag6E4f_PsZhMo8FxXVJzWrerA-Dipj6GmAry_XlcolQ8h9i8DKziReWytYMzTzs0a2Vi_q1Nxbyjd6OM6UnUyQRGoVwGN74ZpQJj4GAU8_Eb4gPiLVVYENU4pCTfAM7TAyhv1cbImn7-4eP3bW2gd7DPTFqzPmDXaax1kLFvkqL-qA_3Mh81dcbfG6Zkzxp_4bnhGoalQTbTsWVDwqCreQkagvHbgRa9M9qJVyzhMX0AP67xlfp6X90XVvMcnIdw");'>
+</div>
+<div class="absolute -bottom-4 -right-4 bg-primary text-background-dark p-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
+<span class="material-symbols-outlined font-bold">verified</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">100% Frais</span>
+</div>
+</div>
+</div>
+<div class="px-8 pt-8 pb-4">
+<h1 class="text-white tracking-tight text-4xl font-bold leading-[1.1] mb-4">
+                Simple, frais et <br/>
+<span class="text-primary">sécurisé</span>
+</h1>
+<p class="text-white/60 text-lg font-normal leading-relaxed max-w-[320px]">
+                Une expérience d’achat fluide pour vos produits frais au quotidien.
+            </p>
+</div>
+<div class="p-8 pb-12">
+<div class="flex flex-col gap-8">
+<div class="flex flex-row items-center gap-2">
+<div class="h-1.5 w-1.5 rounded-full bg-white/20"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/20"></div>
+<div class="h-1.5 w-8 rounded-full bg-primary"></div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-background-dark font-bold w-full py-5 rounded-full flex items-center justify-center gap-2 transition-all active:scale-[0.98] group text-lg">
+<span>Commencer mon achat</span>
+<span class="material-symbols-outlined font-bold transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="fixed top-0 right-0 -z-10 opacity-10 pointer-events-none">
+<svg fill="none" height="400" viewBox="0 0 400 400" width="400" xmlns="http://www.w3.org/2000/svg">
+<circle cx="400" cy="0" fill="url(#paint0_radial)" r="400"></circle>
+<defs>
+<radialGradient cx="0" cy="0" gradientTransform="translate(400 0) rotate(135) scale(400)" gradientUnits="userSpaceOnUse" id="paint0_radial" r="1">
+<stop stop-color="#38e07b"></stop>
+<stop offset="1" stop-color="#38e07b" stop-opacity="0"></stop>
+</radialGradient>
+</defs>
+</svg>
+</div>
+
+</body></html>

@@ -31,7 +31,7 @@ class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
   Future<List<OrderModel>> getUserOrders(String userId) async {
     try {
       final data = await apiClient.get(ApiConstants.orders);
-      final list = (data as Map<String, dynamic>)['data'] as List;
+      final list = data as List;
       return list
           .map(
             (json) => OrderModel.fromJson(json as Map<String, dynamic>),

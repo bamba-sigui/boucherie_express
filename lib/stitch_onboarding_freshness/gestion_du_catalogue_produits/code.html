@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boucherie Express - Gestion du Catalogue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#de1212",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#120a0a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10">
+<div class="flex items-center p-4 justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">restaurant_menu</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Catalogue</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Boucherie Express Admin</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto">
+<!-- Stats Summary -->
+<div class="flex gap-4 p-4 overflow-x-auto no-scrollbar">
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-xl p-4 border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Total</p>
+<p class="text-2xl font-bold">124</p>
+<p class="text-emerald-500 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +2%
+                </p>
+</div>
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-xl p-4 border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Rupture</p>
+<p class="text-2xl font-bold">5</p>
+<p class="text-primary text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span> Critique
+                </p>
+</div>
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-xl p-4 border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Stock Bas</p>
+<p class="text-2xl font-bold">12</p>
+<p class="text-amber-500 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">inventory_2</span> À surveiller
+                </p>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-2">
+<label class="relative flex items-center w-full">
+<span class="absolute left-4 text-slate-400 material-symbols-outlined">search</span>
+<input class="w-full h-12 pl-12 pr-4 rounded-xl border-none bg-slate-200 dark:bg-white/10 focus:ring-2 focus:ring-primary text-base placeholder:text-slate-500" placeholder="Rechercher un produit..."/>
+</label>
+</div>
+<!-- Categories / Chips -->
+<div class="flex gap-2 px-4 py-3 overflow-x-auto no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-4 text-white">
+<span class="text-sm font-semibold">Tous</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-slate-200 dark:bg-white/10 px-4 text-slate-700 dark:text-slate-300">
+<span class="text-sm font-medium">Bœuf</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-slate-200 dark:bg-white/10 px-4 text-slate-700 dark:text-slate-300">
+<span class="text-sm font-medium">Volaille</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-slate-200 dark:bg-white/10 px-4 text-slate-700 dark:text-slate-300">
+<span class="text-sm font-medium">Charcuterie</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+</div>
+<!-- Primary Action -->
+<div class="px-4 py-2">
+<button class="w-full flex items-center justify-center gap-2 h-14 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Ajouter un Produit</span>
+</button>
+</div>
+<!-- Product List -->
+<div class="p-4 space-y-4">
+<h3 class="font-bold text-lg mb-2 px-1">Produits Récents</h3>
+<!-- Product Card 1 -->
+<div class="group flex items-center gap-4 p-3 bg-white dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/5 shadow-sm">
+<div class="relative size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img alt="Fresh Beef Ribeye" class="w-full h-full object-cover" data-alt="Close up of fresh raw beef ribeye steak" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwpZvgDf7Ekr0HQIkgsnbay0Oc_r-4F-Eb-pu5fgngVUPNaN9Uo1S1YEwrP5GFDSZfimJgSCpsqH6jgNBaG9AOz5qwKN1vTsv_ZdzBpJMZB8HtCq3vXlIHdZnwxYwC1i0FFbelP9ZzQg-zJfeRVeCQ4CfffsLw2eRjQ8upxUdENPSjhS3E_OAHb3OdmTljFdXUVbgdTQoKL7xLYrRf7eoQRDJsZgQ4I89U33IJdTgGUit0DaR9fTj3lQvsb3_3OMOygwV3E13XPA"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-primary uppercase tracking-tighter">Bœuf</span>
+<button class="text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<h4 class="font-bold text-base truncate">Entrecôte de Bœuf Premium</h4>
+<div class="flex items-center gap-3 mt-1">
+<p class="font-bold text-emerald-600 dark:text-emerald-400">24.99 €/kg</p>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">inventory</span>
+<span>15 kg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 2 (Low Stock) -->
+<div class="group flex items-center gap-4 p-3 bg-white dark:bg-white/5 rounded-xl border-l-4 border-l-primary border border-slate-100 dark:border-white/5 shadow-sm">
+<div class="relative size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img alt="Chicken Breasts" class="w-full h-full object-cover" data-alt="Raw chicken breasts on a cutting board" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpVhPPeD0ZydjH4r_rTe1iss0hAeol0KbjGJIj2YUBijLgKC2-fBZTczVmGCevGXefb_LQs6xSsfXSUk80wGjqJLIzqhAex0d-KUhyleBvA4ttUG8nxq5qcRzPSCxvgdx6w3j-lGZ6q3bLMwWOEeboD8RZgfkmlQCnif6E_E2ghoRksPUw9OLg11eGMay94O-z8o3Lnoa7qA9V8p5TkXw9b5YQXQyMLux6O07rgVP8SxZrJeJcOz9FRYrhDg7xutBo1eHlf85jdA"/>
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+<span class="bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded">STOCK BAS</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-tighter">Volaille</span>
+<button class="text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<h4 class="font-bold text-base truncate">Filet de Poulet Fermier</h4>
+<div class="flex items-center gap-3 mt-1">
+<p class="font-bold text-emerald-600 dark:text-emerald-400">12.50 €/kg</p>
+<div class="flex items-center gap-1 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>2 kg restants</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group flex items-center gap-4 p-3 bg-white dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/5 shadow-sm">
+<div class="relative size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img alt="Saucisson Sec" class="w-full h-full object-cover" data-alt="Traditional french dry cured sausages" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeq-bFFyugxZNnIACPiGA3qW2vBWjJdIVq-3C3NkrI2GGbwEJbwBdolHq53psyHSiNxz5SiZF0nM9pCAEumapPnj1fWSMZN7jAJ3N2nLHLnSMQtyDv5rBMcRQjtGygqa8iMQbk74_z2oup4im2lNPkGFP8udbKjGhj2jcXWieRHOtcXlYlH3jDWjF7FoanP3RLCOs_bFKbOtuSWBDQ8u1hGIOaPNFLMCYaFv0syay4pXdKn21vdWzGM833YnY3DdDOOmh9jsO7cQ"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-amber-600 uppercase tracking-tighter">Charcuterie</span>
+<button class="text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<h4 class="font-bold text-base truncate">Saucisson Sec d'Auvergne</h4>
+<div class="flex items-center gap-3 mt-1">
+<p class="font-bold text-emerald-600 dark:text-emerald-400">8.90 €/u</p>
+<div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">inventory</span>
+<span>42 unités</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 4 (Out of Stock) -->
+<div class="group flex items-center gap-4 p-3 bg-white dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/5 opacity-60 grayscale shadow-sm">
+<div class="relative size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img alt="Lamb Chops" class="w-full h-full object-cover" data-alt="Fresh lamb chops with herbs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxDhddY8f5asznFdir9Lnt9A73KNdodVgfifwvBhMuIKO9YzO-rg1dDGX5jCMBeO_nq_d4scovE_-gG5FH-m3mJt1DKp9_HA5FDCEoytwc8-NfS-5ylvGb8cFgEOJ8S0A8ElRPQq3KLVGhkJ1phlKZrOVK6O9WNSA97KyL5yMe2ElznrhImnkNbyn4i9Z0LhBrdPR53hXa7kVxTb9EcQEGwGhZHd5sbREz2g--zWwgPZWhAUviqFlCK0yblLevNuIPGLtMl42tSg"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-tighter">Agneau</span>
+<button class="text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<h4 class="font-bold text-base truncate">Côtelettes d'Agneau de Lait</h4>
+<div class="flex items-center gap-3 mt-1">
+<p class="font-bold text-slate-400">31.00 €/kg</p>
+<div class="flex items-center gap-1 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">block</span>
+<span>Rupture de stock</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (iOS Style) -->
+<nav class="fixed bottom-0 inset-x-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-white/10 px-6 py-3 pb-6 z-50">
+<div class="max-w-md mx-auto flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-bold">Catalogue</span>
+</a>
+<div class="relative -top-5">
+<div class="bg-primary size-12 rounded-full flex items-center justify-center text-white shadow-lg border-4 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined">add</span>
+</div>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium">Clients</span>
+</a>
+</div>
+</nav>
+</body></html>

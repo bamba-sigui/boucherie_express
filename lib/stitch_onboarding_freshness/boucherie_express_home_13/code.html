@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "brand-red": "#C62828",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "status-orange": "#F59E0B",
+                        "status-blue": "#3B82F6",
+                        "status-green": "#10B981",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white min-h-screen pb-32">
+<header class="sticky top-0 z-50 bg-background-dark/90 backdrop-blur-md px-5 py-6 flex items-center justify-between border-b border-white/5">
+<h1 class="text-xl font-black tracking-tight text-white">Mes commandes</h1>
+<button class="p-2 rounded-full bg-card-dark text-white/70">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="p-4 space-y-4">
+<div class="bg-card-dark rounded-2xl p-5 border border-white/5 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Commande</span>
+<h3 class="text-lg font-bold text-white">#BE-1245</h3>
+<p class="text-xs text-slate-400 mt-1">Aujourd'hui, 14:30</p>
+</div>
+<span class="px-3 py-1.5 rounded-full bg-status-orange/10 text-status-orange text-[10px] font-black uppercase tracking-wider border border-status-orange/20">
+                    En préparation
+                </span>
+</div>
+<div class="flex items-center justify-between border-t border-white/5 pt-4">
+<div class="flex -space-x-3">
+<div class="size-8 rounded-full border-2 border-card-dark bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXM2Istfc26EaBBsg-xZ0Kb4Dj8pnSaOjHMUlzgzns3n6hqDx6nMpI04g_Cpg-9dmNtuZUH00lM6Hz6rWOyhc7u2EB3IkUTiI_WB7g-FkqMuyx1nRDHSAYr2sIsJVT4BQdpNYG1LzIQw0wBrkvU76qpLqde40wphL9OgPW-pUgxN7LqfR0gswOxDSy-YVtyS-keueDzrhNCgcjYd8rPRple36wsuUxrVbN_qDQP5lF0pEf7IG4HSmAZOTAG7-xtijpjRzG2DeI0A')"></div>
+<div class="size-8 rounded-full border-2 border-card-dark bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEdKWgo9iEKfTcq9I6hNvDw_LDHlJ0uFav8tDptZVa2oWR2a13WqXfKxtCf_QlKXgQJ1MjcbLt4YvXkzQTtUmYZHomZnFDwZL169jaoiz2t19LT7IxCy-vNvI4r77U3Xvpn1V1RJnmBPKSbkNsG2A_28X7TR-q8STsqCl5YbqQ6BPmKsqj0LsmGuDcJfK2mHC7MFKnM6jni8EgyfpWbm8PPouBd6DMH0kafQtHD-_7gIqUOBxhQfRfKMsC_Vf7FuN3EhxWFumC2g')"></div>
+<div class="size-8 rounded-full border-2 border-card-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">+1</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Total</p>
+<p class="text-lg font-black text-primary">12.500 FCFA</p>
+</div>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl p-5 border border-white/5 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Commande</span>
+<h3 class="text-lg font-bold text-white">#BE-1239</h3>
+<p class="text-xs text-slate-400 mt-1">Hier, 11:15</p>
+</div>
+<span class="px-3 py-1.5 rounded-full bg-status-blue/10 text-status-blue text-[10px] font-black uppercase tracking-wider border border-status-blue/20">
+                    En cours de livraison
+                </span>
+</div>
+<div class="flex items-center justify-between border-t border-white/5 pt-4">
+<div class="flex -space-x-3">
+<div class="size-8 rounded-full border-2 border-card-dark bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnYxp2oQXMeT1wABRx1ZhAPcLQe-M_ghfitMIqtqO27DfgOHDIUPm1l3TADXnKEbRTNO9UcwiiIwBkhAdtKNQIA2WjMJUC2vRVe1XIhUOOlLIbirys3P_cdNFybcADjKt3ziKShyyzuu4ohzTqVZWWJLm44C8D4VTf7bQTn5LKrGa5qPYcEjwkaBj396XX13cHjrkTDkrj0c09oMX06aRrul2ikGNEQH7g499LSdgqedCBxUTeWLwRgXW_wuUn3hQg8uUELRjfOQ')"></div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Total</p>
+<p class="text-lg font-black text-primary">4.200 FCFA</p>
+</div>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl p-5 border border-white/5 shadow-sm opacity-90">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Commande</span>
+<h3 class="text-lg font-bold text-white">#BE-1234</h3>
+<p class="text-xs text-slate-400 mt-1">12 Oct. 2023, 18:45</p>
+</div>
+<span class="px-3 py-1.5 rounded-full bg-status-green/10 text-status-green text-[10px] font-black uppercase tracking-wider border border-status-green/20">
+                    Livrée
+                </span>
+</div>
+<div class="flex items-center justify-between border-t border-white/5 pt-4">
+<div class="flex -space-x-3">
+<div class="size-8 rounded-full border-2 border-card-dark bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOAwXi2vjtxQc2hsmJh449eV9kgG0QaHa2p2vl1VODIUgFNT9tWbjW0Q8cuEBUlruZBv2bX2Y3TjgCsXxui9BJQUIXn6VrvlxWJ2jEWNDZVFaq9p18cgoXr0vSEKDqsp-eyoLB5tzOlyVy9jx085nbtrlV7TsQvRJNJNl7LgFu0FhncK9rWDbedsiGTu9d0H14yCsbz2_WXdQFyarjZ3q231Op3Un9-kJwaK3Pq204y5eAhL1kOwUkjWcTsYR0VGfnjhAeDjKlog')"></div>
+<div class="size-8 rounded-full border-2 border-card-dark bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBjILed8FhgGgvVtlbG2qWPB6a5b8ByJkgzunk0ftNLsWVEFAz5luyq4t4BbHQM3tLOuhrUl4QDXa-GcuzxjRSEWn9bnNv-IoWgR4AkLLWEUzWQ2dZxoEz-59sXPzoyhS_26wlQcjJgP1rwI2h1Ij3yreDz-WWs2K-2-KFqp05Kitel5BXqOWFzaCwI_gvCvBhiPPtFbN5BvI-OE-UozWzQwSfvXXXKuShr-s3V2BIfCklCey__cOzmWaEqm-Y4tb-dYdh8Iek6EQ')"></div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Total</p>
+<p class="text-lg font-black text-primary">8.000 FCFA</p>
+</div>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl p-5 border border-white/5 shadow-sm opacity-90">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Commande</span>
+<h3 class="text-lg font-bold text-white">#BE-1221</h3>
+<p class="text-xs text-slate-400 mt-1">08 Oct. 2023, 09:20</p>
+</div>
+<span class="px-3 py-1.5 rounded-full bg-status-green/10 text-status-green text-[10px] font-black uppercase tracking-wider border border-status-green/20">
+                    Livrée
+                </span>
+</div>
+<div class="flex items-center justify-between border-t border-white/5 pt-4">
+<div class="flex -space-x-3">
+<div class="size-8 rounded-full border-2 border-card-dark bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCN82LqpySZALE_CpW2BNKYcwBEtUwVquaswnBZJ0QWwucs3Y2WwLC1_A1VbDtHNe8LRmNqT0VwIjSUNR_yZlB1EXaA_jDBnHA-6cZ9xsFEyj_YanXyqPfSePT_QCj3e1Gh3_EmsLungtDDC-WLAnkCnzEN3PTYl0gC4pKVUpIPaEy42n3P7hex2rCU7rWC54vMpAnDZ5sq7eEptzKSGrf4KAFMklOyogiu2ekiXIkSeM6l0_z24eATzisBu2_KjNQE9Jl7ddIP3Q')"></div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Total</p>
+<p class="text-lg font-black text-primary">15.400 FCFA</p>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-xl border-t border-white/5 px-2 pb-8 pt-3 flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Accueil</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Favoris</span>
+</button>
+<div class="relative -top-8">
+<button class="size-16 rounded-full bg-primary text-background-dark shadow-[0_0_20px_rgba(56,224,123,0.3)] flex flex-col items-center justify-center border-4 border-background-dark">
+<span class="material-symbols-outlined text-2xl font-bold">tune</span>
+<span class="text-[9px] font-black uppercase">Filtrer</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">receipt_long</span>
+<span class="text-[10px] font-bold">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profil</span>
+</button>
+</nav>
+
+</body></html>

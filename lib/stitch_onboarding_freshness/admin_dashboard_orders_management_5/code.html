@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin - Gestion des Livreurs | Boucherie Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#c82828",
+                "background-light": "#f9f9fa",
+                "background-dark": "#131315",
+                "surface-dark": "#1c1c1e",
+                "card-dark": "#2c2c2e",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @media (min-width: 1024px) {
+            .main-grid {
+                display: grid;
+                grid-template-columns: 350px 1fr;
+                height: calc(100vh - 73px);
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10">
+<div class="flex items-center justify-between px-6 py-3">
+<div class="flex items-center gap-4">
+<div class="bg-primary p-2 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">delivery_dining</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight leading-none">Gestion des Livreurs</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold mt-1">Boucherie Express Admin</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#">Tableau de bord</a>
+<a class="text-sm font-bold text-white border-b-2 border-primary pb-1" href="#">Livreurs</a>
+<a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#">Commandes</a>
+</nav>
+<div class="h-6 w-px bg-white/10 hidden md:block"></div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-white/10 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary/20 overflow-hidden cursor-pointer">
+<img alt="Admin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuHlb-YoPbojbcVfMOP32d1CV3RoU__lCqCdntGn1O0Fup4W4KCl8gwPZ5DgjeqzGakzxJn5RwmXyYZHxKItWauTnptZYmBCg5BbnFsI0e_XV-nfMO6hPLUpbTfQfQE_zyidppT72EpS5XMCgmTlbpNTEb6_9qLlh2oXyb-eAnQe8PNdYW3c1nMSu4-Ko1JvWR7pnZ9rrBoWtDE7ehhPwcJaNid8rB0GkeYpSfvda_qH7fxDgHQH8WFBUMpJW0zeij-fD_h1lAVA"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="main-grid">
+<aside class="border-r border-slate-200 dark:border-white/10 flex flex-col bg-white dark:bg-background-dark overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-white/10 space-y-4">
+<div class="relative group">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 text-xl group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="w-full h-10 pl-11 pr-4 bg-slate-100 dark:bg-surface-dark border-none rounded-xl text-sm focus:ring-1 focus:ring-primary transition-all" placeholder="Rechercher un livreur..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar">
+<button class="px-4 py-1.5 rounded-full bg-primary text-white text-xs font-bold">Tous (12)</button>
+<button class="px-4 py-1.5 rounded-full bg-slate-100 dark:bg-surface-dark text-slate-500 text-xs font-bold">Disponibles</button>
+<button class="px-4 py-1.5 rounded-full bg-slate-100 dark:bg-surface-dark text-slate-500 text-xs font-bold">Occupés</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto hide-scrollbar p-4 space-y-3">
+<div class="p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/5 shadow-sm hover:border-primary/30 transition-all group">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Moussa K." class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj4nWwdP0InXiylTZHw45bbnORhN_hgilDaTnU6vwG2mqRrE2M8-tyd0SruOydZtM0Lz_uthaPgBOJW0Uzf_0u0Kzbf3eUaaSMCFqdFCeaGu4g8aU-edARUUjJPGCTD6pXmz4u97HjaYJYIB0a2p5_5-UbBVmZJzKSuy--o0PiynSaW5TBQ5Av664v6WXDt9UyLXpZT9ftqwif7uZeJ6TGFDPDvi9N_Ew_BOzr0BaHcDKMUBLw_XsNE9xxlP9KVs3_GEkDiiaF1Q"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-sm truncate">Moussa Koné</h4>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span>
+<span class="text-slate-400 text-[10px]">•</span>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px] text-amber-400 fill-1">star</span>
+<span class="text-[10px] font-bold">4.8</span>
+</div>
+</div>
+</div>
+<button class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-lg hover:bg-primary/90">ASSIGNER</button>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/5 shadow-sm opacity-90">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Idriss S." class="w-12 h-12 rounded-full object-cover border-2 border-amber-500/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDodEYKqGJLqZLfuCuEbXDwmgxkQbAxBD8XQkVD1SF8ZJZ875kCUPH16FiIVTkggsql6eCqZu166Y7pvsryg6q8p5bgh4qFUZDHofS2Mf_0P5QiRSMu-QqmxuMyIlnsmzQFbb3ighFk9G5QCYNIFn3Vy-h-RSVC6Y4-2Rw36Oe5tCvFUPw0jNy_yelATLQ3NoRbgDfiJl3Tq1P0w5oc4jmw3OExtg-7_p8ElEmlM_XPpLCypZL6j-gUXQf1ow8-JPRSRtaSFDC_2w"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-amber-500 rounded-full border-2 border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-sm truncate">Idriss Sangaré</h4>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-bold text-amber-500 uppercase">Occupé</span>
+<span class="text-slate-400 text-[10px]">•</span>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px] text-amber-400 fill-1">star</span>
+<span class="text-[10px] font-bold">4.9</span>
+</div>
+</div>
+<p class="text-[10px] text-slate-500 mt-1 font-mono">Commande: <span class="text-primary font-bold">#BE-4508</span></p>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/5 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Jean B." class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF5AXyQGGiJ9GAQxA2_pnf4NytqIoa0BD7jMbhpdB6u-_1w_yb-vyB4BcAOV7ggZsS0ptC0i-PKeFua0vkZeYleo4JeuEXz8g2AkMap9MxuZNAjVSEKIc2ecbBOEn6ZgezTGMCA3-3Ggs7IOFfArIw7sHckC5l7u9uYWgoLqqKSpK-K2qCMkie3KgivIkIMJhKkiz6qW8wFXlJwfDzKlVWYIHwb5YL-Uqdhb2BelpTKnasibiOx7qRWcgDPY83EJp57eyoMZAGjg"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-sm truncate">Jean Bakayoko</h4>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span>
+<span class="text-slate-400 text-[10px]">•</span>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px] text-amber-400 fill-1">star</span>
+<span class="text-[10px] font-bold">4.5</span>
+</div>
+</div>
+</div>
+<button class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-lg hover:bg-primary/90">ASSIGNER</button>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/5 shadow-sm opacity-60">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Oumar T." class="w-12 h-12 rounded-full object-cover border-2 border-slate-500/30 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATN85ZzEE7N6h9EnDJA_Flx-NTusNH0DI61rIlOZ8aAQPe6RC1WAivfu9ghLTM3pIT1XDqB-R5gV_2qpaCOvov5u5MaUA5rdjSw6sInawoSsWqvD5Rmn1x2GnIVXKpiV7SChZ0u-P_mqQXogkTE22gHwi8Ap3P6lj4FBtXTmqByKBDKCuUl-W2S_2MOWj8tVttpu5OhOns7fXiYAhWbb99KH7yOl3lAreBS0F4SDoMAQCfkTmS8ZCL0VSQO6EKuKt9EZwSkL2M_g"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-slate-500 rounded-full border-2 border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-sm truncate">Oumar Touré</h4>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Hors-ligne</span>
+<span class="text-slate-400 text-[10px]">•</span>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px] text-amber-400 fill-1">star</span>
+<span class="text-[10px] font-bold">4.2</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/5 shadow-sm opacity-90">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Amadou D." class="w-12 h-12 rounded-full object-cover border-2 border-amber-500/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx4FsKMY-VKU0SS0O122z--VCOOtkTLhRV2wECJhzjbPSCW6zqBtZHg1Fg6IsB88jlELTkiCYI2LjIp7a9J-Vdcemo1S9nESkpdqbCXHe09OD8kklFakeXwZiNIA5Lx3FYfMU0S5bzR4SthIgwjnc87HV3E-uMQBabmgWZ5WxAKU9woZLWbSt5uQ4ktqqXT8nbhllvSrHLiwuM9xlSn_S37MaogjI_cjYfRflFztbejeTHIbQdxR5RSOw9aDDomBILV0itjg6Wuw"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-amber-500 rounded-full border-2 border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-sm truncate">Amadou Diallo</h4>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-bold text-amber-500 uppercase">Occupé</span>
+<span class="text-slate-400 text-[10px]">•</span>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px] text-amber-400 fill-1">star</span>
+<span class="text-[10px] font-bold">4.7</span>
+</div>
+</div>
+<p class="text-[10px] text-slate-500 mt-1 font-mono">Commande: <span class="text-primary font-bold">#BE-4512</span></p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<section class="relative bg-slate-200 dark:bg-[#121214] overflow-hidden">
+<div class="absolute inset-0 opacity-40 dark:opacity-20 pointer-events-none">
+<svg class="w-full h-full" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<path d="M0,200 L1000,200 M0,400 L1000,400 M0,600 L1000,600 M0,800 L1000,800 M200,0 L200,1000 M400,0 L400,1000 M600,0 L600,1000 M800,0 L800,1000" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+<div class="absolute top-6 left-6 z-10 flex flex-col gap-3">
+<div class="bg-white/90 dark:bg-surface-dark/90 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-2xl">
+<h3 class="text-sm font-bold flex items-center gap-2">
+<span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    Surveillance en temps réel
+                </h3>
+<p class="text-[11px] text-slate-500 mt-1">6 livreurs actifs en zone urbaine</p>
+</div>
+</div>
+<div class="absolute top-1/4 left-1/3 group cursor-pointer">
+<div class="relative">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-white dark:bg-card-dark px-2 py-1 rounded shadow-lg text-[10px] font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                    Moussa Koné
+                </div>
+<div class="w-10 h-10 rounded-full border-2 border-emerald-500 overflow-hidden bg-white shadow-lg">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj4nWwdP0InXiylTZHw45bbnORhN_hgilDaTnU6vwG2mqRrE2M8-tyd0SruOydZtM0Lz_uthaPgBOJW0Uzf_0u0Kzbf3eUaaSMCFqdFCeaGu4g8aU-edARUUjJPGCTD6pXmz4u97HjaYJYIB0a2p5_5-UbBVmZJzKSuy--o0PiynSaW5TBQ5Av664v6WXDt9UyLXpZT9ftqwif7uZeJ6TGFDPDvi9N_Ew_BOzr0BaHcDKMUBLw_XsNE9xxlP9KVs3_GEkDiiaF1Q"/>
+</div>
+<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-emerald-500 rotate-45 shadow-lg"></div>
+</div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 group cursor-pointer">
+<div class="relative">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-white dark:bg-card-dark px-2 py-1 rounded shadow-lg text-[10px] font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                    Idriss Sangaré
+                </div>
+<div class="w-10 h-10 rounded-full border-2 border-amber-500 overflow-hidden bg-white shadow-lg">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgifE2tpylKeKCS7ozC11W1xDcbQEoi0UI6BDWjlhPg52KMp5EF1dWJ11mJVGPyKbXro4B_7xxFbdQRq6WguGaOCOhV2v7f6MKDSPelewwYGaq-rCB3pgm7nUNS3HTZ8q5v-DTIVKJHwKSzsmpL6FeN1KlXtVE1oVX2ggQf-RYICFk12pnXcYFOhfyhUHqVwHnet1Ko_fSYkd6vIgcW2qJQtBm5DEqOPb_2zhIBNLynVBsh0LfXeNoyeKLqiw9GHq1kiBgDBT_iA"/>
+</div>
+<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-amber-500 rotate-45 shadow-lg"></div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 flex flex-col gap-2">
+<button class="w-10 h-10 bg-white dark:bg-surface-dark border border-white/10 rounded-lg flex items-center justify-center shadow-lg hover:bg-white/20">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+<button class="w-10 h-10 bg-white dark:bg-surface-dark border border-white/10 rounded-lg flex items-center justify-center shadow-lg hover:bg-white/20">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<button class="w-10 h-10 bg-white dark:bg-surface-dark border border-white/10 rounded-lg flex items-center justify-center shadow-lg text-primary">
+<span class="material-symbols-outlined text-sm">my_location</span>
+</button>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-xl border-t border-slate-200 dark:border-white/5 px-6 pb-6 pt-3 shadow-2xl md:hidden">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-[10px] font-semibold text-slate-400">Accueil</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400">shopping_bag</span>
+<span class="text-[10px] font-semibold text-slate-400">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-primary">delivery_dining</span>
+<span class="text-[10px] font-bold text-primary">Livreurs</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">settings</span>
+<span class="text-[10px] font-semibold text-slate-400">Paramètres</span>
+</button>
+</div>
+</nav>
+
+</body></html>

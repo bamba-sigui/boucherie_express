@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boucherie Express - Gestion des Commandes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#181111",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display">
+<!-- Main Mobile Layout -->
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex items-center bg-background-light dark:bg-[#181111] border-b border-gray-200 dark:border-white/10 p-4 justify-between shrink-0">
+<div class="flex items-center gap-3">
+<button class="text-slate-900 dark:text-white flex size-10 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/5">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Commandes</h2>
+</div>
+<div class="flex items-center gap-1">
+<button class="flex size-10 items-center justify-center rounded-lg text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/5">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-lg text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/5">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Filters (Chips) -->
+<div class="flex gap-2 p-4 overflow-x-auto no-scrollbar shrink-0 border-b border-gray-200 dark:border-white/10">
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-primary px-4">
+<p class="text-white text-xs font-semibold">Tous</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-[#392828] px-4">
+<p class="text-slate-700 dark:text-white text-xs font-medium">En attente</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-[#392828] px-4">
+<p class="text-slate-700 dark:text-white text-xs font-medium">En préparation</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-[#392828] px-4">
+<p class="text-slate-700 dark:text-white text-xs font-medium">Expédié</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-[#392828] px-4">
+<p class="text-slate-700 dark:text-white text-xs font-medium">Livré</p>
+</div>
+</div>
+<!-- Orders High-Density List -->
+<main class="flex-1 overflow-y-auto">
+<div class="flex flex-col">
+<!-- Row 1 -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 py-3 border-b border-gray-100 dark:border-white/5 active:bg-gray-100 dark:active:bg-white/5">
+<div class="text-white flex items-center justify-center rounded-lg bg-primary/20 dark:bg-[#392828] shrink-0 size-10">
+<span class="material-symbols-outlined text-primary">tag</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold truncate">#BE-1024 • Jean Dupont</p>
+<p class="text-slate-900 dark:text-white text-sm font-bold">45.00 €</p>
+</div>
+<div class="flex justify-between items-center mt-0.5">
+<p class="text-slate-500 dark:text-[#b99d9d] text-xs font-medium">Payé • Visa</p>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider">
+<div class="size-1.5 rounded-full bg-amber-500"></div> Préparation
+                            </span>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 py-3 border-b border-gray-100 dark:border-white/5 active:bg-gray-100 dark:active:bg-white/5">
+<div class="text-white flex items-center justify-center rounded-lg bg-primary/20 dark:bg-[#392828] shrink-0 size-10">
+<span class="material-symbols-outlined text-primary">tag</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold truncate">#BE-1025 • Marie Curie</p>
+<p class="text-slate-900 dark:text-white text-sm font-bold">82.50 €</p>
+</div>
+<div class="flex justify-between items-center mt-0.5">
+<p class="text-slate-500 dark:text-[#b99d9d] text-xs font-medium">En attente • Cash</p>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-bold uppercase tracking-wider">
+<div class="size-1.5 rounded-full bg-red-500"></div> Urgent
+                            </span>
+</div>
+</div>
+</div>
+<!-- Row 3 (Selected State for Demo) -->
+<div class="flex items-center gap-4 bg-gray-100 dark:bg-white/5 px-4 py-3 border-b border-primary/30 active:bg-gray-200 dark:active:bg-white/10">
+<div class="text-white flex items-center justify-center rounded-lg bg-primary shrink-0 size-10">
+<span class="material-symbols-outlined text-white">tag</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold truncate">#BE-1026 • Pierre Martin</p>
+<p class="text-slate-900 dark:text-white text-sm font-bold">124.90 €</p>
+</div>
+<div class="flex justify-between items-center mt-0.5">
+<p class="text-slate-500 dark:text-[#b99d9d] text-xs font-medium">Payé • MasterCard</p>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider">
+<div class="size-1.5 rounded-full bg-blue-500"></div> Expédié
+                            </span>
+</div>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 py-3 border-b border-gray-100 dark:border-white/5 active:bg-gray-100 dark:active:bg-white/5">
+<div class="text-white flex items-center justify-center rounded-lg bg-primary/20 dark:bg-[#392828] shrink-0 size-10">
+<span class="material-symbols-outlined text-primary">tag</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold truncate">#BE-1027 • Sarah Connor</p>
+<p class="text-slate-900 dark:text-white text-sm font-bold">38.20 €</p>
+</div>
+<div class="flex justify-between items-center mt-0.5">
+<p class="text-slate-500 dark:text-[#b99d9d] text-xs font-medium">Payé • Apple Pay</p>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider">
+<div class="size-1.5 rounded-full bg-green-500"></div> Livré
+                            </span>
+</div>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 py-3 border-b border-gray-100 dark:border-white/5 active:bg-gray-100 dark:active:bg-white/5">
+<div class="text-white flex items-center justify-center rounded-lg bg-primary/20 dark:bg-[#392828] shrink-0 size-10">
+<span class="material-symbols-outlined text-primary">tag</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold truncate">#BE-1028 • Thomas Wayne</p>
+<p class="text-slate-900 dark:text-white text-sm font-bold">215.00 €</p>
+</div>
+<div class="flex justify-between items-center mt-0.5">
+<p class="text-slate-500 dark:text-[#b99d9d] text-xs font-medium">En attente • Virement</p>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider">
+<div class="size-1.5 rounded-full bg-amber-500"></div> En attente
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Slide-out Detail Panel (Visible in UI state) -->
+<div class="absolute inset-y-0 right-0 w-[85%] bg-background-light dark:bg-[#1E1414] shadow-2xl z-40 transform transition-transform border-l border-gray-200 dark:border-white/10 flex flex-col">
+<div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-white/10 shrink-0">
+<div class="flex items-center gap-2">
+<button class="size-8 flex items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<h3 class="font-bold text-slate-900 dark:text-white">Détails #BE-1026</h3>
+</div>
+<button class="p-1 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Info Section -->
+<section>
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary">person</span>
+<p class="font-bold text-slate-900 dark:text-white">Client: Pierre Martin</p>
+</div>
+<div class="bg-gray-100 dark:bg-white/5 p-3 rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-400 text-sm mt-0.5">location_on</span>
+<div>
+<p class="text-xs font-bold text-slate-900 dark:text-white">Adresse de livraison</p>
+<p class="text-xs text-slate-500 dark:text-[#b99d9d] leading-relaxed">42 Avenue des Champs-Élysées, 75008 Paris, France</p>
+</div>
+</div>
+</section>
+<!-- Line Items Section -->
+<section>
+<h4 class="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-[#b99d9d] mb-3">Contenu du panier</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-white dark:bg-[#392828] border border-gray-200 dark:border-white/5 overflow-hidden flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">2x Côte de Bœuf</p>
+<p class="text-[10px] text-slate-400">Origine: France</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">78.00 €</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-white dark:bg-[#392828] border border-gray-200 dark:border-white/5 overflow-hidden flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">1x Plateau Dégustation</p>
+<p class="text-[10px] text-slate-400">Assortiment 4 pers.</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">46.90 €</p>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-gray-200 dark:border-white/10 flex justify-between items-center">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Total</p>
+<p class="text-lg font-bold text-primary">124.90 €</p>
+</div>
+</section>
+<!-- Map Placeholder -->
+<section class="h-32 rounded-xl overflow-hidden bg-gray-300 dark:bg-white/10 relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-70" data-alt="Map view showing delivery location in Paris" data-location="Paris" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDg6-z_m37xa0VdC9MyEm3Mcb8PRX2oJPN_57oWV5_plM1HioP5hhPitUzNogzYz7hENiBhdH4HxW9EBm3jasZL5gNIni2vlwc5MnEVOnFPxQlXTwllE2pzGprTShy8aOM4fn0BVRoCmR-RspxTJVgL3iGYd8sCEQdlDBl3FXlVfkTUtE16ASqNseECB86jkMSSYJhos6KSQaXmJytEnRpcGDifVNBle2sNIYP6Tr1cGpDGSF35IU2ZPzi-hg9syc5lgM2OefbmgQ')"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-8 bg-primary rounded-full border-4 border-white shadow-lg animate-pulse"></div>
+</div>
+</section>
+<!-- Dispatch Action -->
+<section>
+<label class="block text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-[#b99d9d] mb-3">Assigner un livreur</label>
+<div class="relative">
+<select class="w-full h-12 bg-white dark:bg-[#392828] border-0 rounded-lg text-sm font-semibold text-slate-900 dark:text-white px-4 focus:ring-2 focus:ring-primary appearance-none">
+<option>Sélectionner un coursier...</option>
+<option>Marc - Moto 01 (En service)</option>
+<option>Julie - Van 04 (Disponible)</option>
+<option>Kevin - Scooter 02 (Indisponible)</option>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</div>
+</div>
+</section>
+</div>
+<div class="p-4 border-t border-gray-200 dark:border-white/10 shrink-0 bg-background-light dark:bg-[#1E1414]">
+<button class="w-full h-14 bg-primary text-white rounded-xl font-bold text-base shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">local_shipping</span>
+                    Confirmer l'expédition
+                </button>
+</div>
+</div>
+<!-- NavigationDrawer Backdrop (hidden by default) -->
+<div class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm">
+<div class="flex h-full w-10/12 flex-col gap-4 bg-background-light dark:bg-[#181111] p-4 shadow-2xl">
+<div class="flex items-center gap-3 px-4 pt-4 pb-2">
+<div class="size-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">restaurant_menu</span>
+</div>
+<p class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-tight">Boucherie Express</p>
+</div>
+<nav class="mt-4">
+<ul class="flex flex-col gap-2">
+<li class="flex h-12 items-center gap-4 rounded-lg px-4 hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">dashboard</span>
+<p class="text-slate-900 dark:text-white text-sm font-semibold truncate">Tableau de bord</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-lg px-4 bg-primary/10 dark:bg-[#392828] cursor-pointer">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+<p class="text-primary dark:text-white text-sm font-bold truncate">Commandes</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-lg px-4 hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">group</span>
+<p class="text-slate-900 dark:text-white text-sm font-semibold truncate">Clients</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-lg px-4 hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">inventory_2</span>
+<p class="text-slate-900 dark:text-white text-sm font-semibold truncate">Stocks</p>
+</li>
+<li class="flex h-12 items-center gap-4 rounded-lg px-4 hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">delivery_dining</span>
+<p class="text-slate-900 dark:text-white text-sm font-semibold truncate">Livreurs</p>
+</li>
+<li class="mt-4 border-t border-gray-100 dark:border-white/5 pt-4 flex h-12 items-center gap-4 rounded-lg px-4 hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">settings</span>
+<p class="text-slate-900 dark:text-white text-sm font-semibold truncate">Paramètres</p>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</body></html>

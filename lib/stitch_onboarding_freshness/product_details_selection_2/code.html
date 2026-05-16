@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détails du Produit - Boucherie Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "fresh-red": "#e63946",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Public Sans", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-white selection:bg-primary/30">
+<div class="relative flex h-auto min-h-screen w-full flex-col max-w-md mx-auto overflow-x-hidden shadow-2xl pb-32">
+<!-- Header -->
+<div class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/60 to-transparent">
+<button class="flex size-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<div class="flex gap-2">
+<button class="flex size-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+<!-- Hero Section / Media Player -->
+<div class="relative flex items-center justify-center bg-zinc-800 bg-cover bg-center aspect-[4/5] overflow-hidden" data-alt="Whole fresh chicken prepared for roasting on dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMpYtXTwKvmENPcdB45d0yhTPi3-F1_ol5MbfsvNwBjsTQDG4qvWCQW2PKstfAszW5yBPwTF4HOtI34VXP2CTZLXLC88ufgegp7KIQjAznrAZIjQDnha1FWKFM7SmhcmpjCm89ZFe3sMLq30-v4jVdIXozTgGa_GYk1EhD7jvhRE7bFkiV4yPH2g-vuRsbWBdepNXVdRR6NnJX6oaZOSt-BAV-HVls1dRR_KsYZp0NESXAPNRdnIqOE6rQTvrIY4IZy49EmcavFA");'>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+<button class="relative z-10 flex shrink-0 items-center justify-center rounded-full size-20 bg-primary/20 backdrop-blur-sm border border-white/20 text-white hover:scale-105 transition-transform">
+<span class="material-symbols-outlined !text-4xl fill-1">play_arrow</span>
+</button>
+</div>
+<!-- Product Info Content -->
+<div class="relative -mt-12 px-4 flex flex-col gap-1 z-10">
+<div class="bg-background-dark rounded-t-3xl pt-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">Ferme Locale</span>
+<span class="bg-white/10 text-white/60 text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">~1.5kg - 2.0kg</span>
+</div>
+<h1 class="text-white tracking-tight text-3xl font-bold leading-tight pb-1">Poulet de Chair Frais</h1>
+<div class="flex items-baseline gap-2">
+<span class="text-primary text-2xl font-bold leading-tight tracking-tight">4,500 FCFA</span>
+<span class="text-white/40 text-sm font-normal line-through">5,200 FCFA</span>
+</div>
+<p class="text-white/70 text-base font-normal leading-relaxed pt-4">
+                    Poulet entier élevé en plein air, garanti sans hormones et abattu le matin même. Idéal pour vos braisés, soupes ou ragoûts familiaux.
+                </p>
+</div>
+</div>
+<!-- Options / Toggle Section -->
+<div class="px-4 mt-8">
+<h3 class="text-white/50 text-xs font-bold uppercase tracking-widest mb-3">Préparation souhaitée</h3>
+<div class="flex p-1 bg-white/5 rounded-full border border-white/10">
+<button class="flex-1 py-3 px-4 rounded-full text-sm font-bold transition-all bg-primary text-background-dark shadow-lg">
+                    Entier
+                </button>
+<button class="flex-1 py-3 px-4 rounded-full text-sm font-bold transition-all text-white/60 hover:text-white">
+                    Découpé
+                </button>
+</div>
+<p class="text-primary/60 text-[11px] mt-2 px-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                Le mode "Découpé" inclut le nettoyage complet.
+            </p>
+</div>
+<!-- Quantity Selector -->
+<div class="px-4 mt-8">
+<h3 class="text-white/50 text-xs font-bold uppercase tracking-widest mb-3">Quantité</h3>
+<div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-2xl p-2 max-w-[160px]">
+<button class="size-10 flex items-center justify-center rounded-xl bg-white/5 text-white hover:bg-white/10">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="text-xl font-bold px-4">1</span>
+<button class="size-10 flex items-center justify-center rounded-xl bg-primary text-background-dark font-bold">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Sticky Bottom Bar -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-background-dark/80 backdrop-blur-xl border-t border-white/5 max-w-md mx-auto z-30">
+<div class="flex items-center gap-4">
+<div class="flex flex-col min-w-[100px]">
+<span class="text-white/40 text-[10px] font-bold uppercase">Total</span>
+<span class="text-white text-xl font-bold">4,500 FCFA</span>
+</div>
+<button class="flex-1 bg-fresh-red hover:bg-fresh-red/90 text-white h-14 rounded-2xl flex items-center justify-center gap-2 font-bold text-lg shadow-[0_8px_24px_rgba(230,57,70,0.3)] active:scale-95 transition-all">
+<span class="material-symbols-outlined">shopping_basket</span>
+                    Ajouter au Panier
+                </button>
+</div>
+<!-- iOS Home Indicator Safe Area -->
+<div class="h-4"></div>
+</div>
+</div>
+</body></html>

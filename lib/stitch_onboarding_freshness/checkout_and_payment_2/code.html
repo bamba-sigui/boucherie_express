@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boucherie Express - Finaliser la commande</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#38e07b",
+                "background-light": "#f6f8f7",
+                "background-dark": "#122017",
+              },
+              fontFamily: {
+                "display": ["Public Sans"]
+              },
+              borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>body {
+    font-family: "Public Sans", sans-serif;
+    -webkit-tap-highlight-color: transparent
+    }
+.radio-selected {
+    border-color: #38e07b !important;
+    background-color: rgba(56, 224, 123, 0.05)
+    }
+.payment-dot {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCFcdNLWO9y0PDuEUJFz8gDbAGc18KG3yrNn4rATWSRg3_DT6g2rWek1MAqCywb-tVl1Bc5k7wTZlbtZ6b5gkjArWL-cJDyeQ77jTjCLDQSXEODxqfMTJdb1XHfXT7plorsYlciykH3Grdap8EIhNrfbFFwwdi2uihwgHwj2c6sdjpWyQZqmStrzg3x3GlHjJmIr5_Mdg3LMR5tJgYaPt9L-JQtDnN5e1BQfBfjeBxfRVNctvmVU66JCAS20Q5rnKuzIWRevNkdVA)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex justify-center">
+<!-- Mobile Container (Phone Form Factor) -->
+<div class="relative w-full max-w-[430px] min-h-screen flex flex-col bg-background-light dark:bg-background-dark shadow-2xl overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Finaliser la commande</h2>
+</div>
+<div class="h-[1px] bg-slate-200 dark:bg-white/10 mx-4"></div>
+</header>
+<main class="flex-1 flex flex-col">
+<!-- Section: Delivery Address -->
+<section class="mt-4">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Adresse de livraison</h3>
+<div class="flex items-center gap-4 bg-transparent px-4 min-h-[88px] py-2 justify-between">
+<div class="flex items-center gap-4 flex-1">
+<div class="text-primary flex items-center justify-center rounded-xl bg-primary/10 shrink-0 size-14">
+<span class="material-symbols-outlined text-[28px] fill-1">location_on</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight line-clamp-1">Cocody, Angré 7e Tranche</p>
+<p class="text-slate-500 dark:text-[#9eb7a8] text-sm font-normal leading-tight line-clamp-2">Immeuble Phoenix, Appt 4B • Abidjan</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-4 bg-slate-200 dark:bg-primary/20 text-slate-900 dark:text-primary text-sm font-semibold transition-all active:scale-95">
+<span class="truncate">Modifier</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section: Payment Methods -->
+<section class="mt-4">
+<div class="flex items-center justify-between px-4 pb-2 pt-4">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Mode de paiement</h3>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">Sécurisé</span>
+</div>
+<div class="flex flex-col gap-3 p-4">
+<!-- Orange Money -->
+<label class="flex items-center gap-4 rounded-2xl border-2 border-solid border-slate-200 dark:border-white/5 p-4 flex-row-reverse cursor-pointer transition-all hover:border-primary/50 radio-selected">
+<input checked="" class="h-6 w-6 border-2 border-slate-300 dark:border-white/20 bg-transparent text-transparent checked:border-primary checked:bg-[image:var(--payment-dot)] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="payment_method" style="--payment-dot: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27%2338e07b%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%274%27/%3e%3c/svg%3e')" type="radio"/>
+<div class="flex grow items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1 overflow-hidden shrink-0 border border-slate-100">
+<img class="w-full h-full object-contain" data-alt="Orange Money payment provider logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANXWmp2XJRxx5dhVeeyfABXfa7MyB0sVjwjhTmmI1Z5Qr7H455sVznhjGAF80b7vSva7BdXz-xUGd5EJ2o1FvhnFKqBuv0wIwrMoDSfvDCv27z-kYmEWNl9ClqzXiBOg6c1q2LyrjP5vg5itAGqpVYai7I3N619I2T6J7cpTdvUts0KgAhhJEkKfmIkyIPOLk8eTA87VvZeAqWcCyAQaWQaVoaPipz14Z887LDhP8E3DHIR2xR0eQJPCo7gTgGJzGdgKx5f3AvFg"/>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-none">Orange Money</p>
+<p class="text-slate-500 dark:text-[#9eb7a8] text-xs font-normal mt-1">Paiement instantané via Orange</p>
+</div>
+</div>
+</label>
+<!-- MTN MoMo -->
+<label class="flex items-center gap-4 rounded-2xl border-2 border-solid border-slate-200 dark:border-white/5 p-4 flex-row-reverse cursor-pointer transition-all hover:border-primary/50">
+<input class="h-6 w-6 border-2 border-slate-300 dark:border-white/20 bg-transparent text-transparent checked:border-primary checked:bg-[image:var(--payment-dot)] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="payment_method" style="--payment-dot: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27%2338e07b%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%274%27/%3e%3c/svg%3e')" type="radio"/>
+<div class="flex grow items-center gap-4">
+<div class="w-12 h-12 bg-[#FFCC00] rounded-lg flex items-center justify-center p-1 overflow-hidden shrink-0">
+<img class="w-full h-full object-contain" data-alt="MTN MoMo mobile money logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxEX5-zoa6P7nx6Q9Za_B3P1pIkq8Qy_nINHRoyMTr0B2ieol_RCgZOpRPQzvwuyw1w60vYop4-EMjRF98FMbLJNfrnxd0v7GN3dBs7K2eKuTPGK2FO9pI_9ABxm4t8cLpggqg7jWmdKHsaEQ8A6_Fi3U-HmnwXNtCYpfjv5JDeUuGceS6j4exvA6qbIUkSDasEhYA3RJ8FpwINqn7Su7tnLUqGVxFJgCoAf8MQ6GM0Vfb9O_Wmao8nkeIMdCZj9q4HHXAS85HoQ"/>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-none">MTN MoMo</p>
+<p class="text-slate-500 dark:text-[#9eb7a8] text-xs font-normal mt-1">Payez avec votre compte MTN</p>
+</div>
+</div>
+</label>
+<!-- Wave -->
+<label class="flex items-center gap-4 rounded-2xl border-2 border-solid border-slate-200 dark:border-white/5 p-4 flex-row-reverse cursor-pointer transition-all hover:border-primary/50">
+<input class="h-6 w-6 border-2 border-slate-300 dark:border-white/20 bg-transparent text-transparent checked:border-primary checked:bg-[image:var(--payment-dot)] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="payment_method" style="--payment-dot: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27%2338e07b%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%274%27/%3e%3c/svg%3e')" type="radio"/>
+<div class="flex grow items-center gap-4">
+<div class="w-12 h-12 bg-[#1DA1F2] rounded-lg flex items-center justify-center p-2 overflow-hidden shrink-0">
+<img class="w-full h-full object-contain brightness-0 invert" data-alt="Wave mobile money logo blue bird" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxRpKG0gPyfNmyrH99QkTLepbLqdYlU_Izo_z48Inpy3hyypr58Liiib7Y_v9qDIqoNC2JC9pXSpy_s6FquVAwkCLaBar796uy7leGse0buRfrKJSvp9s6IXfGSIhB16GwsJg7Nfwxoo67i_VAwlrYHe1X3LZD5NbeIEi8YZIhv0TIAO-fgRxLE6ATPNVnFgYqXqC4MO-qPKh4NAaJfTxt-oF_Oa7VCwp7VVmIh7ffWDU4v90z3zSWXTbIyet-fUIIg66iggBgWw"/>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-none">Wave</p>
+<p class="text-slate-500 dark:text-[#9eb7a8] text-xs font-normal mt-1">Application Wave Côte d'Ivoire</p>
+</div>
+</div>
+</label>
+<!-- Cash on Delivery -->
+<label class="flex items-center gap-4 rounded-2xl border-2 border-solid border-slate-200 dark:border-white/5 p-4 flex-row-reverse cursor-pointer transition-all hover:border-primary/50">
+<input class="h-6 w-6 border-2 border-slate-300 dark:border-white/20 bg-transparent text-transparent checked:border-primary checked:bg-[image:var(--payment-dot)] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="payment_method" style="--payment-dot: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27%2338e07b%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%274%27/%3e%3c/svg%3e')" type="radio"/>
+<div class="flex grow items-center gap-4">
+<div class="w-12 h-12 bg-slate-200 dark:bg-white/10 rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-slate-600 dark:text-white">payments</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-none">Paiement à la livraison</p>
+<p class="text-slate-500 dark:text-[#9eb7a8] text-xs font-normal mt-1">Régler en espèces à la réception</p>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Order Summary Section -->
+<section class="mt-auto px-4 pt-6 pb-2">
+<div class="bg-slate-100 dark:bg-white/5 rounded-2xl p-4 flex flex-col gap-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 dark:text-[#9eb7a8]">Sous-total (3 articles)</span>
+<span class="text-slate-900 dark:text-white font-medium">15.000 FCFA</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 dark:text-[#9eb7a8]">Frais de livraison</span>
+<span class="text-primary font-medium">1.500 FCFA</span>
+</div>
+<div class="h-[1px] bg-slate-300 dark:bg-white/10 my-1"></div>
+<div class="flex justify-between items-center">
+<span class="text-slate-900 dark:text-white text-lg font-bold">Total à payer</span>
+<span class="text-primary text-xl font-bold tracking-tight">16.500 FCFA</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Final CTA Footer -->
+<footer class="p-4 pb-8 sticky bottom-0 bg-background-light dark:bg-background-dark">
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-extrabold text-lg h-16 rounded-full transition-transform active:scale-[0.98] shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span>Valider la commande</span>
+<span class="material-symbols-outlined">shopping_cart_checkout</span>
+</button>
+<p class="text-center text-[10px] text-slate-400 dark:text-white/30 mt-4 uppercase tracking-[2px] font-bold">
+                Boucherie Express • Qualité Garantie
+            </p>
+</footer>
+<!-- iOS Indicator (Visual Only) -->
+<div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-300 dark:bg-white/20 rounded-full"></div>
+</div>
+</body></html>

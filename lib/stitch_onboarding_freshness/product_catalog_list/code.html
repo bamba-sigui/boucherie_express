@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catalogue - Boucherie Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-header {
+            background: rgba(18, 32, 23, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen">
+<!-- Sticky Header Area -->
+<div class="sticky top-0 z-50 glass-header">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10">
+<span class="material-symbols-outlined text-white">menu</span>
+</div>
+<div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">Boucherie Express</h2>
+<p class="text-primary text-[10px] font-bold uppercase tracking-widest">Abidjan, CI</p>
+</div>
+</div>
+<div class="relative">
+<button class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 rounded-full border-2 border-background-dark">3</span>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full bg-white/5 border border-white/10 focus-within:border-primary/50 transition-all">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 bg-transparent border-none focus:ring-0 text-white placeholder:text-slate-500 text-sm font-normal px-3" placeholder="Rechercher une pièce de viande..."/>
+<div class="flex items-center pr-2">
+<button class="size-8 rounded-full bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">tune</span>
+</button>
+</div>
+</div>
+</label>
+</div>
+<!-- Chips Categories -->
+<div class="flex gap-2 px-4 pb-4 overflow-x-auto hide-scrollbar">
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 text-background-dark">
+<span class="text-sm font-bold">Tout</span>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/5 border border-white/10 px-5 text-white/70">
+<span class="text-sm font-medium">Bœuf</span>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/5 border border-white/10 px-5 text-white/70">
+<span class="text-sm font-medium">Poulet</span>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/5 border border-white/10 px-5 text-white/70">
+<span class="text-sm font-medium">Agneau</span>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/5 border border-white/10 px-5 text-white/70">
+<span class="text-sm font-medium">Porc</span>
+</div>
+</div>
+</div>
+<!-- Product Grid -->
+<main class="p-4 pb-32">
+<div class="grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="group relative flex flex-col gap-3">
+<div class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-lg overflow-hidden border border-white/5" data-alt="Premium fresh beef fillet cut" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0QKpUtQyu9kU5MkJtpns0HURwqPfTYN1nCZXoiEFyIcfLexs_jbDKsQ7ty_-qjyMqO0AWusE4tGNES1hzzyhWLAXmhXEXBE3tX8v_Ijm5401XynCFarUOLW7KFvRJYfpPvnz7uQKTgtAPQ8QPvojkaT1cNJ-RMnz5WO7Y02uICjyFXEx4SjcBwkRLWVxPHd-cbdmmN5REF8ZzMivcCtpN5yly-cuO10f5l1xOjRwinmeKjzfGFpciFKdsyfZmxSurWnot7QXn1A");'>
+<div class="absolute top-3 left-3 px-2.5 py-1 bg-primary text-background-dark text-[10px] font-black uppercase tracking-widest rounded-full">
+                        Frais
+                    </div>
+<button class="absolute bottom-3 right-3 size-10 flex items-center justify-center rounded-full bg-primary text-background-dark shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-white text-base font-bold leading-tight">Filet de Bœuf</p>
+<p class="text-primary text-sm font-bold mt-0.5">7.500 FCFA <span class="text-slate-500 font-normal">/ kg</span></p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group relative flex flex-col gap-3">
+<div class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-lg overflow-hidden border border-white/5" data-alt="Whole fresh farm chicken" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBn-84vUmHKM3Ldgh50k1CsuxYGRXQ6hSgI0G-9JVXmrZSOoU3ROE5GU4d0CyxSJXFl4zLnXlF4Zz0SNgmQ9x2-GBlpToMId2g-4io7O3tPu_a7aLC_c_sa7jnsmjS6srTQ6K5HnnPCJfihZ9AVYecwimHBsJHKZNpek6yiatl7BnC61CICmdcPyBaDrRImHrjaQjTUwQmlyKVKar5H-dG2Zw24P3OtcRmgO1Xx7RBXM225wCygsb810zP9kN7Byc92Nf5ubB3AQ");'>
+<div class="absolute top-3 left-3 px-2.5 py-1 bg-primary text-background-dark text-[10px] font-black uppercase tracking-widest rounded-full">
+                        Frais
+                    </div>
+<button class="absolute bottom-3 right-3 size-10 flex items-center justify-center rounded-full bg-primary text-background-dark shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-white text-base font-bold leading-tight">Poulet Fermier</p>
+<p class="text-primary text-sm font-bold mt-0.5">4.200 FCFA <span class="text-slate-500 font-normal">/ kg</span></p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group relative flex flex-col gap-3">
+<div class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-lg overflow-hidden border border-white/5" data-alt="Raw lamb chops on a dark board" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZH2UokH5S8HrMuzcaSUNuBLXEgMtXuiP99gFJKEwnJfrhaEoZ0dDqMRXtHrg4CtJFXgBIO86nC6doecG0QtpVRP-yksxAfkoozyxPVif7bAPVBXobY9MQHWoF4RvuNZPTlh8GibxGBls-QPFGnbrWfDRsRDFRqGi42o2MJsJD4ooNAdO60GhPT0qo6w1jd7MIkT89aUs1CmF6OpE8vq0YPOIgRfHKVHckUaqRSTNuyv0MmQN5fOsTtDBZ2TAptOlZ5Fst0ujHoQ");'>
+<div class="absolute top-3 left-3 px-2.5 py-1 bg-primary text-background-dark text-[10px] font-black uppercase tracking-widest rounded-full">
+                        Frais
+                    </div>
+<button class="absolute bottom-3 right-3 size-10 flex items-center justify-center rounded-full bg-primary text-background-dark shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-white text-base font-bold leading-tight">Côtes d'Agneau</p>
+<p class="text-primary text-sm font-bold mt-0.5">8.900 FCFA <span class="text-slate-500 font-normal">/ kg</span></p>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group relative flex flex-col gap-3">
+<div class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-lg overflow-hidden border border-white/5" data-alt="Spicy fresh sausages" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAM0JoA7upKT1siCtcSwcuvGOoKhmGHMzzCB5t_r1LkGDqSTYDkEdEJTioXCBZrTg0KCwTBLhlG00S5FOkXqxc_LHcXI6NhXj8vCGPDKDpsr-tSdc_pdLEEbn-yyvtt8Wv7Lv-xrKVQRzINjk6H6fJZYU_vOl76lVUHNg3uacyVxm9R3d8zRBue6upz4AhC-lkUAbY1PY5uBJljg0TmhGTXR1Zy5OS1auCYBhl8Ro1qYECe-i_apxRtNSyqVK--AGtWo04NDjzY7w");'>
+<div class="absolute top-3 left-3 px-2.5 py-1 bg-primary text-background-dark text-[10px] font-black uppercase tracking-widest rounded-full">
+                        Frais
+                    </div>
+<button class="absolute bottom-3 right-3 size-10 flex items-center justify-center rounded-full bg-primary text-background-dark shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-white text-base font-bold leading-tight">Merguez Artisanale</p>
+<p class="text-primary text-sm font-bold mt-0.5">5.500 FCFA <span class="text-slate-500 font-normal">/ kg</span></p>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group relative flex flex-col gap-3">
+<div class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-lg overflow-hidden border border-white/5" data-alt="Lean beef steak cuts" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA91zQlDimLRqwyL1i4nzxFwlYtyBVACoaBN-VfD0Qq4P3gbb18ta_oeMVJSuzYzBAISWdKNaZklLlJ1EcbAaHvVL0dP3Baz4Vjz8nWHV4pSvIPXIlTikv7gD5CaTh2QilVl714WFKvSOGPJAcJQ_WX3HuAkhWXBowW3JUHYFJodzHo2tmYhQa1Ofifb_iLEpA_9PeRa-soAxHar_RVD7SwMwQsuBUkwZEUJXbYJpMCUWzLM5Dk6ATIIGbJvxXAfVk26GnthHj3Ng");'>
+<div class="absolute top-3 left-3 px-2.5 py-1 bg-primary text-background-dark text-[10px] font-black uppercase tracking-widest rounded-full">
+                        Frais
+                    </div>
+<button class="absolute bottom-3 right-3 size-10 flex items-center justify-center rounded-full bg-primary text-background-dark shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-white text-base font-bold leading-tight">Steak Haché</p>
+<p class="text-primary text-sm font-bold mt-0.5">6.000 FCFA <span class="text-slate-500 font-normal">/ kg</span></p>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group relative flex flex-col gap-3">
+<div class="relative w-full aspect-[4/5] bg-center bg-no-repeat bg-cover rounded-lg overflow-hidden border border-white/5" data-alt="Dressed roasting chicken" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuArmAbfmxNJiXXVvhNfBShsMGkHYEqBY_22PyRaH71ZHZPGrQUIMQFmXIrGnwbQd4BOVeug4xJwux0Be-_1MCeXKNzh7UNAdZnuR5a7Lj0UY4LXAqeEwW3issEdjMo2O8dIjq3BeVngFYG_wSLMAiXbduP4S8UkIfK9yIZgOTst9Q1h9w-SkKHEJq7C-5gui4XPJTKkhdvXKSUOjnAxpLAHFjHEGHERf81re7xny7MDITvhr7DQTF3FQEiPoKVKDARX7W_9hcRPuw");'>
+<div class="absolute top-3 left-3 px-2.5 py-1 bg-primary text-background-dark text-[10px] font-black uppercase tracking-widest rounded-full">
+                        Frais
+                    </div>
+<button class="absolute bottom-3 right-3 size-10 flex items-center justify-center rounded-full bg-primary text-background-dark shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+</div>
+<div class="px-1">
+<p class="text-white text-base font-bold leading-tight">Poulet Entier</p>
+<p class="text-primary text-sm font-bold mt-0.5">3.800 FCFA <span class="text-slate-500 font-normal">/ kg</span></p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Bar / Cart Summary -->
+<div class="fixed bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-background-dark via-background-dark/95 to-transparent">
+<div class="max-w-[480px] mx-auto">
+<button class="flex w-full items-center justify-between bg-primary text-background-dark rounded-full h-16 px-6 shadow-2xl shadow-primary/30 group overflow-hidden relative">
+<!-- Shine effect -->
+<div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-active:translate-x-[100%] transition-transform duration-500 pointer-events-none"></div>
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-background-dark text-primary flex items-center justify-center font-black text-xs">
+                        3
+                    </div>
+<span class="font-bold text-base tracking-tight">Voir le panier</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase font-black opacity-60 tracking-widest">Total</span>
+<span class="font-bold text-lg leading-none">23.500 FCFA</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Bottom Padding for iOS Home Indicator -->
+<div class="h-8 bg-background-dark"></div>
+</body></html>

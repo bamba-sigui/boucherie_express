@@ -44,7 +44,7 @@ class CartItemCard extends StatelessWidget {
               width: 96,
               height: 96,
               child: CachedNetworkImage(
-                imageUrl: item.product.images.first,
+                imageUrl: item.product.images.isNotEmpty ? item.product.images.first : '',
                 fit: BoxFit.cover,
                 placeholder: (_, __) => Container(
                   color: AppColors.backgroundDark,

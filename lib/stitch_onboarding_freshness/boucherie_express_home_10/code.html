@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "brand-red": "#C62828",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "category-unselected": "#2a2a2a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }.toggle-checkbox:checked {
+            @apply right-0 border-primary bg-primary;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            @apply bg-primary/20;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white min-h-screen pb-32">
+<header class="sticky top-0 z-50 bg-background-dark/90 backdrop-blur-md px-5 py-4 flex items-center border-b border-white/5">
+<button class="mr-4 p-1 -ml-1">
+<span class="material-symbols-outlined text-slate-400">arrow_back_ios</span>
+</button>
+<h1 class="text-lg font-bold text-white flex-1">Paramètres</h1>
+<button class="relative p-2 rounded-full bg-card-dark text-white">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-0 right-0 size-4 bg-primary text-background-dark text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
+</button>
+</header>
+<main class="p-4 space-y-6">
+<section class="space-y-3">
+<h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Notifications</h2>
+<div class="bg-card-dark rounded-xl border border-white/5 overflow-hidden">
+<div class="flex items-center justify-between p-4 border-b border-white/5">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</div>
+<span class="font-semibold text-slate-200">Notifications push</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">sms</span>
+</div>
+<span class="font-semibold text-slate-200">Notifications SMS</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<section class="space-y-3">
+<h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Préférences</h2>
+<div class="bg-card-dark rounded-xl border border-white/5 p-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-300">language</span>
+</div>
+<span class="font-semibold text-slate-200">Langue</span>
+</div>
+<div class="flex items-center gap-2 bg-background-dark px-3 py-1.5 rounded-lg border border-white/10">
+<span class="text-sm font-medium text-primary">Français</span>
+<span class="material-symbols-outlined text-slate-500 text-sm">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-3">
+<h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Compte</h2>
+<div class="bg-card-dark rounded-xl border border-white/5 overflow-hidden">
+<button class="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors border-b border-white/5">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-300">security</span>
+</div>
+<span class="font-semibold text-slate-200">Sécurité du compte</span>
+</div>
+<span class="material-symbols-outlined text-slate-500">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-full bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-300">delete</span>
+</div>
+<span class="font-semibold text-slate-200">Supprimer mon compte</span>
+</div>
+<span class="material-symbols-outlined text-slate-500">chevron_right</span>
+</button>
+</div>
+</section>
+<section class="pt-4">
+<button class="w-full bg-brand-red/10 border border-brand-red/20 text-brand-red font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-brand-red hover:text-white transition-all">
+<span class="material-symbols-outlined">logout</span>
+                Déconnexion
+            </button>
+<p class="text-center text-slate-600 text-[10px] mt-6 font-medium">Version 2.4.0 • Boucherie Express</p>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-xl border-t border-white/5 px-2 pb-8 pt-3 flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Accueil</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Favoris</span>
+</button>
+<div class="relative -top-8">
+<button class="size-16 rounded-full bg-primary text-background-dark shadow-[0_0_20px_rgba(56,224,123,0.3)] flex flex-col items-center justify-center border-4 border-background-dark">
+<span class="material-symbols-outlined text-2xl font-bold">tune</span>
+<span class="text-[9px] font-black uppercase">Filtrer</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">person</span>
+<span class="text-[10px] font-bold">Profil</span>
+</button>
+</nav>
+
+</body></html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clients &amp; Livreurs - Gestion Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#181111",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #543b3b;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-[#392828]">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 px-2">Boucherie Express</h2>
+<div class="flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">notifications</span>
+</div>
+</div>
+</header>
+<!-- Stats Section -->
+<section class="p-4">
+<div class="flex flex-wrap gap-4">
+<div class="flex min-w-[150px] flex-1 flex-col gap-2 rounded-xl p-4 border border-slate-200 dark:border-[#543b3b] bg-white dark:bg-transparent shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">group</span>
+<p class="text-slate-600 dark:text-[#b99d9d] text-sm font-medium">Clients Actifs</p>
+</div>
+<p class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold">1,284</p>
+</div>
+<div class="flex min-w-[150px] flex-1 flex-col gap-2 rounded-xl p-4 border border-slate-200 dark:border-[#543b3b] bg-white dark:bg-transparent shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-500 text-xl">moped</span>
+<p class="text-slate-600 dark:text-[#b99d9d] text-sm font-medium">Livreurs Libres</p>
+</div>
+<p class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold">12</p>
+</div>
+</div>
+</section>
+<!-- Segmented Control View Toggle -->
+<div class="px-4 py-2">
+<div class="flex h-11 items-center justify-center rounded-xl bg-slate-200 dark:bg-[#392828] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm text-slate-600 dark:text-[#b99d9d] has-[:checked]:text-primary dark:has-[:checked]:text-white text-sm font-bold transition-all">
+<span class="truncate">Clients</span>
+<input checked="" class="invisible w-0" name="view-toggle" type="radio" value="Clients"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm text-slate-600 dark:text-[#b99d9d] has-[:checked]:text-primary dark:has-[:checked]:text-white text-sm font-bold transition-all">
+<span class="truncate">Livreurs</span>
+<input class="invisible w-0" name="view-toggle" type="radio" value="Livreurs"/>
+</label>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-slate-400 dark:text-[#b99d9d] flex border-none bg-white dark:bg-[#392828] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-white dark:bg-[#392828] placeholder:text-slate-400 dark:placeholder:text-[#b99d9d] px-4 pl-2 text-base font-normal" placeholder="Rechercher un nom ou téléphone"/>
+</div>
+</label>
+</div>
+<!-- Main Content Area (Combined View) -->
+<main class="flex-1 overflow-y-auto px-4 pb-24 custom-scroll">
+<!-- Live Map Preview Section -->
+<div class="mb-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">Flotte de Livraison</h3>
+<span class="flex items-center gap-1 text-xs font-bold text-primary uppercase">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                    Temps Réel
+                </span>
+</div>
+<div class="relative h-40 w-full rounded-xl overflow-hidden border border-slate-200 dark:border-[#543b3b]">
+<img alt="Carte de livraison" class="w-full h-full object-cover opacity-80" data-alt="Modern dark mode city map with red GPS pins" data-location="Paris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6TKb6r_bQjPd8B5YBK8Zgayjy_ewi_lugqN5GPFmaYLtDNxOgn8JHPXPFSsJyliTqJagK10qaJ2mf__XUoRxyebydhnil-jhNXblC1HBs8pg4LEX1AHIUo5zPtfiBDOcahH-EPt107YaLNRFk0bpPxdv9iQloqjyREgpTLtoC_cB6hXvPkrwkTFpkxs0zS9665t0XGDAYiRtUccaFeN1Y54ohUYlNj7YMOnBX0VZKYgGHhpxocI1o_8O4Psp1N5CCJ3ss5aw5Bg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/60 to-transparent"></div>
+<button class="absolute bottom-3 right-3 bg-primary text-white p-2 rounded-full shadow-lg">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Section Header -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight pb-3">Dernières Activités</h3>
+<!-- List of People (Livreurs & Clients mixed for context) -->
+<div class="space-y-3">
+<!-- Delivery Driver Card (Busy) -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-[#392828] bg-white dark:bg-[#1e1616]">
+<div class="relative">
+<div class="size-12 rounded-full bg-slate-300 overflow-hidden">
+<img alt="Livreur" class="size-full object-cover" data-alt="Professional delivery person profile headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOTaEhpJCd6LnoSEwWsukwGScE9U-0p2AEFtPGBkM8FMbK-m1R6jzdtlU94hMsI2J1LhaaWgP16wmmhGdcExaate3WVdivyVCJT6owZVJWv8b9RWBQ1W6iTX3d9jpS2lVkh0NoBRk6XjwwpdSMqUt11W8AGvIHZuzdcTUXM8Q2KCG1WhWegpf6Xgz_hZspwMssWKGZURVm_9jAAXMvTQ5E_hmzsZBHiH1U5Zb3SlwC8QkQJ-jg8SxWksc0OjT2PZh4wIIdbNPt3Q"/>
+</div>
+<div class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-white dark:border-[#1e1616] bg-primary"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-bold text-slate-900 dark:text-white">Marc Dupont</p>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-primary/10 text-primary uppercase">Occupé</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-[#b99d9d]">En route : Commande #A832</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<!-- Customer Card -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-[#392828] bg-white dark:bg-[#1e1616]">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-bold text-slate-900 dark:text-white">Sophie Lambert</p>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-green-500/10 text-green-500 uppercase">12 Commandes</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-[#b99d9d]">Dernier achat : Hier à 18h45</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<!-- Delivery Driver Card (Available) -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-[#392828] bg-white dark:bg-[#1e1616]">
+<div class="relative">
+<div class="size-12 rounded-full bg-slate-300 overflow-hidden">
+<img alt="Livreur" class="size-full object-cover" data-alt="Young male driver smiling profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPY0pqwRs3UmR-bAULSnkcNSRtOIl4ehur6Xye8eixeFaHqt2V7w1qccamB2kTjlncihVjGh-ntPcRDf2Nd9OmQokq6psK34Wj89a1Fsoi-C1KX9uByK7Djg4F1MEjnVYqg9xngTQzloPm9MHbliyLMZ94TALieJ09HNJpr0OgIHWeGgg4WQFJd8i3qDHcP4eqW-5lUcQypWPOAnsc0EJQqm4SqrwW5EllxhDzTvWXaeqbrkLm16bZjRZCergeBb1EDmdTEJFYpw"/>
+</div>
+<div class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-white dark:border-[#1e1616] bg-green-500"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-bold text-slate-900 dark:text-white">Jean Rivière</p>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-green-500/10 text-green-500 uppercase">Disponible</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-[#b99d9d]">Attente au hub central</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<!-- Customer Card -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-[#392828] bg-white dark:bg-[#1e1616]">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-bold text-slate-900 dark:text-white">Antoine Bernard</p>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-500/10 text-slate-500 uppercase">3 Commandes</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-[#b99d9d]">Dernier achat : 02 Octobre</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-6 right-6 size-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Mobile Tab Bar -->
+<nav class="fixed bottom-0 left-0 right-0 h-16 bg-white dark:bg-[#1e1616] border-t border-slate-200 dark:border-[#392828] flex items-center justify-around px-2 pb-safe">
+<div class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] mt-1">Dashboard</span>
+</div>
+<div class="flex flex-col items-center text-primary font-bold">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-[10px] mt-1">Gestion</span>
+</div>
+<div class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] mt-1">Stocks</span>
+</div>
+<div class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] mt-1">Admin</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boucherie Express - Catalogue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#181111",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center p-4 justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-2xl">account_circle</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Catalogue Produits</h1>
+<p class="text-xs text-gray-500 dark:text-[#b99d9d]">Boucherie Express Admin</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-gray-600 dark:text-white">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pb-24">
+<!-- Search Section -->
+<div class="px-4 py-4 sticky top-[73px] bg-background-light dark:bg-background-dark z-40">
+<label class="flex flex-col w-full">
+<div class="flex w-full items-stretch rounded-xl h-12 shadow-sm">
+<div class="text-gray-400 dark:text-[#b99d9d] flex border-none bg-white dark:bg-[#392828] items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full border-none bg-white dark:bg-[#392828] focus:ring-0 text-base placeholder:text-gray-400 dark:placeholder:text-[#b99d9d] px-4 rounded-r-xl" placeholder="Rechercher un produit..."/>
+</div>
+</label>
+</div>
+<!-- Category Filters -->
+<div class="flex gap-3 px-4 pb-4 overflow-x-auto no-scrollbar">
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 text-white shadow-md shadow-primary/20">
+<p class="text-sm font-semibold">Tous</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#392828] border border-gray-200 dark:border-transparent px-5 text-gray-700 dark:text-white">
+<p class="text-sm font-medium">Poulet</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#392828] border border-gray-200 dark:border-transparent px-5 text-gray-700 dark:text-white">
+<p class="text-sm font-medium">Poisson</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#392828] border border-gray-200 dark:border-transparent px-5 text-gray-700 dark:text-white">
+<p class="text-sm font-medium">Bœuf</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#392828] border border-gray-200 dark:border-transparent px-5 text-gray-700 dark:text-white">
+<p class="text-sm font-medium">Mouton</p>
+</div>
+</div>
+<!-- Section Header -->
+<div class="flex items-center justify-between px-4 py-2 mt-2">
+<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-[#b99d9d]">Inventaire Actuel</h3>
+<span class="text-xs font-medium text-gray-400">42 Produits</span>
+</div>
+<!-- Product List -->
+<div class="flex flex-col divide-y divide-gray-100 dark:divide-gray-800">
+<!-- Item 1 -->
+<div class="flex gap-4 bg-white dark:bg-transparent px-4 py-4 justify-between items-center active:bg-gray-50 dark:active:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-[64px] shadow-sm" data-alt="Premium cut of fresh beef tenderloin" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvuGR-Qz18p0v9An5pSt72lsKqh3O9nDvAdUZRI31r3nMzsK1G950jOSOTolKrm-RdFwzQvRbBSGutzUe_sY6_0ZOgX-VEUGY3HdXAFHOBCKRhrOlPvkpUiYl4iNrmUOhQFUgUPYuDmpmVpZ3HIcntmKN8MqsLnpvTr2TUI9FpZS60cGSZmliyYiB7ZPkh-MutWjXmkhlMRl7L1qDYp9gN08rsRrL6Po-G83jYN8CsSepfYOn9wh0f3sWmbSwlyLPN7HTbGw108w");'></div>
+<div class="flex flex-col">
+<p class="text-gray-900 dark:text-white text-base font-bold">Filet de Bœuf</p>
+<p class="text-green-600 dark:text-green-400 text-xs font-semibold">Stock: 25 kg (En stock)</p>
+<p class="text-gray-500 dark:text-[#b99d9d] text-xs mt-0.5">Bœuf • 15.00€/kg</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<button class="text-gray-400 dark:text-[#b99d9d] flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<span class="text-xs bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded text-gray-600 dark:text-gray-300">#48192</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4 bg-white dark:bg-transparent px-4 py-4 justify-between items-center active:bg-gray-50 dark:active:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-[64px] shadow-sm" data-alt="Whole raw organic chicken" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCRn6ciduN4wKDRRM3VFM9YevDagvy0qxUX4SKKQv9r_JmwiO8RT9eZNTo8WxkaudkAvnxI-ORUDkeoa3EOe0T36W8ivBI101BXB6TyMSNqMBakPULqZr_eFshGuU5SQ7uuQOIqmpMVJ1La15QkP6S8FrgKHAQ-GKx-pJ5fXaBdg7--a1I1GfH3DUkkLvWfuvRsyTsw5RIkc5j3xgnDbnf2DHlOfpEd1o-GeYjO3F-ttZsKP5J4LdNRD91N9RpYRwoQmNn_4WvtQ");'></div>
+<div class="flex flex-col">
+<p class="text-gray-900 dark:text-white text-base font-bold">Poulet Entier</p>
+<p class="text-amber-500 dark:text-amber-400 text-xs font-semibold">Stock: 8 kg (Stock bas)</p>
+<p class="text-gray-500 dark:text-[#b99d9d] text-xs mt-0.5">Poulet • 8.50€/kg</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<button class="text-gray-400 dark:text-[#b99d9d] flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<span class="text-xs bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded text-gray-600 dark:text-gray-300">#48193</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex gap-4 bg-white dark:bg-transparent px-4 py-4 justify-between items-center active:bg-gray-50 dark:active:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-[64px] shadow-sm" data-alt="Fresh sea bream fish" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxgk9Hy6HCyK_jpnIL0VXhm3HkAvy1Q-sm-6JSIeyKWgHyfhQ0ZxYkl7z44S_5463PBJRJqtpkd_J24lLcHPkSoDUPmj2lyrUoFDZIdlxR9P50uZOVMb-JjgU2LHHTu0fi5-8Suod3wuhqnxOzZJf2VtF9Xb4oOxaI9bY-XND36No51yqiuEBmPRRLpI-6lQy5ZGullEPTtruGh7A9jSkM_GMT6w9f-_x-e7umVJ1bWJR9Zb-7YUqbsFLNlvtmFUgzWuMWIsm72A");'></div>
+<div class="flex flex-col">
+<p class="text-gray-900 dark:text-white text-base font-bold">Daurade Royale</p>
+<p class="text-primary text-xs font-semibold">Stock: 0 kg (Rupture)</p>
+<p class="text-gray-500 dark:text-[#b99d9d] text-xs mt-0.5">Poisson • 12.00€/kg</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<button class="text-gray-400 dark:text-[#b99d9d] flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<span class="text-xs bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded text-gray-600 dark:text-gray-300">#48194</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex gap-4 bg-white dark:bg-transparent px-4 py-4 justify-between items-center active:bg-gray-50 dark:active:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-[64px] shadow-sm" data-alt="Lamb chops on a cutting board" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOWNhZe6WX_ryjdguv5YTUSdtRzXv_hx6EWmnhGwZ1yHR9jWPXYcxZJ8RV9sBmzLcM0vMCM52AqFGv2CWY6XdvmvbD-Y-0BphMr1cAZqdnviWIJDeriUpIqJbo-Baka6UVON8Q3hOClWQcqe3feWbqmnAOry3TUl1MTXt1cu8tq9KEsJso_Qkcf7PXKf6OF18-H5AfG-yCWZhJBbW5X1lkDl5zAHbd9wxDFFyL2QXQx5Ns1C9W6qMp7dZ8EJaDWvCLGKGv2JmnZQ");'></div>
+<div class="flex flex-col">
+<p class="text-gray-900 dark:text-white text-base font-bold">Côtes de Mouton</p>
+<p class="text-green-600 dark:text-green-400 text-xs font-semibold">Stock: 12 kg (En stock)</p>
+<p class="text-gray-500 dark:text-[#b99d9d] text-xs mt-0.5">Mouton • 18.90€/kg</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<button class="text-gray-400 dark:text-[#b99d9d] flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<span class="text-xs bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded text-gray-600 dark:text-gray-300">#48195</span>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="flex gap-4 bg-white dark:bg-transparent px-4 py-4 justify-between items-center active:bg-gray-50 dark:active:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-[64px] shadow-sm" data-alt="Chicken drumsticks with herbs" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCV7prcYR42oWEP9FaXR-LmoKdKxaGFAGPk1PpNvAXDHRY257z32l0Vmm0FFbqNDJL9mYZ2envrn3ccz5fCNVR3UDW8ZgrG-JqJyJS1hPFZRueN6hsJP9p4qtOkml22F2fsPpSkQtgptr7awc2HGHMJDaYC3NP8ZansZEhyyBNUGawsJiE7fNOa9GxmFpEolbAHsYLjlv6NOPWmAw7xhlXYM44uzHD2JccE1AHPa4095KBRjZWeOHcRU90dv39s5YDRIiv2Khqq6w");'></div>
+<div class="flex flex-col">
+<p class="text-gray-900 dark:text-white text-base font-bold">Pilons de Poulet</p>
+<p class="text-green-600 dark:text-green-400 text-xs font-semibold">Stock: 40 kg (En stock)</p>
+<p class="text-gray-500 dark:text-[#b99d9d] text-xs mt-0.5">Poulet • 6.20€/kg</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<button class="text-gray-400 dark:text-[#b99d9d] flex size-8 items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<span class="text-xs bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded text-gray-600 dark:text-gray-300">#48196</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 size-14 bg-primary text-white rounded-full shadow-lg shadow-primary/40 flex items-center justify-center active:scale-95 transition-transform z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar (iOS Style) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-[#181111]/80 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 px-6 py-3 flex justify-between items-center z-50">
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">inventory_2</span>
+<span class="text-[10px] font-bold">Catalogue</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400 dark:text-[#b99d9d]">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400 dark:text-[#b99d9d]">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-medium">Stats</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400 dark:text-[#b99d9d]">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Réglages</span>
+</div>
+</nav>
+</body></html>

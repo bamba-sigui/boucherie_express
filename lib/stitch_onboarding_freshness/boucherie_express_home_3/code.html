@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "brand-red": "#C62828",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "category-unselected": "#2a2a2a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+        }
+        .carousel-item {
+            scroll-snap-align: start;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white min-h-screen pb-32">
+<header class="sticky top-0 z-50 bg-background-dark/90 backdrop-blur-md px-5 py-4 flex items-center justify-between border-b border-white/5">
+<h1 class="text-lg font-black tracking-tighter text-white uppercase">BOUCHERIE <span class="text-primary">EXPRESS</span></h1>
+<button class="relative p-2 rounded-full bg-card-dark text-white">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-0 right-0 size-4 bg-primary text-background-dark text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
+</button>
+</header>
+<main class="p-4 space-y-4">
+<section>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="w-full bg-card-dark border-none rounded-full py-3 pl-11 pr-4 text-sm focus:ring-1 focus:ring-primary placeholder:text-slate-500" placeholder="Rechercher..." type="text"/>
+</div>
+</section>
+<section class="flex overflow-x-auto hide-scrollbar gap-3 pb-2">
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-brand-red text-white text-sm font-bold shadow-lg shadow-brand-red/20 transition-all">
+                Poulet
+            </button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-category-unselected text-slate-300 text-sm font-semibold transition-all hover:bg-white/10">
+                Poisson
+            </button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-category-unselected text-slate-300 text-sm font-semibold transition-all hover:bg-white/10">
+                Bœuf
+            </button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-category-unselected text-slate-300 text-sm font-semibold transition-all hover:bg-white/10">
+                Mouton
+            </button>
+</section>
+<div class="space-y-6 pt-2">
+<div class="bg-card-dark rounded-2xl overflow-hidden border border-white/5">
+<div class="relative group">
+<div class="flex overflow-x-auto carousel-container hide-scrollbar h-64">
+<div class="carousel-item min-w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXM2Istfc26EaBBsg-xZ0Kb4Dj8pnSaOjHMUlzgzns3n6hqDx6nMpI04g_Cpg-9dmNtuZUH00lM6Hz6rWOyhc7u2EB3IkUTiI_WB7g-FkqMuyx1nRDHSAYr2sIsJVT4BQdpNYG1LzIQw0wBrkvU76qpLqde40wphL9OgPW-pUgxN7LqfR0gswOxDSy-YVtyS-keueDzrhNCgcjYd8rPRple36wsuUxrVbN_qDQP5lF0pEf7IG4HSmAZOTAG7-xtijpjRzG2DeI0A')"></div>
+<div class="carousel-item min-w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOAwXi2vjtxQc2hsmJh449eV9kgG0QaHa2p2vl1VODIUgFNT9tWbjW0Q8cuEBUlruZBv2bX2Y3TjgCsXxui9BJQUIXn6VrvlxWJ2jEWNDZVFaq9p18cgoXr0vSEKDqsp-eyoLB5tzOlyVy9jx085nbtrlV7TsQvRJNJNl7LgFu0FhncK9rWDbedsiGTu9d0H14yCsbz2_WXdQFyarjZ3q231Op3Un9-kJwaK3Pq204y5eAhL1kOwUkjWcTsYR0VGfnjhAeDjKlog')"></div>
+</div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+<div class="size-1.5 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-white/30"></div>
+</div>
+<button class="absolute top-4 right-4 size-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-white">favorite</span>
+</button>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="text-xl font-bold">Filet de Bœuf Premium</h3>
+<p class="text-slate-400 text-sm">Origine: Fermes Locales • 1kg</p>
+</div>
+<span class="text-xl font-black text-primary whitespace-nowrap">5.500 FCFA</span>
+</div>
+<button class="w-full mt-4 bg-primary hover:bg-primary/90 text-background-dark font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined font-bold">add_shopping_cart</span>
+                        Ajouter au panier
+                    </button>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl overflow-hidden border border-white/5">
+<div class="relative group">
+<div class="flex overflow-x-auto carousel-container hide-scrollbar h-64">
+<div class="carousel-item min-w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEdKWgo9iEKfTcq9I6hNvDw_LDHlJ0uFav8tDptZVa2oWR2a13WqXfKxtCf_QlKXgQJ1MjcbLt4YvXkzQTtUmYZHomZnFDwZL169jaoiz2t19LT7IxCy-vNvI4r77U3Xvpn1V1RJnmBPKSbkNsG2A_28X7TR-q8STsqCl5YbqQ6BPmKsqj0LsmGuDcJfK2mHC7MFKnM6jni8EgyfpWbm8PPouBd6DMH0kafQtHD-_7gIqUOBxhQfRfKMsC_Vf7FuN3EhxWFumC2g')"></div>
+<div class="carousel-item min-w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBjILed8FhgGgvVtlbG2qWPB6a5b8ByJkgzunk0ftNLsWVEFAz5luyq4t4BbHQM3tLOuhrUl4QDXa-GcuzxjRSEWn9bnNv-IoWgR4AkLLWEUzWQ2dZxoEz-59sXPzoyhS_26wlQcjJgP1rwI2h1Ij3yreDz-WWs2K-2-KFqp05Kitel5BXqOWFzaCwI_gvCvBhiPPtFbN5BvI-OE-UozWzQwSfvXXXKuShr-s3V2BIfCklCey__cOzmWaEqm-Y4tb-dYdh8Iek6EQ')"></div>
+</div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+<div class="size-1.5 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-white/30"></div>
+</div>
+<button class="absolute top-4 right-4 size-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-white">favorite</span>
+</button>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="text-xl font-bold">Poulet de Chair Entier</h3>
+<p class="text-slate-400 text-sm">Nettoyé et Prêt à Cuire • 1.2kg</p>
+</div>
+<span class="text-xl font-black text-primary whitespace-nowrap">3.500 FCFA</span>
+</div>
+<button class="w-full mt-4 bg-primary hover:bg-primary/90 text-background-dark font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined font-bold">add_shopping_cart</span>
+                        Ajouter au panier
+                    </button>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl overflow-hidden border border-white/5">
+<div class="relative group">
+<div class="flex overflow-x-auto carousel-container hide-scrollbar h-64">
+<div class="carousel-item min-w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnYxp2oQXMeT1wABRx1ZhAPcLQe-M_ghfitMIqtqO27DfgOHDIUPm1l3TADXnKEbRTNO9UcwiiIwBkhAdtKNQIA2WjMJUC2vRVe1XIhUOOlLIbirys3P_cdNFybcADjKt3ziKShyyzuu4ohzTqVZWWJLm44C8D4VTf7bQTn5LKrGa5qPYcEjwkaBj396XX13cHjrkTDkrj0c09oMX06aRrul2ikGNEQH7g499LSdgqedCBxUTeWLwRgXW_wuUn3hQg8uUELRjfOQ')"></div>
+<div class="carousel-item min-w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCN82LqpySZALE_CpW2BNKYcwBEtUwVquaswnBZJ0QWwucs3Y2WwLC1_A1VbDtHNe8LRmNqT0VwIjSUNR_yZlB1EXaA_jDBnHA-6cZ9xsFEyj_YanXyqPfSePT_QCj3e1Gh3_EmsLungtDDC-WLAnkCnzEN3PTYl0gC4pKVUpIPaEy42n3P7hex2rCU7rWC54vMpAnDZ5sq7eEptzKSGrf4KAFMklOyogiu2ekiXIkSeM6l0_z24eATzisBu2_KjNQE9Jl7ddIP3Q')"></div>
+</div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+<div class="size-1.5 rounded-full bg-primary"></div>
+<div class="size-1.5 rounded-full bg-white/30"></div>
+</div>
+<button class="absolute top-4 right-4 size-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-white">favorite</span>
+</button>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="text-xl font-bold">Carpe Fraîche Entière</h3>
+<p class="text-slate-400 text-sm">Pêche du jour • 800g - 1kg</p>
+</div>
+<span class="text-xl font-black text-primary whitespace-nowrap">4.200 FCFA</span>
+</div>
+<button class="w-full mt-4 bg-primary hover:bg-primary/90 text-background-dark font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined font-bold">add_shopping_cart</span>
+                        Ajouter au panier
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-xl border-t border-white/5 px-2 pb-8 pt-3 flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">home</span>
+<span class="text-[10px] font-bold">Accueil</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Favoris</span>
+</button>
+<div class="relative -top-8">
+<button class="size-16 rounded-full bg-primary text-background-dark shadow-[0_0_20px_rgba(56,224,123,0.3)] flex flex-col items-center justify-center border-4 border-background-dark">
+<span class="material-symbols-outlined text-2xl font-bold">tune</span>
+<span class="text-[9px] font-black uppercase">Filtrer</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 w-16">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profil</span>
+</button>
+</nav>
+
+</body></html>

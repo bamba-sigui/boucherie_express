@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin - Gestion des Livreurs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#d21e1e",
+                "background-light": "#f8f6f6",
+                "background-dark": "#121212",
+                "card-dark": "#1e1e1e",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white min-h-screen">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="text-lg font-bold tracking-tight">Gestion Livreurs</h1>
+</div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined cursor-pointer">search</span>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-white shadow-lg">
+                    AD
+                </div>
+</div>
+</div>
+</div>
+<!-- Main Content Container -->
+<main class="max-w-md mx-auto pb-24">
+<!-- Stats Summary -->
+<div class="flex gap-3 p-4 overflow-x-auto no-scrollbar">
+<div class="flex min-w-[120px] flex-1 flex-col gap-1 rounded-xl p-4 bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Total</p>
+<p class="text-2xl font-bold">24</p>
+</div>
+<div class="flex min-w-[120px] flex-1 flex-col gap-1 rounded-xl p-4 bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<p class="text-green-500 text-xs font-medium uppercase tracking-wider">Prêts</p>
+<p class="text-2xl font-bold">14</p>
+</div>
+<div class="flex min-w-[120px] flex-1 flex-col gap-1 rounded-xl p-4 bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<p class="text-primary text-xs font-medium uppercase tracking-wider">Actifs</p>
+<p class="text-2xl font-bold">8</p>
+</div>
+</div>
+<!-- Filter Tabs -->
+<div class="px-4 mb-4">
+<div class="flex border-b border-gray-200 dark:border-gray-800 gap-6">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2" href="#">
+<p class="text-sm font-bold tracking-wide">Tous</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-medium tracking-wide">Disponible</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-medium tracking-wide">En cours</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-medium tracking-wide">Hors ligne</p>
+</a>
+</div>
+</div>
+<!-- Drivers List -->
+<div class="space-y-1 px-2">
+<!-- Driver 1: Available -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 mb-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 ring-2 ring-green-500 ring-offset-2 ring-offset-white dark:ring-offset-background-dark" data-alt="Portrait of delivery driver Jean Dupont" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2RdfP2AcWKD8kP13d5tiflm4RoOHWfzYpBIC_-BnIF7xWYBYeJDzkry_JYmXSZqZx8h1e5VhjdXzWITzRweVvigMtk57wpsprvoUToRlLvs3_uEMheJKR8UtCFMq0MhPYULc1XUzcldQZY2uYeNsVQWVWMR12yk0Z3FI8QfAlHHlvaPvb0dnFBm3ZSyd-c5YuwEo-ObBG6bmxoSR7XPr8SsJ5-D7V8GZ2uJ75TIuCaQx3NgEZyFXTo5hvWKZRU4Y7GXJs_dFcog");'>
+</div>
+<div class="absolute bottom-0 right-0 h-4 w-4 bg-green-500 border-2 border-white dark:border-card-dark rounded-full"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-gray-900 dark:text-white">Jean Dupont</h3>
+<div class="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 mb-1">
+<span class="text-yellow-500 font-bold">4.8 ★</span>
+<span>•</span>
+<span>120 courses</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                        Disponible
+                    </span>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors shadow-sm">
+                    Assigner
+                </button>
+</div>
+<!-- Driver 2: On Delivery -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 mb-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-background-dark" data-alt="Portrait of delivery driver Marc Leroy" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7ZCJ6aypwslxM4tbUA77THOwyu3gvD6JkaaJnn3LtEmcOdu_BGgb9OMo_nJlmWyXVdr08Y-ZbIm3hFOi82Xeqw-DAKgN6S2H3wUd0fpGbAbLv-haNAtR21ebfzEJY24hfSJ8OZ-Jpbmu5aBsMWJeJahzgBc-pFLAdZOVSWaNr-M0YOea5u8S6GyDarIcpTNdxgZF36rLvMwuKFLPmOKfEr_kIX0SdguBeZSIAwW5kWHck1cS1sKXeg25nZdvkherXMbYE5j8pgw");'>
+</div>
+<div class="absolute bottom-0 right-0 h-4 w-4 bg-primary border-2 border-white dark:border-card-dark rounded-full"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-gray-900 dark:text-white">Marc Leroy</h3>
+<div class="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 mb-1">
+<span class="text-yellow-500 font-bold">4.5 ★</span>
+<span>•</span>
+<span>85 courses</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-primary dark:bg-primary/20 dark:text-primary">
+                        En livraison
+                    </span>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-gray-500 dark:text-gray-400 uppercase font-bold tracking-tighter">Active</p>
+<p class="text-sm font-mono font-bold text-primary">#CMD-4521</p>
+</div>
+</div>
+<!-- Driver 3: Available -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 mb-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 ring-2 ring-green-500 ring-offset-2 ring-offset-white dark:ring-offset-background-dark" data-alt="Portrait of delivery driver Sophie Martin" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDl-T4JJrJmPHkzYOPYWNKvzC8hi8iwcqGfUhkRFo18lNLI4SHuaeM2nhTpit_K9AjQMP0C9IHR4eqjZqA3LsfAM4GvPEa-8KdrETpL7iRhM0gcANXIW_0AVV96I11t8MBlmJQ1g-cO0xt1hlAMyuxvyP9zD2cLC7dR1-Pp23tyhjbW6N0AnOPp_s-Wo2CW8tb5w8w9WVdI17jBADdgIICVNsCXsq6M2QrWJBhxUXeeqI2uPv4VrbyaPjabqM_ecPBVfsIRKj1dug");'>
+</div>
+<div class="absolute bottom-0 right-0 h-4 w-4 bg-green-500 border-2 border-white dark:border-card-dark rounded-full"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-gray-900 dark:text-white">Sophie Martin</h3>
+<div class="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 mb-1">
+<span class="text-yellow-500 font-bold">4.9 ★</span>
+<span>•</span>
+<span>203 courses</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                        Disponible
+                    </span>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors shadow-sm">
+                    Assigner
+                </button>
+</div>
+<!-- Driver 4: Offline -->
+<div class="flex items-center gap-4 bg-white/50 dark:bg-card-dark/50 p-4 rounded-xl border border-gray-100 dark:border-gray-800 mb-3 opacity-70">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 grayscale" data-alt="Portrait of delivery driver Lucas Petit" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDApa5bKVmNn2azpN7zogEZS2kKsGxLM7RGlhT4EPQgW4w1LPDoq-1CMZJQjFfJXMpwJEhWKWwGdfFdUTeGl4q3vf2-Z5OpZjDumJe2sXkP_-EM644satdTu1PWqyErSpmnVaGEDSlR_KCKM4k2EDEB8lwVSi4x5ynrxQbu2nCsy0Wvmj-2qNWXLLCA7xDxxidqso8JktQdBAHw5HJZY_1ETU3juU9onx1rEdChBkHpEr7iRQuhxGqKIREM7zirWdfosBui2iLkLg");'>
+</div>
+<div class="absolute bottom-0 right-0 h-4 w-4 bg-gray-400 border-2 border-white dark:border-card-dark rounded-full"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-gray-900 dark:text-white">Lucas Petit</h3>
+<div class="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 mb-1">
+<span class="text-yellow-500 font-bold">4.2 ★</span>
+<span>•</span>
+<span>42 courses</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-400">
+                        Hors ligne
+                    </span>
+</div>
+<span class="text-[10px] text-gray-500 italic">Depuis 2h</span>
+</div>
+</div>
+</main>
+<!-- Navigation Bar (iOS style) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-background-dark/90 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800 pb-safe">
+<div class="max-w-md mx-auto flex justify-between px-6 py-3">
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-medium">Commandes</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">delivery_dining</span>
+<span class="text-[10px] font-bold">Livreurs</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-medium">Stock</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Paramètres</span>
+</div>
+</div>
+<!-- iOS Home Indicator Space -->
+<div class="h-6 w-full"></div>
+</nav>
+</body></html>

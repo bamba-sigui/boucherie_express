@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin - Catalogue Produits</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c62828",
+                        "background-light": "#f9f9fa",
+                        "background-dark": "#131315",
+                        "surface-dark": "#1c1c1e",
+                        "card-dark": "#2c2c2e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @media (min-width: 1024px) {
+            .sidebar-link.active {
+                @apply bg-primary text-white;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen lg:flex lg:pb-0 pb-20">
+<aside class="hidden lg:flex flex-col w-64 bg-white dark:bg-surface-dark border-r border-slate-200 dark:border-white/10 h-screen sticky top-0">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white">restaurant_menu</span>
+</div>
+<div>
+<h1 class="text-sm font-bold tracking-tight">Boucherie Express</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold">Admin Panel</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">shopping_bag</span>
+<span class="text-sm font-semibold">Commandes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span class="text-sm font-bold">Catalogue</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm font-semibold">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span class="text-sm font-semibold">Analyses</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="text-sm font-semibold">Paramètres</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<div class="bg-slate-50 dark:bg-card-dark p-3 rounded-xl border border-slate-200 dark:border-white/5 flex items-center gap-3">
+<img alt="Admin Profile" class="w-10 h-10 rounded-full border-2 border-primary/20 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuHlb-YoPbojbcVfMOP32d1CV3RoU__lCqCdntGn1O0Fup4W4KCl8gwPZ5DgjeqzGakzxJn5RwmXyYZHxKItWauTnptZYmBCg5BbnFsI0e_XV-nfMO6hPLUpbTfQfQE_zyidppT72EpS5XMCgmTlbpNTEb6_9qLlh2oXyb-eAnQe8PNdYW3c1nMSu4-Ko1JvWR7pnZ9rrBoWtDE7ehhPwcJaNid8rB0GkeYpSfvda_qH7fxDgHQH8WFBUMpJW0zeij-fD_h1lAVA"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Marc Dupont</p>
+<p class="text-[10px] text-slate-500 truncate">Administrateur</p>
+</div>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10 lg:px-8 px-4 py-4 flex items-center justify-between">
+<div>
+<h2 class="text-xl font-bold tracking-tight">Catalogue Produits</h2>
+<p class="text-xs text-slate-500 font-medium lg:block hidden">Gérez vos articles, stocks et prix</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="lg:flex hidden items-center bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-white/5 px-3 py-1.5 gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">search</span>
+<input class="bg-transparent border-none text-sm focus:ring-0 p-0 w-48" placeholder="Rechercher..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-xl">add</span>
+<span class="lg:inline hidden">Ajouter un Produit</span>
+<span class="lg:hidden inline">Ajouter</span>
+</button>
+</div>
+</header>
+<main class="flex-1 lg:p-8 p-4 space-y-6">
+<div class="lg:hidden relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-white dark:bg-surface-dark border-slate-200 dark:border-white/10 rounded-xl text-sm focus:ring-primary focus:border-primary" placeholder="Rechercher un produit..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-white">Tous</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 px-6 text-sm font-medium hover:border-primary/50 transition-colors">Poulet</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 px-6 text-sm font-medium hover:border-primary/50 transition-colors">Bœuf</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 px-6 text-sm font-medium hover:border-primary/50 transition-colors">Poisson</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 px-6 text-sm font-medium hover:border-primary/50 transition-colors">Agneau</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 px-6 text-sm font-medium hover:border-primary/50 transition-colors">Charcuterie</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-white/5 overflow-hidden group shadow-sm hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-none transition-all duration-300">
+<div class="relative h-48 bg-slate-100 dark:bg-card-dark overflow-hidden">
+<img alt="Filet de Poulet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhwEJuW3-sBUGGWlk8jOEDPbqnqvgsIQiUzbF7lj_7GX3h_f_qjQYPuKhzl8jqJiAwxd7MFMNuISEi1IwlvuO9axpq6CuS85Foqa4NQAeTegLrgCu3jTqBklD4kW-k8nGedCdGfr3k8fqWfcH5OQe0Pi3wOWQqoZ6Ng39pGbcD_kM7wjzpjuu8h2jPIlYpSKI-_1TuhfSY0q-WUYtKWlBGxDVjwUb8H24RyE50GxcwSKpImdmK08a_Nx8hmzDiA80B8ezItyj2Ng"/>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-white/90 dark:bg-black/50 backdrop-blur-md flex items-center justify-center text-slate-600 dark:text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">Volaille</span>
+<h3 class="font-bold text-slate-800 dark:text-white">Filet de Poulet Fermier</h3>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-lg font-extrabold text-primary">4,500 <span class="text-xs font-normal opacity-70">FCFA /kg</span></span>
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-semibold text-slate-400 uppercase">Stock</span>
+<span class="text-sm font-bold text-emerald-500">24 kg</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+<span class="text-xs font-medium text-slate-500">Statut En Ligne</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-slate-200 dark:bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-white/5 overflow-hidden group shadow-sm hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-none transition-all duration-300">
+<div class="relative h-48 bg-slate-100 dark:bg-card-dark overflow-hidden">
+<img alt="Dinde" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj4nWwdP0InXiylTZHw45bbnORhN_hgilDaTnU6vwG2mqRrE2M8-tyd0SruOydZtM0Lz_uthaPgBOJW0Uzf_0u0Kzbf3eUaaSMCFqdFCeaGu4g8aU-edARUUjJPGCTD6pXmz4u97HjaYJYIB0a2p5_5-UbBVmZJzKSuy--o0PiynSaW5TBQ5Av664v6WXDt9UyLXpZT9ftqwif7uZeJ6TGFDPDvi9N_Ew_BOzr0BaHcDKMUBLw_XsNE9xxlP9KVs3_GEkDiiaF1Q"/>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-white/90 dark:bg-black/50 backdrop-blur-md flex items-center justify-center text-slate-600 dark:text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">Volaille</span>
+<h3 class="font-bold text-slate-800 dark:text-white">Cuisse de Dinde</h3>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-lg font-extrabold text-primary">5,200 <span class="text-xs font-normal opacity-70">FCFA /kg</span></span>
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-semibold text-slate-400 uppercase">Stock</span>
+<span class="text-sm font-bold text-amber-500">5 kg</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+<span class="text-xs font-medium text-slate-500">Statut En Ligne</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-slate-200 dark:bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-white/5 overflow-hidden group shadow-sm hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-none transition-all duration-300">
+<div class="relative h-48 bg-slate-100 dark:bg-card-dark overflow-hidden">
+<img alt="Bœuf" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuHlb-YoPbojbcVfMOP32d1CV3RoU__lCqCdntGn1O0Fup4W4KCl8gwPZ5DgjeqzGakzxJn5RwmXyYZHxKItWauTnptZYmBCg5BbnFsI0e_XV-nfMO6hPLUpbTfQfQE_zyidppT72EpS5XMCgmTlbpNTEb6_9qLlh2oXyb-eAnQe8PNdYW3c1nMSu4-Ko1JvWR7pnZ9rrBoWtDE7ehhPwcJaNid8rB0GkeYpSfvda_qH7fxDgHQH8WFBUMpJW0zeij-fD_h1lAVA"/>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-white/90 dark:bg-black/50 backdrop-blur-md flex items-center justify-center text-slate-600 dark:text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">Bœuf</span>
+<h3 class="font-bold text-slate-800 dark:text-white">Bifteck Premium</h3>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-lg font-extrabold text-primary">8,900 <span class="text-xs font-normal opacity-70">FCFA /kg</span></span>
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-semibold text-slate-400 uppercase">Stock</span>
+<span class="text-sm font-bold text-slate-400">Rupture</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+<span class="text-xs font-medium text-slate-500">Statut En Ligne</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-slate-200 dark:bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-white/5 overflow-hidden group shadow-sm hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-none transition-all duration-300">
+<div class="relative h-48 bg-slate-100 dark:bg-card-dark overflow-hidden">
+<img alt="Capitaine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj4nWwdP0InXiylTZHw45bbnORhN_hgilDaTnU6vwG2mqRrE2M8-tyd0SruOydZtM0Lz_uthaPgBOJW0Uzf_0u0Kzbf3eUaaSMCFqdFCeaGu4g8aU-edARUUjJPGCTD6pXmz4u97HjaYJYIB0a2p5_5-UbBVmZJzKSuy--o0PiynSaW5TBQ5Av664v6WXDt9UyLXpZT9ftqwif7uZeJ6TGFDPDvi9N_Ew_BOzr0BaHcDKMUBLw_XsNE9xxlP9KVs3_GEkDiiaF1Q"/>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-white/90 dark:bg-black/50 backdrop-blur-md flex items-center justify-center text-slate-600 dark:text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">Poisson</span>
+<h3 class="font-bold text-slate-800 dark:text-white">Filet de Capitaine</h3>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-lg font-extrabold text-primary">12,500 <span class="text-xs font-normal opacity-70">FCFA /kg</span></span>
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-semibold text-slate-400 uppercase">Stock</span>
+<span class="text-sm font-bold text-emerald-500">12 kg</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+<span class="text-xs font-medium text-slate-500">Statut En Ligne</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-slate-200 dark:bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-xl border-t border-slate-200 dark:border-white/5 px-6 pb-6 pt-3 shadow-2xl flex items-center justify-between">
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">dashboard</span>
+<span class="text-[10px] font-semibold text-slate-400">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">shopping_bag</span>
+<span class="text-[10px] font-semibold text-slate-400">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="relative">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></span>
+</div>
+<span class="text-[10px] font-bold text-primary">Catalogue</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">group</span>
+<span class="text-[10px] font-semibold text-slate-400">Clients</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">settings</span>
+<span class="text-[10px] font-semibold text-slate-400">Paramètres</span>
+</button>
+</nav>
+
+</body></html>

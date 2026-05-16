@@ -1,6 +1,8 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/format_utils.dart';
@@ -79,6 +81,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
   }
 
   // ── Helpers ────────────────────────────────────────────────────────────
+
+  void _openVideoPlayer(String url) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.black87,
+      builder: (_) => _VideoPlayerDialog(videoUrl: url),
+    );
+  }
 
   void _addToCart() {
     context.read<CartBloc>().add(
@@ -160,6 +170,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                           FavoritesToggleRequested(product),
                         );
                       },
+                      onPlayVideo: product.videoUrl != null
+                          ? () => _openVideoPlayer(product.videoUrl!)
+                          : null,
                     );
                   },
                 ),
@@ -338,6 +351,83 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                     ),
                   ),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// VIDEO PLAYER DIALOG
+// ═══════════════════════════════════════════════════════════════════════════
+
+class _VideoPlayerDialog extends StatefulWidget {
+  final String videoUrl;
+  const _VideoPlayerDialog({required this.videoUrl});
+
+  @override
+  State<_VideoPlayerDialog> createState() => _VideoPlayerDialogState();
+}
+
+class _VideoPlayerDialogState extends State<_VideoPlayerDialog> {
+  late VideoPlayerController _videoController;
+  ChewieController? _chewieController;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoController = VideoPlayerController.networkUrl(
+      Uri.parse(widget.videoUrl),
+    )..initialize().then((_) {
+        if (!mounted) return;
+        _chewieController = ChewieController(
+          videoPlayerController: _videoController,
+          autoPlay: true,
+          looping: false,
+          aspectRatio: _videoController.value.aspectRatio,
+          allowFullScreen: true,
+          materialProgressColors: ChewieProgressColors(
+            playedColor: AppColors.primary,
+            handleColor: AppColors.primary,
+            bufferedColor: AppColors.primary.withValues(alpha: .3),
+            backgroundColor: AppColors.border,
+          ),
+        );
+        setState(() {});
+      });
+  }
+
+  @override
+  void dispose() {
+    _videoController.dispose();
+    _chewieController?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Colors.black,
+      insetPadding: EdgeInsets.zero,
+      child: Stack(
+        alignment: Alignment.topRight,
+        children: [
+          Center(
+            child: _chewieController != null
+                ? Chewie(controller: _chewieController!)
+                : const CircularProgressIndicator(color: AppColors.primary),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: IconButton(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(
+                Icons.close_rounded,
+                color: Colors.white,
+                size: 28,
+              ),
             ),
           ),
         ],

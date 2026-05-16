@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mon Panier Optimisé - Boucherie Express</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "accent-red": "#FF4B4B",
+                    },
+                    fontFamily: {
+                        "sans": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .ios-shadow {
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex justify-center">
+<div class="relative w-full max-w-[430px] min-h-screen bg-background-light dark:bg-background-dark flex flex-col shadow-2xl overflow-hidden">
+<header class="sticky top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-xl px-4 pt-14 pb-4 flex items-center justify-between border-b border-gray-200 dark:border-white/5">
+<button class="flex items-center justify-center size-10 rounded-full bg-gray-100 dark:bg-white/5 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-xl">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold">Mon Panier</h1>
+<div class="size-10 flex items-center justify-center">
+<span class="text-xs font-bold bg-white/10 px-2 py-1 rounded-full">3</span>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-4 py-6 space-y-4 hide-scrollbar">
+<div class="flex gap-4 bg-white dark:bg-card-dark p-3 rounded-2xl border border-transparent hover:border-primary/20 transition-all relative">
+<div class="size-24 bg-center bg-no-repeat bg-cover rounded-xl shrink-0 shadow-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDrFvH5sApSUL3RxQncec7gch_l1qx1ooNM6Wz-Ok_2kKViv3YGcrTs8VMnAtipgUTcjaa-Bw4yxz4y0eghsKJgLkbBcggQfco-HYzgGTEzkOUCqQuRIYs88swhz6k75g9T-63h-L-vEdmEZECpfuxO0ebIlGRlxUPIj08uS6p17zYxryMFdTpi8B8nI_vSU7WkPZLV-ppV7bG2hv-hJPUKEPzwpt645U7EFb3ftznY-Q6rPO_iHLL4ppohL5w0lXhMQ-yB1xalLg");'></div>
+<div class="flex flex-col flex-1 min-w-0 justify-between">
+<div class="flex justify-between items-start gap-2">
+<div class="min-w-0">
+<h3 class="font-bold text-[15px] truncate">Bœuf Haché</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-bold px-2 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-wider">500g</span>
+<span class="text-[10px] font-bold px-2 py-0.5 bg-white/5 text-gray-400 rounded-full uppercase tracking-wider">Découpé</span>
+</div>
+</div>
+<button class="text-gray-400 hover:text-accent-red active:scale-90 transition-all">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-2">
+<p class="text-primary font-bold">4,500 FCFA</p>
+<div class="flex items-center gap-4 bg-gray-100 dark:bg-white/5 p-1 rounded-full">
+<button class="size-7 flex items-center justify-center rounded-full bg-white dark:bg-white/10 shadow-sm active:scale-90 transition-all">
+<span class="material-symbols-outlined text-base">remove</span>
+</button>
+<span class="text-sm font-bold w-4 text-center">1</span>
+<button class="size-7 flex items-center justify-center rounded-full bg-primary text-white shadow-sm active:scale-90 transition-all">
+<span class="material-symbols-outlined text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 bg-white dark:bg-card-dark p-3 rounded-2xl border border-transparent hover:border-primary/20 transition-all relative">
+<div class="size-24 bg-center bg-no-repeat bg-cover rounded-xl shrink-0 shadow-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBplPm1wsxpWAKoXSYflc-6Z3J1IkdmZpvupfKGgdfaje-LQIiiZlTgeG8fGg8ad14pqbQwuhcnKbWo-0s8xuHqkl1iCPc4xQpy1NWvqO_l1vIMPnQk8Gt2kvdrQ6D6O3vLcO1wuF0TteJA_pSusQ-ZgmC6fxZTittQRJBaWr4OL35y912IIWqQZAjl1nm0c4Vrp8tCHUvocxU0ZQnc7UrRNgGwL_qbIDvA7oKHSni39EZErk7Vv8OGqPtcx-AC2CZEUAeewaqWOg");'></div>
+<div class="flex flex-col flex-1 min-w-0 justify-between">
+<div class="flex justify-between items-start gap-2">
+<div class="min-w-0">
+<h3 class="font-bold text-[15px] truncate">Côtelettes d'Agneau</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-bold px-2 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-wider">1kg</span>
+<span class="text-[10px] font-bold px-2 py-0.5 bg-white/5 text-gray-400 rounded-full uppercase tracking-wider">Entier</span>
+</div>
+</div>
+<button class="text-gray-400 hover:text-accent-red active:scale-90 transition-all">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-2">
+<p class="text-primary font-bold">8,000 FCFA</p>
+<div class="flex items-center gap-4 bg-gray-100 dark:bg-white/5 p-1 rounded-full">
+<button class="size-7 flex items-center justify-center rounded-full bg-white dark:bg-white/10 shadow-sm active:scale-90 transition-all">
+<span class="material-symbols-outlined text-base">remove</span>
+</button>
+<span class="text-sm font-bold w-4 text-center">2</span>
+<button class="size-7 flex items-center justify-center rounded-full bg-primary text-white shadow-sm active:scale-90 transition-all">
+<span class="material-symbols-outlined text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 bg-white dark:bg-card-dark p-3 rounded-2xl border border-transparent hover:border-primary/20 transition-all relative">
+<div class="size-24 bg-center bg-no-repeat bg-cover rounded-xl shrink-0 shadow-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDT1-VRRc8NrzKxDRvPiJzvEZ65mDB6zhIiXsN75SzyzYK-cxmwvqAMhDYA7EbitFsfHv64koqWECOYnuhbZajmkZzLyWhWVkUpemq3MQCn_NsXzeSfBPNNJ7dupThnzpZZyjIXVovTlzPlJb2tAciM2mQYzJQIbDMP6-z_jteBfmnLqvyRKJwErQBEB5hrJ01i77sRWV0js-22HwsTrg5BeZTqR0gPM35mBVFnB54Dj-N11t4Fh3wnUWjkMLdXleId6O6rM_ybaw");'></div>
+<div class="flex flex-col flex-1 min-w-0 justify-between">
+<div class="flex justify-between items-start gap-2">
+<div class="min-w-0">
+<h3 class="font-bold text-[15px] truncate">Poulet Entier Nettoyé</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-bold px-2 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-wider">L</span>
+<span class="text-[10px] font-bold px-2 py-0.5 bg-white/5 text-gray-400 rounded-full uppercase tracking-wider">Nettoyé</span>
+</div>
+</div>
+<button class="text-gray-400 hover:text-accent-red active:scale-90 transition-all">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-2">
+<p class="text-primary font-bold">3,500 FCFA</p>
+<div class="flex items-center gap-4 bg-gray-100 dark:bg-white/5 p-1 rounded-full">
+<button class="size-7 flex items-center justify-center rounded-full bg-white dark:bg-white/10 shadow-sm active:scale-90 transition-all">
+<span class="material-symbols-outlined text-base">remove</span>
+</button>
+<span class="text-sm font-bold w-4 text-center">1</span>
+<button class="size-7 flex items-center justify-center rounded-full bg-primary text-white shadow-sm active:scale-90 transition-all">
+<span class="material-symbols-outlined text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-card-dark ios-shadow p-6 rounded-t-[2.5rem] border-t border-white/5">
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<p class="text-[11px] font-bold uppercase tracking-widest text-primary">Livraison Gratuite</p>
+<p class="text-[11px] font-medium text-gray-400">Encore <span class="text-white font-bold">4,000 FCFA</span></p>
+</div>
+<div class="h-2 w-full bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[80%]"></div>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-400 font-medium">Sous-total</span>
+<span class="font-semibold text-white">24,000 FCFA</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-400 font-medium">Frais de livraison</span>
+<span class="font-semibold text-white">2,000 FCFA</span>
+</div>
+<div class="h-px bg-white/5"></div>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold">Total</span>
+<div class="text-right">
+<span class="text-2xl font-black text-white">26,000 FCFA</span>
+<p class="text-[10px] text-gray-500 font-medium uppercase mt-0.5">Taxes incluses</p>
+</div>
+</div>
+</div>
+<button class="w-full bg-accent-red hover:bg-red-600 text-white h-16 rounded-2xl font-black text-base tracking-widest uppercase flex items-center justify-center gap-3 shadow-2xl shadow-accent-red/30 active:scale-[0.97] transition-all">
+            Commander
+            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="h-6"></div>
+</footer>
+</div>
+
+</body></html>

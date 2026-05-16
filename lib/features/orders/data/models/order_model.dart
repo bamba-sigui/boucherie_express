@@ -40,13 +40,15 @@ class OrderModel extends Order {
       totalPrice: (json['totalPrice'] as num).toDouble(),
       deliveryFee: (json['deliveryFee'] as num).toDouble(),
       totalAmount: (json['totalAmount'] as num).toDouble(),
-      deliveryAddress: json['deliveryAddress'] as String,
+      deliveryAddress: (json['deliveryAddress'] as String?) ?? '',
       status: OrderStatus.values.byName(json['status'] as String),
       paymentMethod: _parsePaymentMethod(
         json['paymentMethod'] as String? ?? 'cash',
       ),
       paymentStatus: json['paymentStatus'] as String,
-      orderedAt: DateTime.parse(json['orderedAt'] as String),
+      orderedAt: json['orderedAt'] != null
+          ? DateTime.parse(json['orderedAt'] as String)
+          : DateTime.now(),
       note: json['note'] as String?,
     );
   }

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "brand-red": "#C62828",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "category-unselected": "#2a2a2a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .otp-input:focus {
+            border-color: #38e07b;
+            box-shadow: 0 0 0 1px #38e07b;
+            outline: none;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white min-h-screen">
+<header class="sticky top-0 z-50 bg-background-dark/90 backdrop-blur-md px-5 py-4 flex items-center border-b border-white/5">
+<button class="mr-4 p-2 -ml-2 rounded-full hover:bg-white/5 active:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-black tracking-tighter text-white uppercase">Vérification</h1>
+</header>
+<main class="px-6 pt-12 flex flex-col items-center">
+<div class="size-24 rounded-full bg-primary/10 flex items-center justify-center mb-8 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-5xl">phonelink_lock</span>
+</div>
+<div class="text-center mb-10 space-y-3">
+<h2 class="text-2xl font-bold">Vérifier votre numéro</h2>
+<p class="text-slate-400 font-medium">Entrez le code envoyé au <br/> <span class="text-white">+225 07 08 09 10 11</span></p>
+</div>
+<div class="flex gap-4 mb-10">
+<input class="otp-input w-16 h-16 bg-card-dark border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:ring-0 focus:border-primary" maxlength="1" type="text" value="4"/>
+<input class="otp-input w-16 h-16 bg-card-dark border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:ring-0 focus:border-primary" maxlength="1" placeholder="·" type="text"/>
+<input class="otp-input w-16 h-16 bg-card-dark border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:ring-0 focus:border-primary" maxlength="1" placeholder="·" type="text"/>
+<input class="otp-input w-16 h-16 bg-card-dark border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:ring-0 focus:border-primary" maxlength="1" placeholder="·" type="text"/>
+</div>
+<div class="text-center space-y-4 mb-12">
+<p class="text-slate-500 text-sm">Vous n'avez pas reçu de code ?</p>
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-xl">schedule</span>
+<span class="text-primary font-semibold">Renvoyer le code (00:45)</span>
+</div>
+</div>
+<div class="w-full max-w-sm mt-auto">
+<button class="w-full bg-primary text-background-dark font-black py-5 rounded-2xl shadow-[0_8px_30px_rgb(56,224,123,0.2)] hover:opacity-90 active:scale-[0.98] transition-all text-lg uppercase tracking-wider">
+                Vérifier
+            </button>
+</div>
+<div class="w-full max-w-xs mt-12 grid grid-cols-3 gap-y-4 opacity-50 pointer-events-none">
+<div class="text-center py-2 text-xl font-bold">1</div>
+<div class="text-center py-2 text-xl font-bold">2</div>
+<div class="text-center py-2 text-xl font-bold">3</div>
+<div class="text-center py-2 text-xl font-bold">4</div>
+<div class="text-center py-2 text-xl font-bold">5</div>
+<div class="text-center py-2 text-xl font-bold">6</div>
+<div class="text-center py-2 text-xl font-bold">7</div>
+<div class="text-center py-2 text-xl font-bold">8</div>
+<div class="text-center py-2 text-xl font-bold">9</div>
+<div></div>
+<div class="text-center py-2 text-xl font-bold">0</div>
+<div class="flex justify-center items-center py-2">
+<span class="material-symbols-outlined">backspace</span>
+</div>
+</div>
+</main>
+
+</body></html>

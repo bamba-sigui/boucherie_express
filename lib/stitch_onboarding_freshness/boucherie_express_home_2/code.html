@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38e07b",
+                        "brand-red": "#C62828",
+                        "background-dark": "#0a0f0c",
+                        "card-dark": "#161d19",
+                        "field-dark": "#1e2621",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        input:focus { outline: none; border-color: #38e07b !important; ring: 0 !important; }
+    </style>
+<style>
+        body {
+            min-height: 100dvh;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white min-h-screen pb-10">
+<header class="sticky top-0 z-50 bg-background-dark/90 backdrop-blur-md px-4 py-4 flex items-center border-b border-white/5">
+<button class="p-2 -ml-2 rounded-full text-slate-400 hover:text-white transition-colors" onclick="history.back()">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold flex-1 text-center mr-8">Informations personnelles</h1>
+</header>
+<main class="p-5 flex flex-col min-h-[calc(100dvh-140px)]">
+<section class="flex flex-col items-center py-8">
+<div class="relative">
+<div class="size-28 rounded-full bg-primary/10 flex items-center justify-center border-4 border-card-dark shadow-xl">
+<span class="material-symbols-outlined text-primary text-6xl">account_circle</span>
+</div>
+<button class="absolute bottom-0 right-0 size-9 bg-primary text-background-dark rounded-full flex items-center justify-center border-4 border-background-dark shadow-lg">
+<span class="material-symbols-outlined text-sm font-bold">photo_camera</span>
+</button>
+</div>
+<p class="mt-4 text-slate-400 text-xs font-medium uppercase tracking-widest">Photo de profil</p>
+</section>
+<section class="space-y-6 flex-grow">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-400 ml-1" for="name">Nom complet</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full bg-card-dark border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-white font-medium focus:ring-1 focus:ring-primary focus:border-primary transition-all" id="name" placeholder="Votre nom" type="text" value="Jean-Marc Kouassi"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-400 ml-1" for="phone">Numéro de téléphone</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors">call</span>
+<input class="w-full bg-card-dark border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-white font-medium focus:ring-1 focus:ring-primary focus:border-primary transition-all" id="phone" placeholder="Votre numéro" type="tel" value="+225 07 08 09 10 11"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-400 ml-1" for="email">Email (Optionnel)</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full bg-card-dark border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-white font-medium focus:ring-1 focus:ring-primary focus:border-primary transition-all" id="email" placeholder="exemple@email.com" type="email"/>
+</div>
+</div>
+</section>
+<section class="mt-12 pb-6">
+<button class="w-full bg-brand-red text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-brand-red/20 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">save</span>
+                Enregistrer les modifications
+            </button>
+<p class="text-center text-slate-500 text-[10px] mt-4 px-8 leading-relaxed">
+                Vos données sont sécurisées et ne seront pas partagées avec des tiers conformément à notre politique de confidentialité.
+            </p>
+</section>
+</main>
+
+</body></html>

@@ -15,8 +15,8 @@ class UserModel extends User {
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'] as String,
-      email: json['email'] as String,
-      name: json['name'] as String,
+      email: (json['email'] as String?) ?? '',
+      name: (json['name'] as String?) ?? 'Utilisateur',
       phone: json['phone'] as String?,
       addresses:
           (json['addresses'] as List<dynamic>?)
@@ -24,7 +24,9 @@ class UserModel extends User {
               .toList() ??
           [],
       photoUrl: json['photoUrl'] as String?,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      createdAt: json['createdAt'] != null
+          ? DateTime.parse(json['createdAt'] as String)
+          : DateTime.now(),
     );
   }
 

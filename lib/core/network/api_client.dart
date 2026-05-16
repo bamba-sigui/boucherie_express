@@ -14,6 +14,9 @@ class ApiClient {
   final Dio _dio;
   final FirebaseAuth _firebaseAuth;
 
+  String? _cachedToken;
+  DateTime? _tokenExpiry;
+
   ApiClient(this._firebaseAuth)
       : _dio = Dio(
           BaseOptions(
@@ -41,7 +44,7 @@ class ApiClient {
       handler.next(options);
       return;
     }
-    final token = await user.getIdToken();
+    final token = await _getToken(user);
     if (token == null || token.isEmpty) {
       AppLogger.warning('API: getIdToken() returned null/empty');
       handler.next(options);
@@ -54,6 +57,27 @@ class ApiClient {
   void _onError(DioException error, ErrorInterceptorHandler handler) {
     AppLogger.error('API error: ${error.type} ${error.message}');
     handler.next(error);
+  }
+
+  Future<String?> _getToken(User user) async {
+    if (_cachedToken != null &&
+        _tokenExpiry != null &&
+        DateTime.now().isBefore(
+          _tokenExpiry!.subtract(const Duration(minutes: 5)),
+        )) {
+      return _cachedToken;
+    }
+    final token = await user.getIdToken();
+    if (token != null && token.isNotEmpty) {
+      _cachedToken = token;
+      _tokenExpiry = DateTime.now().add(const Duration(minutes: 55));
+    }
+    return token;
+  }
+
+  void clearTokenCache() {
+    _cachedToken = null;
+    _tokenExpiry = null;
   }
 
   // ── Public helpers ───────────────────────────────────────────────────

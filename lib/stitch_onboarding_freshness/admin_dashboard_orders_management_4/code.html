@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boucherie Express - Gestion des Stocks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c82828",
+                        "background-light": "#f9f9fa",
+                        "background-dark": "#131315",
+                        "surface-dark": "#1c1c1e",
+                        "card-dark": "#2c2c2e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @media (min-width: 1024px) {
+            .desktop-grid {
+                display: grid;
+                grid-template-columns: 1fr 350px;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col pb-24 lg:pb-0">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10">
+<div class="flex items-center justify-between p-4 max-w-7xl mx-auto w-full">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">inventory_2</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight">Boucherie Express</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold">Gestion des Stocks</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 mr-6">
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-bold text-primary" href="#">Stocks</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Commandes</a>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary/20 overflow-hidden hidden sm:block">
+<img alt="Admin user profile picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuHlb-YoPbojbcVfMOP32d1CV3RoU__lCqCdntGn1O0Fup4W4KCl8gwPZ5DgjeqzGakzxJn5RwmXyYZHxKItWauTnptZYmBCg5BbnFsI0e_XV-nfMO6hPLUpbTfQfQE_zyidppT72EpS5XMCgmTlbpNTEb6_9qLlh2oXyb-eAnQe8PNdYW3c1nMSu4-Ko1JvWR7pnZ9rrBoWtDE7ehhPwcJaNid8rB0GkeYpSfvda_qH7fxDgHQH8WFBUMpJW0zeij-fD_h1lAVA"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 pt-6 space-y-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold tracking-tight">Inventaire Global</h2>
+<p class="text-sm text-slate-500">Mise à jour en temps réel des stocks disponibles.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 h-11 px-6 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-xl">add_box</span>
+                    Mettre à jour le stock
+                </button>
+<button class="flex items-center justify-center w-11 h-11 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/5 text-slate-500">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-white/5">
+<span class="text-xs font-medium text-slate-500 block mb-1">Total Articles</span>
+<span class="text-2xl font-bold">428</span>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-white/5">
+<span class="text-xs font-medium text-slate-500 block mb-1">Ruptures</span>
+<span class="text-2xl font-bold text-primary">12</span>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-white/5">
+<span class="text-xs font-medium text-slate-500 block mb-1">Stock Faible</span>
+<span class="text-2xl font-bold text-amber-500">24</span>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-white/5">
+<span class="text-xs font-medium text-slate-500 block mb-1">Valeur Estimée</span>
+<span class="text-xl font-bold">4.2M <span class="text-[10px] font-normal text-slate-500">FCFA</span></span>
+</div>
+</div>
+<div class="desktop-grid">
+<div class="space-y-4">
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-white/5 overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-white/5 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 h-10 bg-slate-50 dark:bg-background-dark/50 border-none rounded-lg text-sm focus:ring-1 focus:ring-primary" placeholder="Rechercher un produit..." type="text"/>
+</div>
+<div class="flex gap-2">
+<select class="bg-slate-50 dark:bg-background-dark/50 border-none rounded-lg text-xs font-medium px-3 h-10 focus:ring-1 focus:ring-primary">
+<option>Toutes les catégories</option>
+<option>Bœuf</option>
+<option>Volaille</option>
+<option>Charcuterie</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[11px] uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-white/5">
+<th class="px-6 py-4 font-bold">Produit</th>
+<th class="px-6 py-4 font-bold">Catégorie</th>
+<th class="px-6 py-4 font-bold text-center">En Stock</th>
+<th class="px-6 py-4 font-bold text-center">Seuil</th>
+<th class="px-6 py-4 font-bold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-white/5">
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-card-dark overflow-hidden">
+<img alt="Filet de bœuf" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj4nWwdP0InXiylTZHw45bbnORhN_hgilDaTnU6vwG2mqRrE2M8-tyd0SruOydZtM0Lz_uthaPgBOJW0Uzf_0u0Kzbf3eUaaSMCFqdFCeaGu4g8aU-edARUUjJPGCTD6pXmz4u97HjaYJYIB0a2p5_5-UbBVmZJzKSuy--o0PiynSaW5TBQ5Av664v6WXDt9UyLXpZT9ftqwif7uZeJ6TGFDPDvi9N_Ew_BOzr0BaHcDKMUBLw_XsNE9xxlP9KVs3_GEkDiiaF1Q"/>
+</div>
+<span class="text-sm font-semibold">Filet de Bœuf (1kg)</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-slate-500">Boucherie / Bœuf</td>
+<td class="px-6 py-4 text-center">
+<span class="text-sm font-bold text-amber-500">12</span>
+</td>
+<td class="px-6 py-4 text-center text-xs text-slate-400">15</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-500 uppercase tracking-tight border border-amber-500/20">
+                                            Stock Faible
+                                        </span>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-card-dark overflow-hidden opacity-50">
+<div class="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-800">
+<span class="material-symbols-outlined text-slate-400">image_not_supported</span>
+</div>
+</div>
+<span class="text-sm font-semibold text-slate-400">Côte d'Agneau</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-slate-500">Boucherie / Agneau</td>
+<td class="px-6 py-4 text-center">
+<span class="text-sm font-bold text-primary">0</span>
+</td>
+<td class="px-6 py-4 text-center text-xs text-slate-400">10</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-primary/10 text-primary uppercase tracking-tight border border-primary/20">
+                                            Rupture
+                                        </span>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-card-dark overflow-hidden">
+<div class="w-full h-full flex items-center justify-center bg-emerald-500/10">
+<span class="material-symbols-outlined text-emerald-500">restaurant</span>
+</div>
+</div>
+<span class="text-sm font-semibold">Poulet Entier Nettoyé</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-slate-500">Volaille</td>
+<td class="px-6 py-4 text-center">
+<span class="text-sm font-bold">85</span>
+</td>
+<td class="px-6 py-4 text-center text-xs text-slate-400">20</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-500 uppercase tracking-tight border border-emerald-500/20">
+                                            Correct
+                                        </span>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-card-dark overflow-hidden">
+<div class="w-full h-full flex items-center justify-center bg-blue-500/10">
+<span class="material-symbols-outlined text-blue-500">fastfood</span>
+</div>
+</div>
+<span class="text-sm font-semibold">Saucisses de Toulouse</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-slate-500">Charcuterie</td>
+<td class="px-6 py-4 text-center">
+<span class="text-sm font-bold">34</span>
+</td>
+<td class="px-6 py-4 text-center text-xs text-slate-400">15</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-500 uppercase tracking-tight border border-emerald-500/20">
+                                            Correct
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-slate-50/50 dark:bg-white/[0.02] border-t border-slate-200 dark:border-white/5 flex items-center justify-between">
+<span class="text-xs text-slate-500 font-medium">Affichage de 1-10 sur 428 produits</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 text-xs font-medium">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<aside class="space-y-4">
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-white/5 overflow-hidden flex flex-col h-full">
+<div class="p-4 border-b border-slate-200 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/[0.02]">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">history</span>
+                            Historique Mouvements
+                        </h3>
+<button class="text-[10px] font-bold text-primary hover:underline">VOIR TOUT</button>
+</div>
+<div class="p-0 overflow-y-auto max-h-[600px] hide-scrollbar">
+<div class="divide-y divide-slate-100 dark:divide-white/5">
+<div class="p-4 hover:bg-slate-50 dark:hover:bg-white/[0.01] transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-emerald-500 uppercase tracking-tighter bg-emerald-500/10 px-1.5 py-0.5 rounded">Entrée Stock</span>
+<span class="text-[10px] text-slate-500 font-medium">Il y a 15 min</span>
+</div>
+<h4 class="text-xs font-bold mb-1">Filet de Bœuf (1kg)</h4>
+<p class="text-[11px] text-slate-500 leading-tight">Ajout de 10 unités par <strong>Admin</strong></p>
+<div class="mt-2 flex items-center gap-2 text-[10px] text-slate-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">local_shipping</span> Fournisseur: SIVAC</span>
+</div>
+</div>
+<div class="p-4 hover:bg-slate-50 dark:hover:bg-white/[0.01] transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-amber-500 uppercase tracking-tighter bg-amber-500/10 px-1.5 py-0.5 rounded">Sortie Vente</span>
+<span class="text-[10px] text-slate-500 font-medium">Il y a 1h</span>
+</div>
+<h4 class="text-xs font-bold mb-1">Saucisses de Toulouse</h4>
+<p class="text-[11px] text-slate-500 leading-tight">Retrait de 2 unités pour commande <strong>#BE-4509</strong></p>
+</div>
+<div class="p-4 hover:bg-slate-50 dark:hover:bg-white/[0.01] transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-primary uppercase tracking-tighter bg-primary/10 px-1.5 py-0.5 rounded">Ajustement</span>
+<span class="text-[10px] text-slate-500 font-medium">Il y a 3h</span>
+</div>
+<h4 class="text-xs font-bold mb-1">Côte d'Agneau</h4>
+<p class="text-[11px] text-slate-500 leading-tight">Mise à jour inventaire (Perte/Démarque)</p>
+</div>
+<div class="p-4 hover:bg-slate-50 dark:hover:bg-white/[0.01] transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-emerald-500 uppercase tracking-tighter bg-emerald-500/10 px-1.5 py-0.5 rounded">Entrée Stock</span>
+<span class="text-[10px] text-slate-500 font-medium">Hier</span>
+</div>
+<h4 class="text-xs font-bold mb-1">Poulet Entier Nettoyé</h4>
+<p class="text-[11px] text-slate-500 leading-tight">Arrivage hebdomadaire de 50 unités</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-xl border-t border-slate-200 dark:border-white/5 px-6 pb-6 pt-3 lg:hidden">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-[10px] font-semibold text-slate-400">Accueil</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">shopping_bag</span>
+<span class="text-[10px] font-semibold text-slate-400">Commandes</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="relative">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></span>
+</div>
+<span class="text-[10px] font-bold text-primary">Stocks</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">monitoring</span>
+<span class="text-[10px] font-semibold text-slate-400">Analyses</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">settings</span>
+<span class="text-[10px] font-semibold text-slate-400">Paramètres</span>
+</button>
+</div>
+</nav>
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center transform active:scale-95 transition-transform z-40 lg:hidden">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+
+</body></html>
