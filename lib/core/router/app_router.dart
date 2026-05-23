@@ -6,8 +6,8 @@ import 'package:boucherie_express/features/onboarding/presentation/screens/splas
 import 'package:boucherie_express/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:boucherie_express/features/home/presentation/screens/main_screen.dart';
 import 'package:boucherie_express/features/cart/presentation/screens/cart_screen.dart';
-import 'package:boucherie_express/features/cart/presentation/screens/payment_method_screen.dart';
 import 'package:boucherie_express/features/favorites/presentation/pages/favorites_page.dart';
+import 'package:boucherie_express/features/orders/presentation/screens/order_confirmation_screen.dart';
 import 'package:boucherie_express/features/auth/presentation/screens/login_screen.dart';
 import 'package:boucherie_express/features/auth/presentation/screens/signup_screen.dart';
 import 'package:boucherie_express/features/auth/presentation/screens/otp_verification_screen.dart';
@@ -15,7 +15,6 @@ import 'package:boucherie_express/features/home/presentation/screens/product_det
 import 'package:boucherie_express/features/shared/domain/entities/product.dart';
 import 'package:boucherie_express/features/cart/presentation/screens/checkout_screen.dart';
 import 'package:boucherie_express/features/orders/domain/entities/order.dart';
-import 'package:boucherie_express/features/orders/presentation/screens/orders_screen.dart';
 import 'package:boucherie_express/features/orders/presentation/pages/order_details_page.dart';
 import 'package:boucherie_express/features/orders/presentation/screens/order_tracking_screen.dart';
 import 'package:boucherie_express/features/profile/presentation/screens/personal_info_screen.dart';
@@ -28,7 +27,7 @@ import 'package:boucherie_express/features/profile/presentation/pages/support_pa
 
 /// Routes qui nécessitent d'être connecté
 const _protectedRoutes = {
-  '/orders',
+  '/order-confirmation',
   '/order-details',
   '/order-tracking',
   '/checkout',
@@ -78,7 +77,11 @@ class AppRouter {
       GoRoute(
         path: '/home',
         name: 'home',
-        builder: (context, state) => const MainScreen(),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final tab = extra?['tab'] as int? ?? 0;
+          return MainScreen(initialIndex: tab);
+        },
       ),
       GoRoute(
         path: '/cart',
@@ -116,9 +119,15 @@ class AppRouter {
         builder: (context, state) => const CheckoutScreen(),
       ),
       GoRoute(
-        path: '/orders',
-        name: 'orders',
-        builder: (context, state) => const OrdersScreen(),
+        path: '/order-confirmation',
+        name: 'order-confirmation',
+        builder: (context, state) {
+          final data = state.extra as Map<String, dynamic>;
+          return OrderConfirmationScreen(
+            orderId: data['orderId'] as String,
+            paymentMethodType: data['paymentMethodType'] as String,
+          );
+        },
       ),
       GoRoute(
         path: '/order-details',
@@ -126,14 +135,6 @@ class AppRouter {
         builder: (context, state) {
           final order = state.extra as Order;
           return OrderDetailsPage(order: order);
-        },
-      ),
-      GoRoute(
-        path: '/payment',
-        name: 'payment',
-        builder: (context, state) {
-          final data = state.extra as Map<String, dynamic>;
-          return PaymentMethodScreen(checkoutData: data);
         },
       ),
       GoRoute(

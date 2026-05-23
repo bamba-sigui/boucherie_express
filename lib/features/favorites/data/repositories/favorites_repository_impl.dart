@@ -32,6 +32,20 @@ class FavoritesRepositoryImpl implements FavoritesRepository {
   }
 
   @override
+  Future<Either<Failure, void>> addFavorite(String productId) async {
+    try {
+      await _localDataSource.addFavorite(productId);
+      return const Right(null);
+    } on AuthException catch (e) {
+      AppLogger.warning('FavoritesRepo.addFavorite auth error', e);
+      return Left(AuthFailure(e.message));
+    } catch (e) {
+      AppLogger.error('FavoritesRepo.addFavorite error', e);
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, void>> removeFavorite(String productId) async {
     try {
       await _localDataSource.removeFavorite(productId);

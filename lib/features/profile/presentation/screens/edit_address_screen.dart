@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/di/injection.dart';
@@ -16,8 +18,8 @@ class EditAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<AddressBloc>()..add(LoadAddresses()),
+    return BlocProvider.value(
+      value: getIt<AddressBloc>(),
       child: _EditAddressView(addressId: addressId),
     );
   }
@@ -33,36 +35,118 @@ class _EditAddressView extends StatefulWidget {
 
 class _EditAddressViewState extends State<_EditAddressView> {
   final _formKey = GlobalKey<FormState>();
-  final _labelController = TextEditingController();
   final _fullAddressController = TextEditingController();
   AddressType _selectedType = AddressType.home;
   bool _isDefault = false;
   bool _initialized = false;
+  bool _isGettingLocation = false;
+  double? _lat;
+  double? _lng;
 
   @override
   void dispose() {
-    _labelController.dispose();
     _fullAddressController.dispose();
     super.dispose();
   }
 
+  String _labelFromType(AddressType type) => switch (type) {
+    AddressType.home  => 'Domicile',
+    AddressType.work  => 'Bureau',
+    AddressType.other => 'Autre',
+  };
+
   void _initFrom(Address address) {
     if (_initialized) return;
-    _labelController.text = address.label;
     _fullAddressController.text = address.fullAddress;
     _selectedType = address.type;
     _isDefault = address.isDefault;
+    _lat = address.latitude;
+    _lng = address.longitude;
     _initialized = true;
+  }
+
+  Future<void> _getLocation() async {
+    setState(() => _isGettingLocation = true);
+    try {
+      if (!await Geolocator.isLocationServiceEnabled()) {
+        _showLocationError('Le service de localisation est désactivé.');
+        return;
+      }
+      var permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+      }
+      if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever) {
+        _showLocationError('Permission de localisation refusée.');
+        return;
+      }
+      // Essayer d'abord la position en cache (instantané)
+      Position? position = await Geolocator.getLastKnownPosition();
+      // Sinon, localisation réseau (WiFi/antennes) — rapide même en intérieur
+      position ??= await Geolocator.getCurrentPosition(
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.low,
+          timeLimit: Duration(seconds: 30),
+        ),
+      );
+      _lat = position.latitude;
+      _lng = position.longitude;
+
+      try {
+        final placemarks = await placemarkFromCoordinates(
+          position.latitude,
+          position.longitude,
+        );
+        if (placemarks.isNotEmpty) {
+          final p = placemarks.first;
+          final parts = [
+            if (p.street?.isNotEmpty == true) p.street,
+            if (p.subLocality?.isNotEmpty == true) p.subLocality,
+            if (p.locality?.isNotEmpty == true) p.locality,
+          ];
+          final address = parts.whereType<String>().join(', ');
+          if (address.isNotEmpty) {
+            _fullAddressController.text = address;
+          } else {
+            _fullAddressController.text =
+                '${position.latitude.toStringAsFixed(5)}, ${position.longitude.toStringAsFixed(5)}';
+          }
+        }
+      } catch (_) {
+        _fullAddressController.text =
+            '${position.latitude.toStringAsFixed(5)}, ${position.longitude.toStringAsFixed(5)}';
+      }
+    } catch (e) {
+      _showLocationError('Erreur GPS : ${e.toString()}');
+    } finally {
+      if (mounted) setState(() => _isGettingLocation = false);
+    }
+  }
+
+  void _showLocationError(String msg) {
+    if (!mounted) return;
+    setState(() => _isGettingLocation = false);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(msg),
+        backgroundColor: AppColors.accentRed,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(16),
+      ),
+    );
   }
 
   void _submit(Address original) {
     if (!_formKey.currentState!.validate()) return;
 
     final updated = original.copyWith(
-      label: _labelController.text.trim(),
+      label: _labelFromType(_selectedType),
       fullAddress: _fullAddressController.text.trim(),
       type: _selectedType,
       isDefault: _isDefault,
+      latitude: _lat,
+      longitude: _lng,
     );
 
     context.read<AddressBloc>().add(UpdateAddressRequested(updated));
@@ -154,7 +238,6 @@ class _EditAddressViewState extends State<_EditAddressView> {
                     children: [
                       const SizedBox(height: 8),
                       AddressFormFields(
-                        labelController: _labelController,
                         fullAddressController: _fullAddressController,
                         selectedType: _selectedType,
                         isDefault: _isDefault,
@@ -162,6 +245,8 @@ class _EditAddressViewState extends State<_EditAddressView> {
                             setState(() => _selectedType = t!),
                         onDefaultChanged: (v) =>
                             setState(() => _isDefault = v ?? false),
+                        onGetLocation: _getLocation,
+                        isGettingLocation: _isGettingLocation,
                       ),
                     ],
                   ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/di/injection.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/widgets/auth_gate.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
@@ -26,35 +25,28 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class FavoritesPageState extends State<FavoritesPage> {
-  late final FavoritesBloc _favoritesBloc;
+  bool _loaded = false;
 
   @override
-  void initState() {
-    super.initState();
-    _favoritesBloc = getIt<FavoritesBloc>();
-    // Ne charger les favoris que si l'utilisateur est connecté.
-    final authState = context.read<AuthBloc>().state;
-    if (authState is Authenticated) {
-      _favoritesBloc.add(const FavoritesLoadRequested());
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_loaded) {
+      _loaded = true;
+      final authState = context.read<AuthBloc>().state;
+      if (authState is Authenticated) {
+        context.read<FavoritesBloc>().add(const FavoritesLoadRequested());
+      }
     }
-  }
-
-  @override
-  void dispose() {
-    _favoritesBloc.close();
-    super.dispose();
   }
 
   /// Recharge les favoris (appelé quand l'onglet devient visible).
   void reload() {
-    _favoritesBloc.add(const FavoritesLoadRequested());
+    context.read<FavoritesBloc>().add(const FavoritesLoadRequested());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: _favoritesBloc,
-      child: AuthGate(
+    return AuthGate(
         icon: Icons.favorite_outline_rounded,
         title: 'Connectez-vous',
         subtitle: 'Connectez-vous pour voir vos favoris.',
@@ -99,72 +91,112 @@ class FavoritesPageState extends State<FavoritesPage> {
             ),
           ),
         ),
-      ),
     );
+  }
+
+  Future<void> _onRefresh(BuildContext context) async {
+    context.read<FavoritesBloc>().add(const FavoritesLoadRequested());
   }
 
   /// Liste des produits favoris.
   Widget _buildFavoritesList(BuildContext context, FavoritesLoaded state) {
-    return CustomScrollView(
-      slivers: [
-        const SliverToBoxAdapter(child: SizedBox(height: 8)),
+    return RefreshIndicator(
+      onRefresh: () => _onRefresh(context),
+      color: AppColors.primary,
+      backgroundColor: AppColors.cardDark,
+      child: CustomScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        slivers: [
+          const SliverToBoxAdapter(child: SizedBox(height: 8)),
 
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          sliver: SliverList.separated(
-            itemCount: state.favorites.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 16),
-            itemBuilder: (context, index) {
-              final product = state.favorites[index];
-              return FavoriteProductCard(product: product);
-            },
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            sliver: SliverList.separated(
+              itemCount: state.favorites.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 16),
+              itemBuilder: (context, index) {
+                final product = state.favorites[index];
+                return FavoriteProductCard(product: product);
+              },
+            ),
           ),
-        ),
 
-        // Espacement bas pour la bottom nav
-        const SliverToBoxAdapter(child: SizedBox(height: 120)),
-      ],
+          // Espacement bas pour la bottom nav
+          const SliverToBoxAdapter(child: SizedBox(height: 120)),
+        ],
+      ),
     );
   }
 
   /// État vide : aucun favori — délègue au widget dédié.
   Widget _buildEmptyState(BuildContext context) {
-    return EmptyFavoritesContent(onDiscoverProducts: widget.onNavigateToHome);
+    return RefreshIndicator(
+      onRefresh: () => _onRefresh(context),
+      color: AppColors.primary,
+      backgroundColor: AppColors.cardDark,
+      child: CustomScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: EmptyFavoritesContent(
+              onDiscoverProducts: widget.onNavigateToHome,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   /// État d'erreur avec bouton réessayer.
   Widget _buildErrorState(BuildContext context, String message) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error_outline, color: AppColors.error, size: 64),
-            const SizedBox(height: 16),
-            Text(
-              message,
-              style: const TextStyle(color: AppColors.textPrimary, fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: () {
-                context.read<FavoritesBloc>().add(
-                  const FavoritesLoadRequested(),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primary,
-                foregroundColor: AppColors.backgroundDark,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+    return RefreshIndicator(
+      onRefresh: () => _onRefresh(context),
+      color: AppColors.primary,
+      backgroundColor: AppColors.cardDark,
+      child: CustomScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(32),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.error_outline,
+                      color: AppColors.error,
+                      size: 64,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      message,
+                      style: const TextStyle(
+                        color: AppColors.textPrimary,
+                        fontSize: 16,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 24),
+                    ElevatedButton(
+                      onPressed: () => _onRefresh(context),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        foregroundColor: AppColors.backgroundDark,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text('Réessayer'),
+                    ),
+                  ],
                 ),
               ),
-              child: const Text('Réessayer'),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

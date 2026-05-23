@@ -54,15 +54,11 @@ class _CheckoutView extends StatelessWidget {
       body: BlocConsumer<CheckoutBloc, CheckoutState>(
         listener: (context, state) {
           if (state is CheckoutSuccess) {
-            // Navigate to order confirmation
-            // For now, pop back and show success
-            context.go('/home');
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Commande ${state.orderId} passée avec succès !'),
-                backgroundColor: AppColors.primary,
-              ),
-            );
+            context.read<CartBloc>().add(ClearCart());
+            context.go('/order-confirmation', extra: {
+              'orderId': state.orderId,
+              'paymentMethodType': state.paymentMethodType,
+            });
           }
           if (state is CheckoutReady && state.errorMessage != null) {
             ScaffoldMessenger.of(context).showSnackBar(

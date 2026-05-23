@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/order.dart';
@@ -296,9 +297,8 @@ class _OrderDetailsPageState extends State<OrderDetailsPage>
 
                     // ── 5. Actions ──
                     OrderActionsSection(
-                      onTrackOrder: () {
-                        // Future: navigation vers tracking en temps réel
-                      },
+                      onTrackOrder: () =>
+                          context.push('/order-tracking', extra: order.id),
                       onContactSupport: () {
                         // Future: ouvrir le support client
                       },

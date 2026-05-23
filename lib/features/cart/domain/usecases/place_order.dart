@@ -5,17 +5,18 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/checkout.dart';
+import '../entities/order_result.dart';
 import '../repositories/checkout_repository.dart';
 
 /// Passe la commande finale après validation métier.
 @lazySingleton
-class PlaceOrder implements UseCase<String, PlaceOrderParams> {
+class PlaceOrder implements UseCase<OrderResult, PlaceOrderParams> {
   final CheckoutRepository repository;
 
   PlaceOrder(this.repository);
 
   @override
-  Future<Either<Failure, String>> call(PlaceOrderParams params) async {
+  Future<Either<Failure, OrderResult>> call(PlaceOrderParams params) async {
     // 1. Validate business rules BEFORE calling repository
     if (!params.checkout.canPlaceOrder) {
       if (!params.checkout.hasItems) {

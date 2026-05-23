@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/order.dart';
@@ -32,10 +33,16 @@ class OrderItemTile extends StatelessWidget {
             ),
             clipBehavior: Clip.antiAlias,
             child: item.imageUrl != null && item.imageUrl!.isNotEmpty
-                ? Image.network(
-                    item.imageUrl!,
+                ? CachedNetworkImage(
+                    imageUrl: item.imageUrl!,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => const Center(
+                    placeholder: (_, __) => const Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: AppColors.primary,
+                      ),
+                    ),
+                    errorWidget: (_, __, ___) => const Center(
                       child: Icon(
                         Icons.restaurant,
                         color: AppColors.textSecondary,

@@ -143,8 +143,18 @@ class ApiClient {
 
     final statusCode = e.response?.statusCode;
     final body = e.response?.data;
-    final serverMsg =
-        (body is Map ? body['error'] : null) as String? ?? '';
+    String serverMsg = '';
+    if (body is Map) {
+      final raw = body['error'] ?? body['message'];
+      if (raw is String) serverMsg = raw;
+      final errors = body['errors'];
+      if (errors is Map && serverMsg.isEmpty) {
+        serverMsg = errors.values
+            .expand((v) => v is List ? v : [v])
+            .whereType<String>()
+            .join(' • ');
+      }
+    }
 
     switch (statusCode) {
       case 401:

@@ -91,7 +91,7 @@ class AddressSaved extends AddressState {
 
 // ─── BLoC ────────────────────────────────────────────────────────────
 
-@injectable
+@lazySingleton
 class AddressBloc extends Bloc<AddressEvent, AddressState> {
   final GetAddresses getAddresses;
   final SetDefaultAddress setDefaultAddress;

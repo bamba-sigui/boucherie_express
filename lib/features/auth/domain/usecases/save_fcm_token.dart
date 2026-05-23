@@ -1,6 +1,8 @@
+import 'package:injectable/injectable.dart';
 import '../repositories/auth_repository.dart';
 import '../../../../core/services/notification_service.dart';
 
+@injectable
 class SaveFcmToken {
   final AuthRepository _authRepository;
   final NotificationService _notificationService;

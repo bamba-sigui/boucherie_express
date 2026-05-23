@@ -12,14 +12,15 @@ import 'package:boucherie_express/features/shared/domain/entities/product.dart';
 import 'package:boucherie_express/features/profile/presentation/screens/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final int initialIndex;
+  const MainScreen({super.key, this.initialIndex = 0});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
-  int _currentIndex = 0;
+  late int _currentIndex = widget.initialIndex;
   final GlobalKey<HomePageState> _homeKey = GlobalKey();
   final GlobalKey<FavoritesPageState> _favoritesKey = GlobalKey();
   final GlobalKey<OrdersPageState> _ordersKey = GlobalKey();

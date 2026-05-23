@@ -13,7 +13,7 @@ class OrdersHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(20, 24, 20, 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(color: AppColors.border),
@@ -27,7 +27,7 @@ class OrdersHeader extends StatelessWidget {
             'Mes commandes',
             style: TextStyle(
               color: AppColors.textPrimary,
-              fontSize: 20,
+              fontSize: 22,
               fontWeight: FontWeight.w900,
               letterSpacing: -0.3,
             ),
@@ -35,15 +35,15 @@ class OrdersHeader extends StatelessWidget {
 
           // ── Icône notification ──
           Container(
-            width: 40,
-            height: 40,
+            width: 42,
+            height: 42,
             decoration: BoxDecoration(
               color: AppColors.cardDark,
               shape: BoxShape.circle,
             ),
-            child: Icon(
+            child: const Icon(
               Icons.notifications_outlined,
-              color: AppColors.textSecondary,
+              color: AppColors.textPrimary,
               size: 22,
             ),
           ),

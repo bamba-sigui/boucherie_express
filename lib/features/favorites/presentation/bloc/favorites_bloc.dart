@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../shared/domain/entities/product.dart';
+import '../../domain/usecases/add_favorite.dart';
 import '../../domain/usecases/get_favorites.dart';
 import '../../domain/usecases/toggle_favorite.dart';
 
@@ -15,9 +16,10 @@ part 'favorites_state.dart';
 @injectable
 class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   final GetFavorites _getFavorites;
+  final AddFavorite _addFavorite;
   final RemoveFavorite _removeFavorite;
 
-  FavoritesBloc(this._getFavorites, this._removeFavorite)
+  FavoritesBloc(this._getFavorites, this._addFavorite, this._removeFavorite)
     : super(const FavoritesInitial()) {
     on<FavoritesLoadRequested>(_onLoadRequested);
     on<FavoritesRemoveRequested>(_onRemoveRequested);
@@ -63,15 +65,35 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     );
   }
 
-  /// Toggle favori (ajouter/retirer).
-  /// Utilisé par product_card et product_details_screen.
+  /// Toggle favori avec optimistic update.
   Future<void> _onToggleRequested(
     FavoritesToggleRequested event,
     Emitter<FavoritesState> emit,
   ) async {
-    // Appeler removeFavorite qui toggle en interne
-    await _removeFavorite(event.product.id);
-    // Recharger la liste des favoris
-    add(const FavoritesLoadRequested());
+    final currentState = state;
+    final currentFavorites =
+        currentState is FavoritesLoaded ? currentState.favorites : <Product>[];
+
+    final isAlreadyFavorite =
+        currentFavorites.any((f) => f.id == event.product.id);
+
+    if (isAlreadyFavorite) {
+      final updated =
+          currentFavorites.where((f) => f.id != event.product.id).toList();
+      emit(FavoritesLoaded(favorites: updated));
+      final result = await _removeFavorite(event.product.id);
+      result.fold(
+        (_) => emit(FavoritesLoaded(favorites: currentFavorites)),
+        (_) {},
+      );
+    } else {
+      final updated = [...currentFavorites, event.product];
+      emit(FavoritesLoaded(favorites: updated));
+      final result = await _addFavorite(event.product.id);
+      result.fold(
+        (_) => emit(FavoritesLoaded(favorites: currentFavorites)),
+        (_) {},
+      );
+    }
   }
 }

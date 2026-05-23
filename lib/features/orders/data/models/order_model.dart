@@ -22,35 +22,50 @@ class OrderModel extends Order {
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
       id: json['id'].toString(),
-      userId: json['userId']?.toString() ?? '',
-      userName: json['userName'] as String?,
-      userPhone: json['userPhone'] as String?,
-      items: (json['items'] as List<dynamic>)
+      userId: (json['user_id'] ?? json['userId'])?.toString() ?? '',
+      userName: (json['user_name'] ?? json['userName']) as String?,
+      userPhone: (json['user_phone'] ?? json['userPhone']) as String?,
+      items: ((json['items'] ?? json['order_items']) as List<dynamic>? ?? [])
           .map(
             (item) => OrderItem(
-              productId: item['productId'].toString(),
-              productName: item['productName'] as String,
-              price: (item['price'] as num).toDouble(),
-              quantity: item['quantity'] as int,
+              productId: (item['product_id'] ?? item['productId'] ?? '').toString(),
+              productName: (item['product_name'] ?? item['productName'] ?? '') as String,
+              price: ((item['price'] ?? item['unit_price'] ?? 0) as num).toDouble(),
+              quantity: (item['quantity'] ?? 1) as int,
               option: item['option'] as String? ?? '',
-              imageUrl: item['imageUrl'] as String?,
+              imageUrl: (item['image_url'] ?? item['imageUrl']) as String?,
             ),
           )
           .toList(),
-      totalPrice: (json['totalPrice'] as num).toDouble(),
-      deliveryFee: (json['deliveryFee'] as num).toDouble(),
-      totalAmount: (json['totalAmount'] as num).toDouble(),
-      deliveryAddress: (json['deliveryAddress'] as String?) ?? '',
-      status: OrderStatus.values.byName(json['status'] as String),
+      totalPrice: ((json['total_price'] ?? json['totalPrice'] ?? 0) as num).toDouble(),
+      deliveryFee: ((json['delivery_fee'] ?? json['deliveryFee'] ?? 0) as num).toDouble(),
+      totalAmount: ((json['total_amount'] ?? json['totalAmount'] ?? 0) as num).toDouble(),
+      deliveryAddress: (json['delivery_address'] ?? json['deliveryAddress'] ?? '') as String,
+      status: _parseStatus((json['status'] as String?) ?? 'pending'),
       paymentMethod: _parsePaymentMethod(
-        json['paymentMethod'] as String? ?? 'cash',
+        (json['payment_method'] ?? json['paymentMethod']) as String? ?? 'cash',
       ),
-      paymentStatus: json['paymentStatus'] as String,
-      orderedAt: json['orderedAt'] != null
-          ? DateTime.parse(json['orderedAt'] as String)
+      paymentStatus: (json['payment_status'] ?? json['paymentStatus'] ?? '') as String,
+      orderedAt: (json['ordered_at'] ?? json['orderedAt'] ?? json['created_at']) != null
+          ? DateTime.parse(
+              (json['ordered_at'] ?? json['orderedAt'] ?? json['created_at']) as String,
+            )
           : DateTime.now(),
       note: json['note'] as String?,
     );
+  }
+
+  static OrderStatus _parseStatus(String value) {
+    switch (value) {
+      case 'pending': return OrderStatus.pending;
+      case 'confirmed': return OrderStatus.confirmed;
+      case 'preparing': return OrderStatus.preparing;
+      case 'out_for_delivery':
+      case 'delivering': return OrderStatus.delivering;
+      case 'delivered': return OrderStatus.delivered;
+      case 'cancelled': return OrderStatus.cancelled;
+      default: return OrderStatus.pending;
+    }
   }
 
   static PaymentMethod _parsePaymentMethod(String value) {
@@ -59,8 +74,12 @@ class OrderModel extends Order {
         return PaymentMethod.orangeMoney;
       case 'mtn_momo':
         return PaymentMethod.moovMoney;
+      case 'wave':
+        return PaymentMethod.orangeMoney;
+      case 'cash':
+        return PaymentMethod.cash;
       default:
-        return PaymentMethod.values.byName(value);
+        return PaymentMethod.cash;
     }
   }
 

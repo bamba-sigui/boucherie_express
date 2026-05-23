@@ -7,6 +7,7 @@ import '../../../../core/error/failures.dart';
 import '../../../../core/network/api_client.dart';
 import '../../domain/entities/checkout.dart';
 import '../../domain/entities/delivery_address.dart';
+import '../../domain/entities/order_result.dart';
 import '../../domain/entities/payment_method.dart';
 import '../../domain/repositories/checkout_repository.dart';
 
@@ -59,14 +60,15 @@ class CheckoutRepositoryImpl implements CheckoutRepository {
   }
 
   @override
-  Future<Either<Failure, String>> placeOrder(Checkout checkout) async {
+  Future<Either<Failure, OrderResult>> placeOrder(Checkout checkout) async {
     try {
       final cartItems = checkout.cart.items
           .map(
             (item) => {
               'product_id': int.tryParse(item.product.id) ?? item.product.id,
               'quantity': item.quantity,
-              'option': item.preparationOption,
+              if (item.preparationOption.isNotEmpty)
+                'option': item.preparationOption,
             },
           )
           .toList();
@@ -82,8 +84,15 @@ class CheckoutRepositoryImpl implements CheckoutRepository {
       };
 
       final data = await _apiClient.post(ApiConstants.checkout, data: body);
-      final orderId = (data as Map<String, dynamic>)['id'].toString();
-      return Right(orderId);
+      final map = data as Map<String, dynamic>;
+
+      return Right(
+        OrderResult(
+          orderId: map['orderId']?.toString() ?? map['id'].toString(),
+          checkoutUrl: map['checkoutUrl'] as String?,
+          paymentRef: map['paymentRef'] as String?,
+        ),
+      );
     } on AppException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {

@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/format_utils.dart';
 import '../../../cart/presentation/bloc/cart_bloc.dart';
+import '../../../favorites/presentation/bloc/favorites_bloc.dart';
 import '../../../shared/domain/entities/product.dart';
-import '../bloc/home_bloc.dart';
 
 /// Card produit pour l'écran d'accueil.
 ///
@@ -17,12 +17,10 @@ import '../bloc/home_bloc.dart';
 /// - Bouton "Ajouter au panier" pleine largeur
 class HomeProductCard extends StatefulWidget {
   final Product product;
-  final bool isFavorite;
 
   const HomeProductCard({
     super.key,
     required this.product,
-    this.isFavorite = false,
   });
 
   @override
@@ -262,25 +260,31 @@ class _HomeProductCardState extends State<HomeProductCard> {
           Positioned(
             top: 16,
             right: 16,
-            child: GestureDetector(
-              onTap: () {
-                context.read<HomeBloc>().add(
-                  HomeFavoriteToggled(widget.product.id),
+            child: BlocBuilder<FavoritesBloc, FavoritesState>(
+              builder: (context, favState) {
+                final isFavorite = favState is FavoritesLoaded &&
+                    favState.favorites.any((f) => f.id == widget.product.id);
+                return GestureDetector(
+                  onTap: () => context.read<FavoritesBloc>().add(
+                    FavoritesToggleRequested(widget.product),
+                  ),
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.3),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite
+                          ? AppColors.accentRed
+                          : AppColors.textPrimary,
+                      size: 22,
+                    ),
+                  ),
                 );
               },
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.3),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  widget.isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: widget.isFavorite ? AppColors.accentRed : AppColors.textPrimary,
-                  size: 22,
-                ),
-              ),
             ),
           ),
         ],

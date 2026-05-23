@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/order.dart';
@@ -70,12 +71,13 @@ class OrderProductAvatars extends StatelessWidget {
         ),
         child: ClipOval(
           child: imageUrl != null && imageUrl.isNotEmpty
-              ? Image.network(
-                  imageUrl,
+              ? CachedNetworkImage(
+                  imageUrl: imageUrl,
                   width: 28,
                   height: 28,
                   fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => const Icon(
+                  placeholder: (_, __) => const SizedBox.shrink(),
+                  errorWidget: (_, __, ___) => const Icon(
                     Icons.restaurant,
                     size: 14,
                     color: AppColors.textSecondary,

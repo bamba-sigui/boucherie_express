@@ -1,11 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../domain/entities/cart.dart';
 import '../../domain/entities/checkout.dart';
 import '../../domain/entities/delivery_address.dart';
+import '../../domain/entities/order_result.dart';
 import '../../domain/entities/payment_method.dart';
+import '../../../../core/utils/logger.dart';
 import '../../domain/usecases/get_default_address.dart';
 import '../../domain/usecases/get_payment_methods.dart';
 import '../../domain/usecases/place_order.dart';
@@ -82,24 +85,58 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
     final currentState = state;
     if (currentState is! CheckoutReady) return;
 
+    if (currentState.checkout.deliveryAddress == null) {
+      emit(currentState.copyWith(
+        isSubmitting: false,
+        errorMessage: 'Veuillez ajouter une adresse de livraison',
+      ));
+      return;
+    }
+
     emit(currentState.copyWith(isSubmitting: true));
 
     final result = await placeOrder(
       PlaceOrderParams(checkout: currentState.checkout),
     );
 
+    // Extraire failure ou result sans fold asynchrone
+    String? failureMessage;
+    OrderResult? orderResult;
     result.fold(
-      (failure) {
-        emit(
-          currentState.copyWith(
-            isSubmitting: false,
-            errorMessage: failure.message,
-          ),
-        );
-      },
-      (orderId) {
-        emit(CheckoutSuccess(orderId: orderId));
-      },
+      (failure) => failureMessage = failure.message,
+      (r) => orderResult = r,
     );
+
+    if (failureMessage != null) {
+      AppLogger.error('placeOrder failed: $failureMessage');
+      emit(currentState.copyWith(
+        isSubmitting: false,
+        errorMessage: failureMessage,
+      ));
+      return;
+    }
+
+    final paymentType =
+        currentState.checkout.selectedPaymentMethod?.type ==
+                PaymentMethodType.cash
+            ? 'cash'
+            : 'mobile_money';
+
+    // Ouvrir la page Genius Pay si mobile money
+    if (orderResult!.requiresRedirect) {
+      try {
+        await launchUrl(
+          Uri.parse(orderResult!.checkoutUrl!),
+          mode: LaunchMode.externalApplication,
+        );
+      } catch (_) {
+        // URL invalide ou navigateur indisponible — on continue
+      }
+    }
+
+    emit(CheckoutSuccess(
+      orderId: orderResult!.orderId,
+      paymentMethodType: paymentType,
+    ));
   }
 }

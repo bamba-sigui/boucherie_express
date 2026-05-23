@@ -12,8 +12,13 @@ class FavoritesHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 12, 16, 8),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: AppColors.border),
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -24,7 +29,7 @@ class FavoritesHeader extends StatelessWidget {
               color: AppColors.textPrimary,
               fontSize: 22,
               fontWeight: FontWeight.w900,
-              letterSpacing: 0.5,
+              letterSpacing: -0.3,
             ),
           ),
 

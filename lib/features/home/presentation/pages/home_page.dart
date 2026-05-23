@@ -191,10 +191,7 @@ class HomePageState extends State<HomePage> {
                 separatorBuilder: (_, __) => const SizedBox(height: 16),
                 itemBuilder: (context, index) {
                   final product = state.products[index];
-                  return HomeProductCard(
-                    product: product,
-                    isFavorite: state.favoriteIds.contains(product.id),
-                  );
+                  return HomeProductCard(product: product);
                 },
               ),
             ),

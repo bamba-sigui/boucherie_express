@@ -7,6 +7,7 @@ import '../../../shared/domain/entities/product.dart';
 /// Source de données pour les favoris via le backend API.
 abstract class FavoritesLocalDataSource {
   Future<List<Product>> getFavorites();
+  Future<void> addFavorite(String productId);
   Future<void> removeFavorite(String productId);
 }
 
@@ -24,6 +25,11 @@ class FavoritesLocalDataSourceImpl implements FavoritesLocalDataSource {
           (json) => ProductModel.fromJson(json as Map<String, dynamic>),
         )
         .toList();
+  }
+
+  @override
+  Future<void> addFavorite(String productId) async {
+    await _apiClient.post(ApiConstants.favorite(productId));
   }
 
   @override

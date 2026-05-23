@@ -122,7 +122,17 @@ class OrdersPageState extends State<OrdersPage> {
 
   /// État vide — délègue au widget dédié.
   Widget _buildEmptyState() {
-    return EmptyOrdersContent(onCommanderMaintenant: widget.onNavigateToHome);
+    return CustomScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: EmptyOrdersContent(
+            onCommanderMaintenant: widget.onNavigateToHome,
+          ),
+        ),
+      ],
+    );
   }
 
   /// État d'erreur avec bouton réessayer.

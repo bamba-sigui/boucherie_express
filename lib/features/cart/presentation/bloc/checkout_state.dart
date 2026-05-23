@@ -52,11 +52,15 @@ class CheckoutReady extends CheckoutState {
 
 class CheckoutSuccess extends CheckoutState {
   final String orderId;
+  final String paymentMethodType; // 'cash' | 'mobile_money'
 
-  const CheckoutSuccess({required this.orderId});
+  const CheckoutSuccess({
+    required this.orderId,
+    required this.paymentMethodType,
+  });
 
   @override
-  List<Object?> get props => [orderId];
+  List<Object?> get props => [orderId, paymentMethodType];
 }
 
 class CheckoutError extends CheckoutState {

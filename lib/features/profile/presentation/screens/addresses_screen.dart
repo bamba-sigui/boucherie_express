@@ -18,8 +18,8 @@ class AddressesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<AddressBloc>()..add(LoadAddresses()),
+    return BlocProvider.value(
+      value: getIt<AddressBloc>()..add(LoadAddresses()),
       child: const _AddressesView(),
     );
   }

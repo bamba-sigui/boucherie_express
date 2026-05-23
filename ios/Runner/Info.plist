@@ -49,5 +49,7 @@
 	<string>Pour changer votre photo de profil</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Pour prendre une photo de profil</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Votre position est utilisée pour remplir automatiquement votre adresse de livraison.</string>
 </dict>
 </plist>

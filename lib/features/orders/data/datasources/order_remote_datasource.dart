@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart' hide Order;
 import '../../../../core/constants/api_constants.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/network/api_client.dart';
+import '../../../../core/utils/logger.dart';
 import '../../domain/entities/order.dart';
 import '../models/order_model.dart';
 
@@ -32,6 +33,10 @@ class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
     try {
       final data = await apiClient.get(ApiConstants.orders);
       final list = data as List;
+      if (list.isNotEmpty) {
+        AppLogger.debug('orders[0] raw keys: ${(list.first as Map).keys.toList()}');
+        AppLogger.debug('orders[0] raw: ${list.first}');
+      }
       return list
           .map(
             (json) => OrderModel.fromJson(json as Map<String, dynamic>),
@@ -39,7 +44,8 @@ class OrderRemoteDataSourceImpl implements OrderRemoteDataSource {
           .toList();
     } on AppException {
       rethrow;
-    } catch (e) {
+    } catch (e, st) {
+      AppLogger.error('getUserOrders raw error: $e\n$st');
       throw ServerException('Erreur lors de la récupération des commandes');
     }
   }
